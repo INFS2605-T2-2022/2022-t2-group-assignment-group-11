@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="au.edu.unsw.infs2605.donationsystem.appointmentController">
+   <children>
+      <Label layoutX="33.0" layoutY="6.0" text="MAKE AN APPOINTMENT" />
+      <CheckBox fx:id="condition1" layoutX="194.0" layoutY="67.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="310.0" text="Have you been unwell in any way lately?">
+         <font>
+            <Font size="10.0" />
+         </font>
+      </CheckBox>
+      <CheckBox fx:id="condition2" layoutX="194.0" layoutY="89.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="310.0" text="Do you weigh less than 50kg?">
+         <font>
+            <Font size="10.0" />
+         </font>
+      </CheckBox>
+      <CheckBox fx:id="condition3" layoutX="194.0" layoutY="111.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="407.0" text="Do you have a serious heart condition, or have you had heart attack or stroke?" textOverrun="CLIP">
+         <font>
+            <Font size="10.0" />
+         </font>
+      </CheckBox>
+      <CheckBox fx:id="condition4" layoutX="194.0" layoutY="133.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="358.0" text="In the last 3 months, have you engaged in at-risk sexual behaviour?" textOverrun="CLIP">
+         <font>
+            <Font size="10.0" />
+         </font>
+      </CheckBox>
+      <CheckBox fx:id="condition5" layoutX="194.0" layoutY="156.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="358.0" text="Have you had an operation or surgeon in the last 6 months?" textOverrun="CLIP">
+         <font>
+            <Font size="10.0" />
+         </font>
+      </CheckBox>
+      <CheckBox fx:id="condition6" layoutX="194.0" layoutY="177.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="405.0" text="Are you pregnant, or have you been pregnant in the last 9 months?" textOverrun="CLIP">
+         <font>
+            <Font size="10.0" />
+         </font>
+      </CheckBox>
+      <CheckBox fx:id="condition7" layoutX="194.0" layoutY="198.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="405.0" text="Are you taking antibiotics?" textOverrun="CLIP">
+         <font>
+            <Font size="10.0" />
+         </font>
+      </CheckBox>
+      <CheckBox fx:id="condition8" layoutX="194.0" layoutY="219.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="405.0" text="Have you had any dental work in the week before your donation?" textOverrun="CLIP">
+         <font>
+            <Font size="10.0" />
+         </font>
+      </CheckBox>
+      <CheckBox fx:id="condition9" layoutX="194.0" layoutY="241.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="405.0" text="Have you had any tattoo in the 4 months before your donation?" textOverrun="CLIP">
+         <font>
+            <Font size="10.0" />
+         </font>
+      </CheckBox>
+      <CheckBox fx:id="condition10" layoutX="194.0" layoutY="262.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="405.0" text="Have you had a piercing in the 4 months before your donation?" textOverrun="CLIP">
+         <font>
+            <Font size="10.0" />
+         </font>
+      </CheckBox>
+      <CheckBox fx:id="condition11" layoutX="194.0" layoutY="283.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="405.0" text="Have you been outside of Australia in the 4 months before your donation?" textOverrun="CLIP">
+         <font>
+            <Font size="10.0" />
+         </font>
+      </CheckBox>
+      <CheckBox fx:id="none" layoutX="194.0" layoutY="304.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="405.0" text="None of the above apply to me" textOverrun="CLIP">
+         <font>
+            <Font size="10.0" />
+         </font>
+      </CheckBox>
+      <Button layoutX="516.0" layoutY="364.0" mnemonicParsing="false" onAction="#eligibilityCheck" prefHeight="26.0" prefWidth="68.0" text="CONTINUE">
+         <font>
+            <Font size="10.0" />
+         </font>
+      </Button>
+      <Text layoutX="195.0" layoutY="46.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Answer a few quick questions to find out if you are eligible to make an appointment." wrappingWidth="406.4786682128906">
+         <font>
+            <Font size="10.0" />
+         </font>
+      </Text>
+      <Text fill="#f50303" layoutX="195.0" layoutY="63.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Please select at least one option." wrappingWidth="406.4786682128906">
+         <font>
+            <Font size="10.0" />
+         </font>
+      </Text>
+      <Line endX="555.2877197265625" endY="-1.9073486328125E-6" layoutX="46.0" layoutY="29.0" startX="-45.99999237060547" startY="-1.9073486328125E-6" />
+      <Text layoutX="213.0" layoutY="342.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Are you 18-75 years old? ">
+         <font>
+            <Font size="10.0" />
+         </font>
+      </Text>
+      <ChoiceBox fx:id="ageCheck" layoutX="352.0" layoutY="323.0" onMouseClicked="#ageEligibility" prefHeight="1.0" prefWidth="80.0" />
+      <ImageView fitHeight="15.0" fitWidth="34.0" layoutX="194.0" layoutY="329.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../../../../../../../Desktop/birthday.png" />
+         </image>
+      </ImageView>
+      <Button layoutX="38.0" layoutY="69.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="115.0" text="Check your eligibility">
+         <font>
+            <Font size="11.0" />
+         </font>
+      </Button>
+      <Button layoutX="38.0" layoutY="161.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="115.0" text="Make an appointment">
+         <font>
+            <Font size="11.0" />
+         </font>
+      </Button>
+      <Button layoutX="38.0" layoutY="256.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="116.0" text="Confirm appointment">
+         <font>
+            <Font size="11.0" />
+         </font>
+      </Button>
+      <ImageView fitHeight="26.0" fitWidth="27.0" layoutX="83.0" layoutY="116.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../../../../../../../Desktop/arrow%20down.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="26.0" fitWidth="27.0" layoutX="81.0" layoutY="209.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../../../../../../../Desktop/arrow%20down.png" />
+         </image>
+      </ImageView>
+      <Label fx:id="notEligible" layoutX="194.0" layoutY="362.0" text="Sorry, you are not eligible to make a donation appointment." textFill="#f50a0a" visible="false">
+         <font>
+            <Font size="12.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>
