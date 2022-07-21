@@ -15,6 +15,7 @@ public class Appointment {
     private String bookingTime;
     private String donorCentre;
     private String donationType;
+    private String donationStatus; 
    
     //Constructor
     public Appointment() {
@@ -84,5 +85,14 @@ public class Appointment {
     
     public void setDonationType(String donationType) {
         this.donationType = donationType;
-    }      
+    }     
+    
+    //donationStatus
+    public String getDonationStatus() {
+        return donationStatus;
+    }
+    
+    public void setDonationStatus(String donationStatus) {
+        this.donationStatus = donationStatus;
+    }
 }
