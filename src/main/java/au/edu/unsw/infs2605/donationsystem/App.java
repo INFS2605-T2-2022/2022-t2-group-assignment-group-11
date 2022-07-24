@@ -5,18 +5,23 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-
 import java.io.IOException;
+import java.sql.SQLException;
+
 
 /**
  * JavaFX App
  **/
 public class App extends Application {
     
+    private Database database = new Database();
     
     
     @Override
-    public void start(Stage stage) throws IOException {
+    public void start(Stage stage) throws IOException, SQLException {
+        
+        database.setupDatabase();
+        
         stage.setTitle("Donation Management System");
         Scene scene = new Scene(loadFXML("app"), 640, 480);
         stage.setScene(scene);
