@@ -12,7 +12,9 @@ import java.io.IOException;
  * JavaFX App
  **/
 public class App extends Application {
-
+    
+    
+    
     @Override
     public void start(Stage stage) throws IOException {
         stage.setTitle("Donation Management System");
