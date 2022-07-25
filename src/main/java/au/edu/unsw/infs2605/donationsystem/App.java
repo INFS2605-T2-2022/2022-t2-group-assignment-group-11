@@ -15,10 +15,22 @@ public class App extends Application {
 
     private static Scene scene;
     
+    private static Appointment newAppointment;
+    
+    //Getter method
+    static Appointment getAppointment() {
+        return newAppointment;
+    }
+    
+    //Setter method
+    static void setAppointment(Appointment appointment) {
+        App.newAppointment = appointment;
+    }
+    
     @Override
     public void start(Stage stage) throws IOException {
         stage.setTitle("Donation Management System");
-        Scene scene = new Scene(loadFXML("bookAppointment"), 640, 480);
+        scene = new Scene(loadFXML("appointment"), 640, 480);
         stage.setScene(scene);
         stage.show();
     }

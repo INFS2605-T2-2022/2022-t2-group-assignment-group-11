@@ -6,14 +6,17 @@ package au.edu.unsw.infs2605.donationsystem;
 
 import java.io.IOException;
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
+//import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
+import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 
 /**
@@ -46,6 +49,12 @@ public class appointmentController implements Initializable {
     DatePicker dateOfBirth;
     
     @FXML
+    RadioButton bloodDonation;
+    
+    @FXML
+    RadioButton plasmaDonation;
+    
+    @FXML
     DatePicker bookingDate;
     
     @FXML
@@ -54,6 +63,7 @@ public class appointmentController implements Initializable {
     @FXML
     ChoiceBox donorCentre;
     
+    //Missing required information error
     @FXML
     Label firstNameError;
     
@@ -74,7 +84,7 @@ public class appointmentController implements Initializable {
     
     @FXML
     Label bookingTimeError;
-  
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         createChoiceBox();
@@ -82,7 +92,7 @@ public class appointmentController implements Initializable {
     
     public void createChoiceBox() {
         //Create Gender choicebox
-        gender.getItems().clear();
+        //gender.getItems().clear();
         if (gender.getItems().isEmpty()) {
             gender.getItems().add("Male");
             gender.getItems().add("Female");
@@ -126,10 +136,18 @@ public class appointmentController implements Initializable {
     }
     
     /*
+    public String getDate(DatePicker datePicker) {
+        LocalDate date = datePicker.getValue();
+        return date.toString();
+    }
+    */
+    
+    /*
     Book a new appointment
     */
     
     //Input personal information
+    @FXML
     public void newAppointment() throws IOException {
         Appointment newAppointment = new Appointment();
         newAppointment.setFirstName(firstName.getText());
@@ -139,6 +157,18 @@ public class appointmentController implements Initializable {
         newAppointment.setMobile(mobile.getText());
         newAppointment.setAddress(address.getText());
         newAppointment.setGender(getChoice(gender)); 
+        newAppointment.setDonorCentre(getChoice(donorCentre));
+        newAppointment.setBookingTime(getChoice(timeSlot));
+        newAppointment.setBookingDate(bookingDate.getValue().toString());
+        
+        //System.out.println(newAppointment.getDOB());
+        System.out.println(newAppointment.getDonorCentre());
+        if (bloodDonation.isSelected()) {
+            newAppointment.setDonationType("Blood");
+        }
+        else {
+            newAppointment.setDonationType("Plasma");
+        }
         
         /* 
         Check whether compulsory information has been filled
@@ -157,7 +187,7 @@ public class appointmentController implements Initializable {
         else {
             lastNameError.setVisible(false);
         }
-        
+        /*
         if (newAppointment.getDOB().isBlank() || 
                 newAppointment.getGender().isBlank()) {
             dobOrGenderError.setVisible(true);
@@ -165,6 +195,7 @@ public class appointmentController implements Initializable {
         else {
             dobOrGenderError.setVisible(false);
         }
+*/
         
         if (newAppointment.getMobile().isBlank()) {
             mobileError.setVisible(true);
@@ -187,13 +218,16 @@ public class appointmentController implements Initializable {
             donorCentreError.setVisible(false);
         }
         
+        /*
         if (newAppointment.getBookingDate().isBlank()
                 || newAppointment.getBookingTime().isBlank()) {
             bookingTimeError.setVisible(true);
         }
         else {
             bookingTimeError.setVisible(false);
-        }    
+        }  
+        */
+        
         // If all required information is provided, confirm the appointment
         if (firstNameError.isVisible() == false 
                 && lastNameError.isVisible() == false 
@@ -203,10 +237,10 @@ public class appointmentController implements Initializable {
                 && donorCentreError.isVisible() == false
                 && bookingTimeError.isVisible() == false) {
             appointmentList.add(newAppointment);
+            
+            App.setAppointment(newAppointment);
             App.setRoot("confirmAppointment");
-            
-            //Set label of the new screen here!!!
-            
+   
         }
     }
     

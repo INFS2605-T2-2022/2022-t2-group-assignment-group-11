@@ -8,6 +8,7 @@
 <?import javafx.scene.control.ProgressBar?>
 <?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -88,12 +89,15 @@
             <Font name="Montserrat Regular" size="11.0" />
          </font>
       </Text>
-      <RadioButton layoutX="206.0" layoutY="271.0" mnemonicParsing="false" text="Blood (60 minutes)">
+      <RadioButton fx:id="bloodDonation" layoutX="206.0" layoutY="271.0" mnemonicParsing="false" text="Blood (60 minutes)">
          <font>
             <Font name="Montserrat Regular" size="10.0" />
          </font>
+         <toggleGroup>
+            <ToggleGroup fx:id="donationType" />
+         </toggleGroup>
       </RadioButton>
-      <RadioButton layoutX="373.0" layoutY="271.0" mnemonicParsing="false" text="Plasma (1.5 hours)">
+      <RadioButton fx:id="plasmaDonation" layoutX="373.0" layoutY="271.0" mnemonicParsing="false" text="Plasma (1.5 hours)" toggleGroup="$donationType">
          <font>
             <Font name="Montserrat Regular" size="10.0" />
          </font>
@@ -159,7 +163,7 @@
          </font>
       </TextField>
       <DatePicker fx:id="bookingDate" layoutX="207.0" layoutY="321.0" prefHeight="26.0" prefWidth="139.0" />
-      <Button id="continue" layoutX="476.0" layoutY="360.0" mnemonicParsing="false" onMouseClicked="#newAppointment" prefHeight="26.0" prefWidth="75.0" style="-fx-background-color: f20404;" text="CONTINUE" textFill="WHITE">
+      <Button id="continue" layoutX="476.0" layoutY="360.0" mnemonicParsing="false" onAction="#newAppointment" onMouseClicked="#newAppointment" prefHeight="26.0" prefWidth="75.0" style="-fx-background-color: f20404;" text="CONTINUE" textFill="WHITE">
          <font>
             <Font name="Montserrat Bold" size="10.0" />
          </font>

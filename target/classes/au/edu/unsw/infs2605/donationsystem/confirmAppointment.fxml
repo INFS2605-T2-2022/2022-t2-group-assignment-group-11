@@ -13,7 +13,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="au.edu.unsw.infs2605.donationsystem.confirmAppointmentController">
    <children>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f29191" height="226.0" layoutX="126.0" layoutY="95.0" stroke="BLACK" strokeType="INSIDE" width="403.0" />
       <Label layoutX="33.0" layoutY="6.0" text="CONFIRM APPOINTMENT" />
@@ -42,11 +42,11 @@
             <Font name="Montserrat Regular" size="12.0" />
          </font>
       </Text>
-      <Label layoutX="265.0" layoutY="139.0" prefHeight="17.0" prefWidth="245.0" text="firstName">
+      <Label fx:id="firstNameConf" layoutX="265.0" layoutY="139.0" prefHeight="17.0" prefWidth="245.0" text="firstName">
          <font>
             <Font name="Montserrat Regular" size="12.0" />
          </font></Label>
-      <Label layoutX="265.0" layoutY="167.0" prefHeight="17.0" prefWidth="239.0" text="lastName">
+      <Label fx:id="lastNameConf" layoutX="265.0" layoutY="167.0" prefHeight="17.0" prefWidth="239.0" text="lastName">
          <font>
             <Font name="Montserrat Regular" size="12.0" />
          </font></Label>
@@ -60,19 +60,19 @@
             <Font name="Montserrat Regular" size="12.0" />
          </font>
       </Text>
-      <Label layoutX="264.0" layoutY="221.0" prefHeight="17.0" prefWidth="242.0" text="donationType">
+      <Label fx:id="donationTypeConf" layoutX="264.0" layoutY="221.0" prefHeight="17.0" prefWidth="242.0" text="donationType">
          <font>
             <Font name="Montserrat Regular" size="12.0" />
          </font></Label>
-      <Label layoutX="264.0" layoutY="251.0" prefHeight="17.0" prefWidth="242.0" text="donorCenter">
+      <Label fx:id="donorCentreConf" layoutX="264.0" layoutY="251.0" prefHeight="17.0" prefWidth="242.0" text="donorCenter">
          <font>
             <Font name="Montserrat Regular" size="12.0" />
          </font></Label>
-      <Label layoutX="400.0" layoutY="280.0" prefHeight="17.0" prefWidth="114.0" text="date">
+      <Label fx:id="dateConf" layoutX="400.0" layoutY="280.0" prefHeight="17.0" prefWidth="114.0" text="date">
          <font>
             <Font name="Montserrat Regular" size="12.0" />
          </font></Label>
-      <Label layoutX="264.0" layoutY="281.0" prefHeight="17.0" prefWidth="107.0" text="time">
+      <Label fx:id="timeConf" layoutX="264.0" layoutY="281.0" prefHeight="17.0" prefWidth="107.0" text="time">
          <font>
             <Font name="Montserrat Regular" size="12.0" />
          </font></Label>
@@ -131,7 +131,7 @@
             <Font name="Montserrat Regular" size="12.0" />
          </font>
       </Text>
-      <Label layoutX="265.0" layoutY="193.0" prefHeight="17.0" prefWidth="239.0" text="mobile">
+      <Label fx:id="mobileConf" layoutX="265.0" layoutY="193.0" prefHeight="17.0" prefWidth="239.0" text="mobile">
          <font>
             <Font name="Montserrat Regular" size="12.0" />
          </font>
