@@ -4,6 +4,7 @@
  */
 package au.edu.unsw.infs2605.donationsystem;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
@@ -49,6 +50,10 @@ public class confirmAppointmentController implements Initializable{
         donorCentreConf.setText(newAppointment.getDonorCentre());
         timeConf.setText(newAppointment.getBookingTime());
         dateConf.setText(newAppointment.getBookingDate());
+    }
+    
+    public void cancelButton() throws IOException {
+        App.setRoot("bookAppointment");
     }
 
             

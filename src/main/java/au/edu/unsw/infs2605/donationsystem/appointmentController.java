@@ -6,8 +6,15 @@ package au.edu.unsw.infs2605.donationsystem;
 
 import java.io.IOException;
 import java.net.URL;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.time.Month;
+import java.time.Period;
+import java.time.Year;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import java.util.ResourceBundle;
 //import javafx.event.ActionEvent;
@@ -71,7 +78,7 @@ public class appointmentController implements Initializable {
     Label lastNameError;
     
     @FXML
-    Label dobOrGenderError;
+    Label genderError;
     
     @FXML
     Label mobileError;
@@ -84,6 +91,12 @@ public class appointmentController implements Initializable {
     
     @FXML
     Label bookingTimeError;
+    
+    @FXML
+    Label dateError;
+    
+    @FXML
+    Label dobError;
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -136,112 +149,154 @@ public class appointmentController implements Initializable {
     }
     
     /*
-    public String getDate(DatePicker datePicker) {
-        LocalDate date = datePicker.getValue();
-        return date.toString();
-    }
-    */
-    
-    /*
     Book a new appointment
     */
     
     //Input personal information
     @FXML
-    public void newAppointment() throws IOException {
+    public void newAppointment() throws IOException, ParseException {
         Appointment newAppointment = new Appointment();
-        newAppointment.setFirstName(firstName.getText());
-        newAppointment.setLastName(lastName.getText());
-        newAppointment.setEmail(email.getText());
-        newAppointment.setDOB(dateOfBirth.getValue().toString());
-        newAppointment.setMobile(mobile.getText());
-        newAppointment.setAddress(address.getText());
-        newAppointment.setGender(getChoice(gender)); 
-        newAppointment.setDonorCentre(getChoice(donorCentre));
-        newAppointment.setBookingTime(getChoice(timeSlot));
-        newAppointment.setBookingDate(bookingDate.getValue().toString());
         
-        //System.out.println(newAppointment.getDOB());
-        System.out.println(newAppointment.getDonorCentre());
-        if (bloodDonation.isSelected()) {
-            newAppointment.setDonationType("Blood");
-        }
-        else {
-            newAppointment.setDonationType("Plasma");
-        }
+        newAppointment.setEmail(email.getText());
+        newAppointment.setAddress(address.getText());
         
         /* 
-        Check whether compulsory information has been filled
+        Check requirements
         */
         
-        if (newAppointment.getFirstName().isBlank()) {
+        //First name must be filled
+        if (firstName.getText().isBlank()) {
             firstNameError.setVisible(true);
         }
         else {
             firstNameError.setVisible(false);
+            newAppointment.setFirstName(firstName.getText());
         }
         
-        if (newAppointment.getLastName().isBlank()) {
+        //Last name must be filled
+        if (lastName.getText().isBlank()) {
             lastNameError.setVisible(true);
         }
         else {
             lastNameError.setVisible(false);
+            newAppointment.setLastName(lastName.getText());
         }
-        /*
-        if (newAppointment.getDOB().isBlank() || 
-                newAppointment.getGender().isBlank()) {
-            dobOrGenderError.setVisible(true);
+        
+        //Donors must be 18-75 years old
+        LocalDate today = LocalDate.now();
+        LocalDate minAge = today.minusYears(18);
+        LocalDate maxAge = today.minusYears(75);
+        
+        
+        if (dateOfBirth.getValue() != null) {
+            dobError.setVisible(false);
+            if (ageCheck(dateOfBirth.getValue().toString()) == true) {
+                dateError.setVisible(false);
+                newAppointment.setDOB(dateOfBirth.getValue().toString());
+            } else {
+                dateError.setVisible(true);
+                dateError.setText("Donor must be 18-75 years old.");
+            }
+        } else {
+            dobError.setVisible(true);
+        }
+        
+        //Blood donation must be chosen
+        if (bloodDonation.isSelected()) {
+            newAppointment.setDonationType("Blood");
+            donationTypeError.setVisible(false);
+        }
+        else if (plasmaDonation.isSelected()) {
+            newAppointment.setDonationType("Plasma");
+            donationTypeError.setVisible(false);
         }
         else {
-            dobOrGenderError.setVisible(false);
+            donationTypeError.setVisible(true);
         }
-*/
+
+        //Gender must be filled
+        if (gender.getSelectionModel().isEmpty()) {
+            genderError.setVisible(true);
+        }
+        else {
+            genderError.setVisible(false);
+            newAppointment.setGender(getChoice(gender)); 
+        }
         
-        if (newAppointment.getMobile().isBlank()) {
+        //Mobile must be filled
+        if (mobile.getText().isBlank()) {
             mobileError.setVisible(true);
         }
         else {
             mobileError.setVisible(false);
+            newAppointment.setMobile(mobile.getText());
         }
         
-        if (newAppointment.getDonationType().isBlank()) {
-            donationTypeError.setVisible(true);
-        }
-        else {
-            donationTypeError.setVisible(false);
-        }
-        
-        if (newAppointment.getDonorCentre().isBlank()) {
+        //Donor Centre must be chosen
+        if (donorCentre.getSelectionModel().isEmpty()) {
             donorCentreError.setVisible(true);
         }
         else {
             donorCentreError.setVisible(false);
+            newAppointment.setDonorCentre(getChoice(donorCentre));
         }
         
-        /*
-        if (newAppointment.getBookingDate().isBlank()
-                || newAppointment.getBookingTime().isBlank()) {
+        //Booking Date has to be in the future
+        if (bookingDate.getValue() != null) {
+            bookingTimeError.setVisible(false);
+            if (bookingDate.getValue().isAfter(today)){
+                dateError.setVisible(false);
+                newAppointment.setBookingDate(bookingDate.getValue().toString());
+            } else {
+                dateError.setVisible(true);
+                dateError.setText("Booking date must be in the future.");
+            }
+        } else {
+            bookingTimeError.setVisible(true);
+        }  
+        
+        if (timeSlot.getSelectionModel().isEmpty()) {
             bookingTimeError.setVisible(true);
         }
         else {
             bookingTimeError.setVisible(false);
-        }  
-        */
+            newAppointment.setBookingTime(getChoice(timeSlot));
+        }
         
         // If all required information is provided, confirm the appointment
         if (firstNameError.isVisible() == false 
                 && lastNameError.isVisible() == false 
-                && dobOrGenderError.isVisible() == false 
+                && dobError.isVisible() == false 
+                && genderError.isVisible() == false
                 && mobileError.isVisible() == false
                 && donationTypeError.isVisible() == false
                 && donorCentreError.isVisible() == false
-                && bookingTimeError.isVisible() == false) {
+                && bookingTimeError.isVisible() == false
+                && dateError.isVisible() == false) {
             appointmentList.add(newAppointment);
-            
             App.setAppointment(newAppointment);
             App.setRoot("confirmAppointment");
    
         }
+    }
+    public boolean ageCheck(String birthday) throws ParseException {
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+        Date dobFormatted = sdf.parse(dateOfBirth.getValue().toString());
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(dobFormatted);
+        LocalDate today = LocalDate.now();
+        LocalDate birthDate = LocalDate.of(cal.get(Calendar.YEAR), cal.get(Calendar.MONTH), cal.get(Calendar.DATE));
+        int age = Period.between(birthDate, today).getYears();
+        if (age >= 18 && age <= 75) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+    public void cancelButton() throws IOException {
+        App.setRoot("appointment");
+        
     }
     
     

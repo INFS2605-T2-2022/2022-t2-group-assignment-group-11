@@ -54,7 +54,7 @@ public class eligibilityController implements Initializable{
     
     @Override
     public void initialize(URL url, ResourceBundle rb)  {
-        //eligibilityCheck();
+        clearOption();
     }
     
     @FXML
