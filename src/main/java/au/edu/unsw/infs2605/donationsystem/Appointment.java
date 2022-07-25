@@ -11,6 +11,11 @@ package au.edu.unsw.infs2605.donationsystem;
 public class Appointment {
     private String firstName;
     private String lastName;
+    private String gender;
+    private String emailAddress;
+    private String dateOfBirth;
+    private String mobile;
+    private String address;
     private String bookingDate;
     private String bookingTime;
     private String donorCentre;
@@ -95,4 +100,49 @@ public class Appointment {
     public void setDonationStatus(String donationStatus) {
         this.donationStatus = donationStatus;
     }
+    
+    //email
+    public String getEmail() {
+        return emailAddress;
+    }
+    
+    public void setEmail(String email) {
+        this.emailAddress = email;
+    }
+    
+    //dob
+    public String getDOB() {
+        return dateOfBirth;
+    }
+    
+    public void setDOB(String dateOfBirth) {
+        this.dateOfBirth = dateOfBirth;
+    }
+    
+    //mobile
+    public String getMobile() {
+        return mobile;
+    }
+    
+    public void setMobile(String mobile) {
+        this.mobile = mobile;
+    }
+    
+    //address
+    public String getAddress() {
+        return address;
+    }
+    
+    public void setAddress(String address) {
+        this.address = address;
+    }
+    
+    //gender
+    public String getGender() {
+        return gender;
+    }
+    
+    public void setGender(String gender) {
+        this.gender = gender;
+    } 
 }

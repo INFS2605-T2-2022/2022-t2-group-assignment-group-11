@@ -41,7 +41,7 @@ public class Donor {
         this.address = address;
         this.bloodDonationCount = bloodDonationCount;
         this.plasmaDonationCount = plasmaDonationCount;
-        this.lastTimeUpdated = lastTimeUpdated;
+        //this.lastTimeUpdated = lastTimeUpdated;
         
     }
    

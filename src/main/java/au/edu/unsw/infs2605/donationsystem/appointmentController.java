@@ -6,10 +6,11 @@ package au.edu.unsw.infs2605.donationsystem;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.CheckBox;
+import javafx.fxml.Initializable;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
@@ -19,42 +20,9 @@ import javafx.scene.control.TextField;
  *
  * @author khanhlinh0907
  */
-public class appointmentController {
-    /*
-    Eligibility Check before making a donation appointment
-    */
-    @FXML
-    CheckBox condition1;
-    @FXML
-    CheckBox condition2;
-    @FXML
-    CheckBox condition3;
-    @FXML
-    CheckBox condition4;  
-    @FXML
-    CheckBox condition5;
-    @FXML
-    CheckBox condition6;
-    @FXML
-    CheckBox condition7;
-    @FXML
-    CheckBox condition8;
-    @FXML
-    CheckBox condition9;
-    @FXML
-    CheckBox condition10;
-    @FXML
-    CheckBox condition11;
-    @FXML
-    CheckBox condition12;
-    @FXML
-    CheckBox none;
+public class appointmentController implements Initializable {
     
-    @FXML
-    Label notEligible;
-    
-    @FXML
-    ChoiceBox<String> ageCheck;
+    public static List<Appointment> appointmentList = new ArrayList<>();
     
     @FXML
     TextField firstName;
@@ -72,9 +40,6 @@ public class appointmentController {
     TextField address;
     
     @FXML
-    TextField postcode;
-    
-    @FXML
     ChoiceBox gender;
     
     @FXML 
@@ -83,36 +48,75 @@ public class appointmentController {
     @FXML
     DatePicker bookingDate;
     
+    @FXML
+    ChoiceBox timeSlot;
+    
+    @FXML
+    ChoiceBox donorCentre;
+    
+    @FXML
+    Label firstNameError;
+    
+    @FXML
+    Label lastNameError;
+    
+    @FXML
+    Label dobOrGenderError;
+    
+    @FXML
+    Label mobileError;
+    
+    @FXML
+    Label donationTypeError;
+    
+    @FXML
+    Label donorCentreError;
+    
+    @FXML
+    Label bookingTimeError;
+  
+    @Override
     public void initialize(URL url, ResourceBundle rb) {
-        //Create Age Eligibility choicebox
-        if (ageCheck.getItems().isEmpty()) {
-            ageCheck.getItems().add("Yes");
-            ageCheck.getItems().add("No");
-        }
+        createChoiceBox();
+    }
+    
+    public void createChoiceBox() {
         //Create Gender choicebox
+        gender.getItems().clear();
         if (gender.getItems().isEmpty()) {
             gender.getItems().add("Male");
             gender.getItems().add("Female");
             gender.getItems().add("Other");  
         }
-    }
-    
-    public void eligibilityCheck(ActionEvent event) throws IOException {
-        /*Eligibility Check
-        Must not answer 'Yes' to any conditions listed
-        Must be 18-75 years old
-        */
         
-        if (condition1.isSelected() || condition2.isSelected() || 
-                condition3.isSelected() || condition4.isSelected() ||
-                condition5.isSelected() || condition6.isSelected() ||
-                condition7.isSelected() || condition8.isSelected() ||
-                condition9.isSelected() || condition10.isSelected() ||
-                condition11.isSelected() || condition12.isSelected() ||
-                getChoice(ageCheck).equals("No")) {
-            notEligible.setVisible(true);
-        } else {
-            App.setRoot("bookAppointment");
+        //Create DonorCentre choicebox
+        donorCentre.getItems().clear();
+        if (donorCentre.getItems().isEmpty()) {
+            donorCentre.getItems().add("Town Hall Donor Centre");
+            donorCentre.getItems().add("Chatswood Donor Centre");
+            donorCentre.getItems().add("The Shire Donor Centre");
+        }
+        
+        //Create Time choiceBox
+        timeSlot.getItems().clear();
+        if (timeSlot.getItems().isEmpty()) {
+            timeSlot.getItems().add("09:00 AM");
+            timeSlot.getItems().add("09:30 AM");
+            timeSlot.getItems().add("10:00 AM");
+            timeSlot.getItems().add("10:30 AM");
+            timeSlot.getItems().add("11:00 AM");
+            timeSlot.getItems().add("11:30 AM");
+            timeSlot.getItems().add("12:00 PM");
+            timeSlot.getItems().add("12:30 PM");
+            timeSlot.getItems().add("01:00 PM");
+            timeSlot.getItems().add("01:30 PM");
+            timeSlot.getItems().add("02:00 PM");
+            timeSlot.getItems().add("02:30 PM");
+            timeSlot.getItems().add("03:00 PM");
+            timeSlot.getItems().add("03:30 PM");
+            timeSlot.getItems().add("04:00 PM");
+            timeSlot.getItems().add("04:30 PM");
+            timeSlot.getItems().add("05:00 PM");
         }
     }
     
@@ -126,20 +130,87 @@ public class appointmentController {
     */
     
     //Input personal information
-    public void newAppointment() {
-        Donor newDonor = new Donor();
-        newDonor.setFirstName(firstName.getText());
-        newDonor.setLastName(lastName.getText());
-        newDonor.setEmail(email.getText());
-        newDonor.setDOB(dateOfBirth.getValue().toString());
-        newDonor.setMobileNumber(mobile.getText());
-        newDonor.setAddress(address.getText());
-        newDonor.setGender(getChoice(gender));
-        //newDonor.setBloodType(getChoice(bloodType));   
+    public void newAppointment() throws IOException {
+        Appointment newAppointment = new Appointment();
+        newAppointment.setFirstName(firstName.getText());
+        newAppointment.setLastName(lastName.getText());
+        newAppointment.setEmail(email.getText());
+        newAppointment.setDOB(dateOfBirth.getValue().toString());
+        newAppointment.setMobile(mobile.getText());
+        newAppointment.setAddress(address.getText());
+        newAppointment.setGender(getChoice(gender)); 
+        
+        /* 
+        Check whether compulsory information has been filled
+        */
+        
+        if (newAppointment.getFirstName().isBlank()) {
+            firstNameError.setVisible(true);
+        }
+        else {
+            firstNameError.setVisible(false);
+        }
+        
+        if (newAppointment.getLastName().isBlank()) {
+            lastNameError.setVisible(true);
+        }
+        else {
+            lastNameError.setVisible(false);
+        }
+        
+        if (newAppointment.getDOB().isBlank() || 
+                newAppointment.getGender().isBlank()) {
+            dobOrGenderError.setVisible(true);
+        }
+        else {
+            dobOrGenderError.setVisible(false);
+        }
+        
+        if (newAppointment.getMobile().isBlank()) {
+            mobileError.setVisible(true);
+        }
+        else {
+            mobileError.setVisible(false);
+        }
+        
+        if (newAppointment.getDonationType().isBlank()) {
+            donationTypeError.setVisible(true);
+        }
+        else {
+            donationTypeError.setVisible(false);
+        }
+        
+        if (newAppointment.getDonorCentre().isBlank()) {
+            donorCentreError.setVisible(true);
+        }
+        else {
+            donorCentreError.setVisible(false);
+        }
+        
+        if (newAppointment.getBookingDate().isBlank()
+                || newAppointment.getBookingTime().isBlank()) {
+            bookingTimeError.setVisible(true);
+        }
+        else {
+            bookingTimeError.setVisible(false);
+        }    
+        // If all required information is provided, confirm the appointment
+        if (firstNameError.isVisible() == false 
+                && lastNameError.isVisible() == false 
+                && dobOrGenderError.isVisible() == false 
+                && mobileError.isVisible() == false
+                && donationTypeError.isVisible() == false
+                && donorCentreError.isVisible() == false
+                && bookingTimeError.isVisible() == false) {
+            appointmentList.add(newAppointment);
+            App.setRoot("confirmAppointment");
+            
+            //Set label of the new screen here!!!
+            
+        }
     }
     
     
-    
-    
+
     
 }
