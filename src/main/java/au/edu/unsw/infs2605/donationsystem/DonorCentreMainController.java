@@ -1,10 +1,15 @@
 package au.edu.unsw.infs2605.donationsystem;
 
+import java.util.ArrayList;
+import java.util.List;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import javafx.stage.Stage;
 
 public class DonorCentreMainController {
     public class Centre {
@@ -92,17 +97,23 @@ public class DonorCentreMainController {
     }
     
     public void initialize() {
+        List<Centre> centreList = new ArrayList<>();
         
+        //get data from database
+        
+//        for (Centre centre : centreList) {
+//            centreListView.getItems().add(centre);
+//        }
     }
     
     @FXML
     private void createNewDonationType() {
-        
+
     }
     
     @FXML
-    private void addNewCentre() {
-        
+    private void addNewCentre(ActionEvent event) {
+        //App.setRoot("AddNewCentreController");
     }
     
     @FXML
@@ -112,7 +123,7 @@ public class DonorCentreMainController {
     
     @FXML
     private void scheduleAppointment() {
-        
+//        App.setRoot("appointment");
     }
     
 }

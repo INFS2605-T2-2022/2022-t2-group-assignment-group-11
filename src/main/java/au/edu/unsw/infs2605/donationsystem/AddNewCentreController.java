@@ -63,7 +63,7 @@ public class AddNewCentreController {
     private Button backToMainScreenButton;
         
     public void intialize() {
-        
+
     } 
     
     @FXML

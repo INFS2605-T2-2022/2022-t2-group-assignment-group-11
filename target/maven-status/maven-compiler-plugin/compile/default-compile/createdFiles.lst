@@ -1,0 +1,6 @@
+au\edu\unsw\infs2605\donationsystem\App.class
+module-info.class
+au\edu\unsw\infs2605\donationsystem\AddNewCentreController.class
+au\edu\unsw\infs2605\donationsystem\DonorCentreMainController.class
+au\edu\unsw\infs2605\donationsystem\AddNewCentreController$newCentre.class
+au\edu\unsw\infs2605\donationsystem\DonorCentreMainController$Centre.class
