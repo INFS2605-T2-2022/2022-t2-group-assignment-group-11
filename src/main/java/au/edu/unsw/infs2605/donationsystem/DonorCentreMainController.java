@@ -63,7 +63,11 @@ public class DonorCentreMainController {
         public void setDonationType(String donationType) {
             this.donationType = donationType;
         }
-        
+    }  
+    
+        @FXML
+        private ListView<Centre> centreListView;
+                
         @FXML
         private Label centreNameLabel;
         
@@ -79,9 +83,6 @@ public class DonorCentreMainController {
         @FXML
         private CheckBox plasmaCheckBox;
         
-        @FXML
-        private ListView<Centre> centreListView;
-        
         @FXML 
         private Button addNewCentreButton;
         
@@ -94,16 +95,28 @@ public class DonorCentreMainController {
         @FXML
         private Button scheduleAppointmentButton;
         
-    }
+
     
     public void initialize() {
         List<Centre> centreList = new ArrayList<>();
         
         //get data from database
         
-//        for (Centre centre : centreList) {
-//            centreListView.getItems().add(centre);
-//        }
+        for (Centre centre : centreList) {
+            centreListView.getItems().add(centre);
+        }
+    }
+    
+    @FXML
+    private void selectCentre() {
+        Centre selected = centreListView.getSelectionModel().getSelectedItem();
+        
+        centreNameLabel.setText(selected.getCentreName());
+        addressLabel.setText(selected.getAddress());
+        phoneNumberLabel.setText(selected.getPhoneNumber());
+        
+        //get value for checkbox
+        
     }
     
     @FXML
