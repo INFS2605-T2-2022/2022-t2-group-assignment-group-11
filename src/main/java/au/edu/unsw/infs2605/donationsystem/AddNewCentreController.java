@@ -1,52 +1,15 @@
 package au.edu.unsw.infs2605.donationsystem;
 
+import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 
-public class AddNewCentreController {
-    public class newCentre {
-        private String centreName;
-        private String address;
-        private String phoneNumber;
-        
-        public newCentre() {
-            this.centreName = "";
-            this.address = "";
-            this.phoneNumber = "";
-        }
-        
-        public newCentre (String centreName, String address, String phoneNumber) {
-            this.centreName = centreName;
-            this.address = address;
-            this.phoneNumber = phoneNumber;
-        }
-        
-        public String getCentreName() {
-            return this.centreName;
-        }
-        
-        public void setCentreName(String centreName) {
-            this.centreName = centreName;
-        }
-        
-        public String getAddress() {
-            return this.address;
-        }
-        
-        public void setAddress(String address) {
-            this.address = address;
-        }
-        
-        public String getPhoneNumber() {
-            return this.phoneNumber;
-        }
-        
-        public void setPhoneNumber(String phoneNumber) {
-            this.phoneNumber = phoneNumber;
-        }
-    }
-    
+public class AddNewCentreController implements Initializable {
+
     @FXML
     private TextField centreNameTextField;
         
@@ -61,18 +24,22 @@ public class AddNewCentreController {
         
     @FXML
     private Button backToMainScreenButton;
-        
-    public void intialize() {
+    
+    @Override
+    public void initialize(URL url, ResourceBundle rb) {
 
     } 
     
     @FXML
-    private void saveChanges() {
+    private void saveChanges() throws IOException {
+        // add new centre to list view
+        Centre newCentre = new Centre();
         
+        App.setRoot("Donor Centre Main");
     }
     
     @FXML
-    private void backToMainScreen() {
-        
+    private void backToMainScreen() throws IOException {
+        App.setRoot("Donor Centre Main");
     }
 }
