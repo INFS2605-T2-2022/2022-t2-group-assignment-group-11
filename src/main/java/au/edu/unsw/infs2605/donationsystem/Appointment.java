@@ -6,144 +6,143 @@ package au.edu.unsw.infs2605.donationsystem;
 
 /**
  *
- * @author clairelin
+ * @author khanhlinh0907
  */
 public class Appointment {
+    private String firstName;
+    private String lastName;
+    private String gender;
+    private String emailAddress;
+    private String dateOfBirth;
+    private String mobile;
+    private String address;
+    private String bookingDate;
+    private String bookingTime;
+    private String donorCentre;
+    private String donationType;
+    private String donationStatus; 
+   
+    //Constructor
+    public Appointment() {
+        
+    }
     
-    protected int id;
-    protected String firstname;
-    protected String lastname;
-    protected String donorcentre;
-    protected String time;
-    protected String date;
-    protected String phoneno;
-    protected String email;
-    protected String notes;
-    protected String donstatus;
-    protected String dontype;
-    protected String name;
-
-    public Appointment(int id, String firstname, String lastname, String donorcentre, String time, String date, String phoneno, String email, String notes, String donstatus, String dontype) {
-        this.id = id;
-        this.firstname = firstname;
-        this.lastname = lastname;
-        this.donorcentre = donorcentre;
-        this.time = time;
-        this.date = date;
-        this.phoneno = phoneno;
-        this.email = email;
-        this.notes = notes;
-        this.donstatus = donstatus;
-        this.dontype = dontype;
+    public Appointment(String firstName, String lastName, String bookingDate, 
+            String bookingTime, String donorCentre, String donationType) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.bookingDate = bookingDate;
+        this.bookingTime = bookingTime;
+        this.donorCentre = donorCentre;
+        this.donationType = donationType;
     }
-
-    public Appointment(String firstname, String lastname, String time, String date) {
-        this.firstname = firstname;
-        this.lastname = lastname;
-        this.name = firstname + " " + lastname;
-        this.time = time;
-        this.date = date;
+    
+    //Getter and Setter methods
+    //firstName
+    public String getFirstName() {
+        return firstName;
     }
-
-    public void setId(int id) {
-        this.id = id;
+    
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
-
-    public String getName() {
-        return name;
+    
+    //lastName
+    public String getLastName() {
+        return lastName;
     }
-
-    public void setName(String name) {
-        this.name = name;
+    
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
-
-    public void setFirstname(String firstname) {
-        this.firstname = firstname;
+    
+    //bookingDate
+    public String getBookingDate() {
+        return bookingDate;
     }
-
-    public void setLastname(String lastname) {
-        this.lastname = lastname;
+    
+    public void setBookingDate(String bookingDate) {
+            this.bookingDate = bookingDate;
     }
-
-    public void setDonorcentre(String donorcentre) {
-        this.donorcentre = donorcentre;
+    
+    //bookingTime
+    public String getBookingTime() {
+        return bookingTime;
     }
-
-    public void setTime(String time) {
-        this.time = time;
+    
+    public void setBookingTime(String bookingTime) {
+        this.bookingTime = bookingTime;
     }
-
-    public void setDate(String date) {
-        this.date = date;
+    
+    //donorCentre
+    public String getDonorCentre() {
+        return donorCentre;
     }
-
-    public void setPhoneno(String phoneno) {
-        this.phoneno = phoneno;
+    
+    public void setDonorCentre(String donorCentre) {
+        this.donorCentre = donorCentre;
+    }   
+    
+    //donationType
+    public String getDonationType() {
+        return donationType;
     }
-
-    public void setEmail(String email) {
-        this.email = email;
+    
+    public void setDonationType(String donationType) {
+        this.donationType = donationType;
+    }     
+    
+    //donationStatus
+    public String getDonationStatus() {
+        return donationStatus;
     }
-
-    public void setNotes(String notes) {
-        this.notes = notes;
+    
+    public void setDonationStatus(String donationStatus) {
+        this.donationStatus = donationStatus;
     }
-
-    public void setDonstatus(String donstatus) {
-        this.donstatus = donstatus;
-    }
-
-    public void setDontype(String dontype) {
-        this.dontype = dontype;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public String getFirstname() {
-        return firstname;
-    }
-
-    public String getLastname() {
-        return lastname;
-    }
-
-    public String getDonorcentre() {
-        return donorcentre;
-    }
-
-    public String getTime() {
-        return time;
-    }
-
-    public String getDate() {
-        return date;
-    }
-
-    public String getPhoneno() {
-        return phoneno;
-    }
-
+    
+    //email
     public String getEmail() {
-        return email;
-    }
-
-    public String getNotes() {
-        return notes;
-    }
-
-    public String getDonstatus() {
-        return donstatus;
-    }
-
-    public String getDontype() {
-        return dontype;
+        return emailAddress;
     }
     
-    @Override
-    public String toString() {
-        return this.firstname + " " + this.lastname;
+    public void setEmail(String email) {
+        this.emailAddress = email;
     }
     
+    //dob
+    public String getDOB() {
+        return dateOfBirth;
+    }
+    
+    public void setDOB(String dateOfBirth) {
+        this.dateOfBirth = dateOfBirth;
+    }
+    
+    //mobile
+    public String getMobile() {
+        return mobile;
+    }
+    
+    public void setMobile(String mobile) {
+        this.mobile = mobile;
+    }
+    
+    //address
+    public String getAddress() {
+        return address;
+    }
+    
+    public void setAddress(String address) {
+        this.address = address;
+    }
+    
+    //gender
+    public String getGender() {
+        return gender;
+    }
+    
+    public void setGender(String gender) {
+        this.gender = gender;
+    } 
 }
