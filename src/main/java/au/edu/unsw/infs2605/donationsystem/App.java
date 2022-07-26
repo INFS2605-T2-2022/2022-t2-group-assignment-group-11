@@ -16,7 +16,7 @@ public class App extends Application {
     
     private Database database = new Database();
     
-    
+    private static Scene scene;
     @Override
     public void start(Stage stage) throws IOException, SQLException {
         
@@ -33,6 +33,10 @@ public class App extends Application {
         return fxmlLoader.load();
     }
 
+    static void setRoot(String fxml) throws IOException {
+        scene.setRoot(loadFXML(fxml));
+    }
+    
     public static void main(String[] args) {
         Application.launch(args);
     }

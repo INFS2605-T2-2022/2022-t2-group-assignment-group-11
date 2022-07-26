@@ -77,7 +77,7 @@ public class Database {
         String[] dontype = {"Blood and Plasma", "Blood", "Blood and Plasma"};
 
         // Loop to insert using prepared statements
-        for (int i = 0; i < 4; i++) {
+        for (int i = 0; i < 3; i++) {
             pSt.setInt(1, i);
             pSt.setString(2, name[i]);
             pSt.setString(3, address[i]);
@@ -112,7 +112,7 @@ public class Database {
         String[] dontype = {"Plasma", "Blood", "Blood"};
 
         // Loop to insert using prepared statements
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < 3; i++) {
             pSt.setInt(1, i);
             pSt.setString(2, firstname[i]);
             pSt.setString(3, lastname[i]);
