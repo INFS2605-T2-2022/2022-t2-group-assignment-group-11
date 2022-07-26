@@ -14,7 +14,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="au.edu.unsw.infs2605.donationsystem.DonorCentreMainController">
    <children>
       <Text layoutX="14.0" layoutY="18.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Donor Centre Management Screen" wrappingWidth="225.47006225585938">
          <font>
@@ -25,11 +25,12 @@
             <Pane layoutX="3.0" prefHeight="207.0" prefWidth="197.0">
                <children>
                   <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f4f4f4" height="196.0" layoutX="2.0" layoutY="-3.0" stroke="BLACK" strokeType="INSIDE" width="165.0" />
-                  <Text fx:id="centreNameLabel" layoutX="50.0" layoutY="134.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Centre Name" />
+                  <Text fill="#c5c1c1" layoutX="50.0" layoutY="117.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Centre Name" />
                   <ImageView fitHeight="72.0" fitWidth="114.0" layoutX="28.0" layoutY="32.0" pickOnBounds="true">
                      <image>
                         <Image url="@../../../../../../../../../../../Desktop/medical-center-blood-icon-element-donation-thin-line-white-background-161120285.jpg" />
                      </image></ImageView>
+                  <Label fx:id="centreNameLabel" layoutX="50.0" layoutY="134.0" text="Centre Name" />
                </children>
             </Pane>
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="196.0" layoutX="173.0" layoutY="-3.0" stroke="BLACK" strokeType="INSIDE" width="269.0" />

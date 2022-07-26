@@ -1,5 +1,7 @@
 package au.edu.unsw.infs2605.donationsystem;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
 import java.util.ArrayList;
 import java.util.List;
 import javafx.event.ActionEvent;
@@ -10,6 +12,12 @@ import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.stage.Stage;
+import java.sql.SQLException;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import javafx.collections.FXCollections;
+
+
 
 public class DonorCentreMainController {
     public class Centre {
@@ -23,6 +31,9 @@ public class DonorCentreMainController {
             this.address = "";
             this.phoneNumber = "";
             this.donationType = "";
+        }
+        public Centre(String centreName) {
+            this.centreName = centreName;
         }
         
         public Centre (String centreName, String address, String phoneNumber, String donationType) {
@@ -63,6 +74,11 @@ public class DonorCentreMainController {
         public void setDonationType(String donationType) {
             this.donationType = donationType;
         }
+        
+        @Override
+        public String toString() {
+            return this.centreName;
+        }
     }  
     
         @FXML
@@ -94,14 +110,21 @@ public class DonorCentreMainController {
         
         @FXML
         private Button scheduleAppointmentButton;
-        
-
     
-    public void initialize() {
-        List<Centre> centreList = new ArrayList<>();
+    public void initialize() throws SQLException {
         
+        final String database = "jdbc:sqlite:DonorDatabase.db";
+        Connection conn = DriverManager.getConnection(database);
+        Statement st = conn.createStatement();
         //get data from database
+        String query = "SELECT name FROM donorcentre";
+        ResultSet rs = st.executeQuery(query);
         
+        List<Centre> centreList = FXCollections.observableArrayList();
+        
+        while (rs.next()) {
+            centreList.add(new Centre(rs.getString(1)));
+        }
         for (Centre centre : centreList) {
             centreListView.getItems().add(centre);
         }
@@ -109,12 +132,12 @@ public class DonorCentreMainController {
     
     @FXML
     private void selectCentre() {
-        Centre selected = centreListView.getSelectionModel().getSelectedItem();
-        
-        centreNameLabel.setText(selected.getCentreName());
-        addressLabel.setText(selected.getAddress());
-        phoneNumberLabel.setText(selected.getPhoneNumber());
-        
+//        Centre selected = centreListView.getSelectionModel().getSelectedItem();
+//        
+//        centreNameLabel.setText(selected.getCentreName());
+//        addressLabel.setText(selected.getAddress());
+//        phoneNumberLabel.setText(selected.getPhoneNumber());
+//        
         //get value for checkbox
         
     }
