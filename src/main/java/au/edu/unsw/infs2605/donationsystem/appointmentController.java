@@ -280,7 +280,7 @@ public class appointmentController implements Initializable {
         }
     }
     public boolean ageCheck(String birthday) throws ParseException {
-        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+        SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
         Date dobFormatted = sdf.parse(dateOfBirth.getValue().toString());
         Calendar cal = Calendar.getInstance();
         cal.setTime(dobFormatted);
