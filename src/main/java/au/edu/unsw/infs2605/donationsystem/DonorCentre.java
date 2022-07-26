@@ -10,12 +10,15 @@ package au.edu.unsw.infs2605.donationsystem;
  */
 public class DonorCentre {
     
-    protected int id;
-    protected String name;
-    protected String address;
-    protected String phone;
-    protected String dontype;
+    private int id;
+    private String name;
+    private String address;
+    private String phone;
+    private String dontype;
 
+    public DonorCentre() {
+        
+    }
     public DonorCentre(int id, String name, String address, String phone, String dontype) {
         this.id = id;
         this.name = name;
@@ -60,9 +63,12 @@ public class DonorCentre {
         return phone;
     }
 
-    public String getDontype() {
+    public String getDonType() {
         return dontype;
     }
 
-    
+    @Override
+    public String toString() {
+        return this.name;
+    }
 }

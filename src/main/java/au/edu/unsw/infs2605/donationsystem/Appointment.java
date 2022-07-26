@@ -62,7 +62,7 @@ public class Appointment {
     }
     
     public void setBookingDate(String bookingDate) {
-        this.bookingDate = bookingDate;
+            this.bookingDate = bookingDate;
     }
     
     //bookingTime
