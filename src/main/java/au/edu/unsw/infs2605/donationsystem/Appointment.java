@@ -21,10 +21,20 @@ public class Appointment {
     private String donorCentre;
     private String donationType;
     private String donationStatus; 
+    private String name;
    
     //Constructor
     public Appointment() {
         
+    }
+    
+    public Appointment(String firstName, String lastName, String bookingDate, 
+            String bookingTime) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.bookingDate = bookingDate;
+        this.bookingTime = bookingTime;
+        this.name = firstName + " " + lastName;
     }
     
     public Appointment(String firstName, String lastName, String bookingDate, 
@@ -38,6 +48,14 @@ public class Appointment {
     }
     
     //Getter and Setter methods
+    public String getName() {    
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
     //firstName
     public String getFirstName() {
         return firstName;
