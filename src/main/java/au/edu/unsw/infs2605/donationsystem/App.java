@@ -13,7 +13,17 @@ import java.sql.SQLException;
  * JavaFX App
  **/
 public class App extends Application {
+    private static DonorCentre newCentre;
+    //Store new Donor Centre
+    //Getter method
+    static DonorCentre getDonorCentre() {
+        return newCentre;
+    }
     
+    //Setter method
+    static void setDonorCentre(DonorCentre centre) {
+        App.newCentre = centre;
+    }
     private Database database = new Database();
     
     private static Scene scene;
@@ -23,7 +33,7 @@ public class App extends Application {
         database.setupDatabase();
         
         stage.setTitle("Donation Management System");
-        Scene scene = new Scene(loadFXML("app"), 640, 480);
+        scene = new Scene(loadFXML("Donor Centre Main"));
         stage.setScene(scene);
         stage.show();
     }

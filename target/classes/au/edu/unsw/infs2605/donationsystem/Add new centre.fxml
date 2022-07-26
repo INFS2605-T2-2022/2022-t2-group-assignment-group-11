@@ -17,8 +17,8 @@
       <Label layoutX="299.0" layoutY="51.0" text="Centre Name" />
       <Label layoutX="299.0" layoutY="128.0" text="Address" />
       <Label layoutX="301.0" layoutY="207.0" text="Phone Number" />
-      <Button layoutX="299.0" layoutY="289.0" mnemonicParsing="false" text="Save changes" />
-      <Button layoutX="424.0" layoutY="289.0" mnemonicParsing="false" text="Back to Centre Main Screen" />
+      <Button fx:id="saveChangesButton" layoutX="299.0" layoutY="289.0" mnemonicParsing="false" onMouseClicked="#saveChanges" text="Save changes" />
+      <Button fx:id="backToMainScreenButton" layoutX="424.0" layoutY="289.0" mnemonicParsing="false" onMouseClicked="#backToMainScreen" text="Back to Centre Main Screen" />
       <ImageView fitHeight="227.0" fitWidth="222.0" layoutX="22.0" layoutY="69.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../../../../../../../../../Desktop/medical-center-blood-icon-element-donation-thin-line-white-background-161120285.jpg" />

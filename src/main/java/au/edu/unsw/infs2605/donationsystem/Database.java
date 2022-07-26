@@ -32,7 +32,7 @@ public class Database {
                                     + "NAME TEXT NOT NULL, "
                                     + "ADDRESS TEXT NOT NULL, "
                                     + "PHONE TEXT NOT NULL,"
-                                    + "DONTYPE TEXT NOT NULL"
+                                    + "DONTYPE TEXT"
                                     + ");";
         st.execute(createDonorCentreQuery);
         
@@ -154,17 +154,17 @@ public class Database {
         return centreList;
     }
     
-    public ObservableList<Appointments> getAppointments() throws SQLException {
+    public ObservableList<Appointment> getAppointments() throws SQLException {
         // Get ResultSet of all appointments that exist in the database
         Connection conn = DriverManager.getConnection(database);
         Statement st = conn.createStatement();
         String query = "SELECT id, firstname, lastname, donorcentre, time, date, phoneno, email, notes, donstatus, dontype FROM appointment";
         ResultSet rs = st.executeQuery(query);
         
-        ObservableList<Appointments> AppointmentsList = FXCollections.observableArrayList();
+        ObservableList<Appointment> AppointmentsList = FXCollections.observableArrayList();
         // Add each row in the ResultSet to the petsList
         while (rs.next()) {
-            AppointmentsList.add(new Appointments(rs.getInt("id"), rs.getString("firstname"), 
+            AppointmentsList.add(new Appointment(rs.getInt("id"), rs.getString("firstname"), 
                 rs.getString("lastname"), rs.getString("donorcentre"), rs.getString("time"),
                 rs.getString("date"),rs.getString("phoneno"),rs.getString("email"),
                 rs.getString("notes"),rs.getString("donstatus"),rs.getString("dontype")));

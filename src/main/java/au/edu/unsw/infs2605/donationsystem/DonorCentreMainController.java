@@ -1,7 +1,10 @@
 package au.edu.unsw.infs2605.donationsystem;
 
+import java.io.IOException;
+import java.net.URL;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.util.ArrayList;
 import java.util.List;
 import javafx.event.ActionEvent;
@@ -15,11 +18,21 @@ import javafx.stage.Stage;
 import java.sql.SQLException;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.fxml.Initializable;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 
 
 
 public class DonorCentreMainController {
+//    public static List<DonorCentre> centreList = new ArrayList<>();
+    /*
     public class Centre {
         private String centreName;
         private String address;
@@ -79,10 +92,10 @@ public class DonorCentreMainController {
         public String toString() {
             return this.centreName;
         }
-    }  
+    }  */
     
         @FXML
-        private ListView<Centre> centreListView;
+        private ListView<DonorCentre> centreListView;
                 
         @FXML
         private Label centreNameLabel;
@@ -92,6 +105,9 @@ public class DonorCentreMainController {
         
         @FXML
         private Label phoneNumberLabel;
+        
+        @FXML
+        private Label donationTypeLabel;
         
         @FXML 
         private CheckBox bloodCheckBox;
@@ -110,56 +126,133 @@ public class DonorCentreMainController {
         
         @FXML
         private Button scheduleAppointmentButton;
+        
+        @FXML
+        private TableView<Appointment> appointmentTbl;
     
+        @FXML
+        TableColumn<Appointment, String> donorNameCol;
+        
+        @FXML
+        TableColumn<Appointment, String> dateCol;
+        
+        @FXML
+        TableColumn<Appointment, String> timeCol;
+    
+    //@Override
     public void initialize() throws SQLException {
+        
+        List<DonorCentre> centreList = new ArrayList<>();
+        //DonorCentre selected = centreListView.getSelectionModel().getSelectedItem();
+        final String database = "jdbc:sqlite:DonorDatabase.db";
+        Connection conn = DriverManager.getConnection(database);
+//        DonorCentre newCentre = App.getDonorCentre();
+//        String newName = newCentre.getName();
+//        //System.out.println(newCentre.getName());
+//        String newAddress = newCentre.getAddress();
+//        String newPhone = newCentre.getPhone();
+//        PreparedStatement pSt = conn.prepareStatement("INSERT INTO donorcentre (name, address, phone) "
+//                + "VALUES (?,?,?)");
+//        pSt.setString(1, newName);
+//        pSt.setString(2, newAddress);
+//        pSt.setString(3, newPhone);
+
+        Statement st = conn.createStatement();
+        //get data from database
+//        String query = "SELECT name FROM donorcentre";
+        String query = "SELECT * FROM donorcentre";
+        ResultSet rs = st.executeQuery(query);
+        while (rs.next()) {
+            centreList.add(new DonorCentre(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5)));
+        }
+        //createAppointmentTableView();
+        /*
+        String query2 = "SELECT * FROM appointment WHERE donorcentre = ?";
+        PreparedStatement pst = conn.prepareStatement(
+                "SELECT * FROM appointment WHERE donorcentre = ?"
+        );
+        //String selectedCentre = selected.getName();
+        System.out.println(selected.getName());
+        //pst.setString(1, selectedCentre);
+        ObservableList<Appointment> appointmentList = FXCollections.observableArrayList();
+        
+        while (rs.next()) {
+            appointmentList.add(new Appointment(rs.getString(2), rs.getString(3), rs.getString(5), rs.getString(6)));
+        }
+        
+        appointmentTbl.setItems(appointmentList);
+        
+        donorNameCol.setCellFactory(new PropertyValueFactory("firstname" + " " + "lastname"));
+        dateCol.setCellFactory(new PropertyValueFactory("date"));
+        timeCol.setCellFactory(new PropertyValueFactory("time"));
+        */
+        
+        //List<Centre> centreList = FXCollections.observableArrayList();
+        
+        for (DonorCentre centre : centreList) {
+            centreListView.getItems().add(centre);
+        }
+    }
+    @FXML
+    public void createAppointmentTableView(DonorCentre selected) throws SQLException {
+       
         
         final String database = "jdbc:sqlite:DonorDatabase.db";
         Connection conn = DriverManager.getConnection(database);
         Statement st = conn.createStatement();
-        //get data from database
-        String query = "SELECT name FROM donorcentre";
-        ResultSet rs = st.executeQuery(query);
         
-        List<Centre> centreList = FXCollections.observableArrayList();
-        
+        String query2 = "SELECT * FROM appointment WHERE donorcentre = ?";
+        PreparedStatement pst = conn.prepareStatement(
+                "SELECT * FROM appointment WHERE donorcentre = ?"
+        );
+        String selectedCentre = selected.getName();
+        //System.out.println(selected.getName());
+        pst.setString(1, selectedCentre);
+        ObservableList<Appointment> appointmentList = FXCollections.observableArrayList();
+        ResultSet rs = pst.executeQuery();
         while (rs.next()) {
-            centreList.add(new Centre(rs.getString(1)));
+            appointmentList.add(new Appointment(rs.getString(2), rs.getString(3), rs.getString(5), rs.getString(6)));
         }
-        for (Centre centre : centreList) {
-            centreListView.getItems().add(centre);
-        }
+        
+        appointmentTbl.setItems(appointmentList);
+        
+        donorNameCol.setCellValueFactory(new PropertyValueFactory("name"));
+        dateCol.setCellValueFactory(new PropertyValueFactory("date"));
+        timeCol.setCellValueFactory(new PropertyValueFactory("time"));
     }
     
     @FXML
-    private void selectCentre() {
-//        Centre selected = centreListView.getSelectionModel().getSelectedItem();
-//        
-//        centreNameLabel.setText(selected.getCentreName());
-//        addressLabel.setText(selected.getAddress());
-//        phoneNumberLabel.setText(selected.getPhoneNumber());
-//        
+    public void selectCentre() throws SQLException {
+        DonorCentre selected = centreListView.getSelectionModel().getSelectedItem();
+        
+        centreNameLabel.setText(selected.getName());
+        addressLabel.setText(selected.getAddress());
+        phoneNumberLabel.setText(selected.getPhone());
+        donationTypeLabel.setText(selected.getDonType());
+        
+        createAppointmentTableView(selected);
         //get value for checkbox
         
     }
     
     @FXML
-    private void createNewDonationType() {
+    public void createNewDonationType() {
 
     }
     
     @FXML
-    private void addNewCentre(ActionEvent event) {
-        //App.setRoot("AddNewCentreController");
+    public void addNewCentre() throws IOException {
+        App.setRoot("Add new centre");
     }
     
     @FXML
-    private void deleteCentre() {
+    public void deleteCentre() {
         
     }
     
     @FXML
-    private void scheduleAppointment() {
-//        App.setRoot("appointment");
+    public void scheduleAppointment() throws IOException {
+        App.setRoot("appointment");
     }
     
 }
