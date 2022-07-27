@@ -217,8 +217,8 @@ public class DonorCentreMainController {
         appointmentTbl.setItems(appointmentList);
         
         donorNameCol.setCellValueFactory(new PropertyValueFactory("name"));
-        dateCol.setCellValueFactory(new PropertyValueFactory("date"));
-        timeCol.setCellValueFactory(new PropertyValueFactory("time"));
+        dateCol.setCellValueFactory(new PropertyValueFactory("bookingDate"));
+        timeCol.setCellValueFactory(new PropertyValueFactory("bookingTime"));
     }
     
     @FXML

@@ -153,7 +153,7 @@ public class Database {
         conn.close();
         return centreList;
     }
-    
+    /*
     public ObservableList<Appointment> getAppointments() throws SQLException {
         // Get ResultSet of all appointments that exist in the database
         Connection conn = DriverManager.getConnection(database);
@@ -175,6 +175,7 @@ public class Database {
         conn.close();
         return AppointmentsList;
     }
+*/
     
 
 }
