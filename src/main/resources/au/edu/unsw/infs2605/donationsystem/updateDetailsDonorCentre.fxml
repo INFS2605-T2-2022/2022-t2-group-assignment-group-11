@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Text?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Text layoutX="125.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Centre Name" />
+      <TextField layoutX="125.0" layoutY="51.0" prefHeight="25.0" prefWidth="460.0" />
+      <Text layoutX="125.0" layoutY="123.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Address" />
+      <TextField layoutX="125.0" layoutY="137.0" prefHeight="25.0" prefWidth="460.0" />
+      <TextField layoutX="125.0" layoutY="207.0" prefHeight="25.0" prefWidth="460.0" />
+      <TextField layoutX="125.0" layoutY="286.0" prefHeight="25.0" prefWidth="460.0" />
+      <Text layoutX="125.0" layoutY="196.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Phone Number" />
+      <Text layoutX="125.0" layoutY="272.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Donation Type" />
+      <Button layoutX="125.0" layoutY="329.0" mnemonicParsing="false" text="Save changes" />
+      <Button layoutX="390.0" layoutY="329.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="195.0" text="Back to donor centre main screen" />
+   </children>
+</AnchorPane>

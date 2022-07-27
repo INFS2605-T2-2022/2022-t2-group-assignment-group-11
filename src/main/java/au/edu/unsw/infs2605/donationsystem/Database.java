@@ -74,7 +74,7 @@ public class Database {
         String[] name = {"Town Hall Donor Centre", "Chatswood Donor Centre", "The Shire Donor Centre"};
         String[] address = {"483 George St, Sydney NSW 2000", "62, LEVEL 1/436 Victoria Ave, Chatswood NSW 2067", "29 Kiora Rd, Miranda NSW 2228"};
         String[] phone = {"13 14 95", "13 14 95", "13 14 95"};
-        String[] dontype = {"Blood and Plasma", "Blood", "Blood and Plasma"};
+        String[] dontype = {"Blood, Plasma", "Blood", "Blood, Plasma"};
 
         // Loop to insert using prepared statements
         for (int i = 0; i < 3; i++) {
