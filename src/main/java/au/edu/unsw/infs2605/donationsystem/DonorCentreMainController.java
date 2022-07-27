@@ -26,118 +26,63 @@ import javafx.collections.ObservableList;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 
 
-public class DonorCentreMainController {
-//    public static List<DonorCentre> centreList = new ArrayList<>();
-    /*
-    public class Centre {
-        private String centreName;
-        private String address;
-        private String phoneNumber;
-        private String donationType;
-        
-        public Centre() {
-            this.centreName = "";
-            this.address = "";
-            this.phoneNumber = "";
-            this.donationType = "";
-        }
-        public Centre(String centreName) {
-            this.centreName = centreName;
-        }
-        
-        public Centre (String centreName, String address, String phoneNumber, String donationType) {
-            this.centreName = centreName;
-            this.address = address;
-            this.phoneNumber = phoneNumber;
-            this.donationType = donationType;
-        }
-        
-        public String getCentreName() {
-            return this.centreName;
-        }
-        
-        public void setCentreName(String centreName) {
-            this.centreName = centreName;
-        }
-        
-        public String getAddress() {
-            return this.address;
-        }
-        
-        public void setAddress(String address) {
-            this.address = address;
-        }
-        
-        public String getPhoneNumber() {
-            return this.phoneNumber;
-        }
-        
-        public void setPhoneNumber(String phoneNumber) {
-            this.phoneNumber = phoneNumber;
-        }
-        
-        public String getDonationType() {
-            return this.donationType;
-        }
-        
-        public void setDonationType(String donationType) {
-            this.donationType = donationType;
-        }
-        
-        @Override
-        public String toString() {
-            return this.centreName;
-        }
-    }  */
-    
-        @FXML
-        private ListView<DonorCentre> centreListView;
+public class DonorCentreMainController {    
+    @FXML
+    public ListView<DonorCentre> centreListView;
                 
-        @FXML
-        private Label centreNameLabel;
+    @FXML
+    private TextField centreNameTextField;
         
-        @FXML
-        private Label addressLabel;
+    @FXML
+    private TextField addressTextField;
         
-        @FXML
-        private Label phoneNumberLabel;
+    @FXML
+    private TextField phoneNumberTextField;
         
-        @FXML
-        private Label donationTypeLabel;
+    @FXML
+    private TextField donationTypeTextField;
         
-        @FXML 
-        private CheckBox bloodCheckBox;
-        
-        @FXML
-        private CheckBox plasmaCheckBox;
-        
-        @FXML 
-        private Button addNewCentreButton;
-        
-        @FXML
-        private Button deleteCentreButton;
-        
-        @FXML
-        private Button createNewDonationTypeButton;
-        
-        @FXML
-        private Button scheduleAppointmentButton;
-        
-        @FXML
-        private TableView<Appointment> appointmentTbl;
+    @FXML 
+    private CheckBox bloodCheckBox;
     
-        @FXML
-        TableColumn<Appointment, String> donorNameCol;
+    @FXML
+    private CheckBox plasmaCheckBox;
+    
+    //ObservableList<String> checkBoxList = FXCollections.observableArrayList();
+
+    @FXML 
+    private Button addNewCentreButton;
         
-        @FXML
-        TableColumn<Appointment, String> dateCol;
+    @FXML
+    private Button deleteCentreButton;
         
-        @FXML
-        TableColumn<Appointment, String> timeCol;
+    @FXML
+    private Button createNewDonationTypeButton;
+    
+    @FXML
+    private Button updateDetailsButton;
+        
+    @FXML
+    private Button scheduleAppointmentButton;
+        
+    @FXML
+    private TableView<Appointment> appointmentTbl;
+    
+    @FXML
+    TableColumn<Appointment, String> donorNameCol;
+        
+    @FXML
+    TableColumn<Appointment, String> dateCol;
+        
+    @FXML
+    TableColumn<Appointment, String> timeCol;
+    
+    private boolean isEditing = false;
     
     //@Override
     public void initialize() throws SQLException {
@@ -182,6 +127,10 @@ public class DonorCentreMainController {
         for (DonorCentre centre : centreList) {
             centreListView.getItems().add(centre);
         }
+        
+        // set invisible for donation type check boxes
+        bloodCheckBox.setVisible(false);
+        plasmaCheckBox.setVisible(false);
     }
     @FXML
     public void createAppointmentTableView(DonorCentre selected) throws SQLException {
@@ -196,12 +145,11 @@ public class DonorCentreMainController {
                 "SELECT * FROM appointment WHERE donorcentre = ?"
         );
         String selectedCentre = selected.getName();
-        //System.out.println(selected.getName());
         pst.setString(1, selectedCentre);
         ObservableList<Appointment> appointmentList = FXCollections.observableArrayList();
         ResultSet rs = pst.executeQuery();
         while (rs.next()) {
-            appointmentList.add(new Appointment(rs.getString(2), rs.getString(3), rs.getString(5), rs.getString(6)));
+            appointmentList.add(new Appointment(rs.getString(2), rs.getString(3), rs.getString(6), rs.getString(5)));
         }
         
         appointmentTbl.setItems(appointmentList);
@@ -215,19 +163,56 @@ public class DonorCentreMainController {
     public void selectCentre() throws SQLException {
         DonorCentre selected = centreListView.getSelectionModel().getSelectedItem();
         
-        centreNameLabel.setText(selected.getName());
-        addressLabel.setText(selected.getAddress());
-        phoneNumberLabel.setText(selected.getPhone());
-        donationTypeLabel.setText(selected.getDonType());
+        centreNameTextField.setText(selected.getName());
+        addressTextField.setText(selected.getAddress());
+        phoneNumberTextField.setText(selected.getPhone());
+        donationTypeTextField.setText(selected.getDonType());
         
-        createAppointmentTableView(selected);
-        //get value for checkbox
+        createAppointmentTableView(selected); 
+        bloodCheckBox.setVisible(false);
+        plasmaCheckBox.setVisible(false);
         
+        //reset screen
+        createNewDonationTypeButton.setText("Add new donation type");
+        isEditing = false;
+        centreNameTextField.setVisible(true);
+        addressTextField.setVisible(true);
+        phoneNumberTextField.setVisible(true);
+        donationTypeTextField.setVisible(true);
+        bloodCheckBox.setVisible(false);
+        plasmaCheckBox.setVisible(false);
     }
     
     @FXML
-    public void createNewDonationType() {
-
+    public void createNewDonationType() throws SQLException, IOException {
+       
+        if (!isEditing) {
+            createNewDonationTypeButton.setText("Save changes");
+            
+            DonorCentre selected = centreListView.getSelectionModel().getSelectedItem(); 
+            donationTypeTextField.setVisible(false);
+            bloodCheckBox.setVisible(true);
+            plasmaCheckBox.setVisible(true);
+            
+            selected.setDontype(bloodCheckBox.getText());
+            
+            // Update new donation type to App screen
+            App.setDonorCentre(selected);
+            String database = "jdbc:sqlite:DonorDatabase.db";
+            Connection conn = DriverManager.getConnection(database);
+            PreparedStatement pSt = conn.prepareStatement("UPDATE donorcentre SET dontype = ? WHERE name = ?");
+        }
+        else {
+            createNewDonationTypeButton.setText("Add new donation type");
+            donationTypeTextField.setVisible(true);
+            bloodCheckBox.setVisible(false);
+            plasmaCheckBox.setVisible(false);
+        }
+    }  
+    
+    @FXML
+    public void updateDetails() {
+        
     }
     
     @FXML
@@ -236,8 +221,25 @@ public class DonorCentreMainController {
     }
     
     @FXML
-    public void deleteCentre() {
+    public void deleteCentre() throws IOException, SQLException {
+        DonorCentre selected = centreListView.getSelectionModel().getSelectedItem();
+        centreListView.getItems().remove(selected);
+       
+       // update database
+        App.setDonorCentre(selected);
+        String database = "jdbc:sqlite:DonorDatabase.db";
+        Connection conn = DriverManager.getConnection(database);
+        PreparedStatement pSt = conn.prepareStatement("DELETE FROM donorcentre WHERE name = ?");
+        pSt.setString(1, centreNameTextField.getText());
+        pSt.executeUpdate();
         
+        PreparedStatement pSt1 = conn.prepareStatement("DELETE FROM appointment WHERE donorcentre = ?");
+        pSt.setString(1, centreNameTextField.getText());
+        pSt.executeUpdate();
+        conn.close();
+        
+        centreListView.getSelectionModel().select(0);
+        selectCentre();
     }
     
     @FXML
