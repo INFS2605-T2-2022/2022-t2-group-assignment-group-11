@@ -146,16 +146,6 @@ public class DonorCentreMainController {
         //DonorCentre selected = centreListView.getSelectionModel().getSelectedItem();
         final String database = "jdbc:sqlite:DonorDatabase.db";
         Connection conn = DriverManager.getConnection(database);
-//        DonorCentre newCentre = App.getDonorCentre();
-//        String newName = newCentre.getName();
-//        //System.out.println(newCentre.getName());
-//        String newAddress = newCentre.getAddress();
-//        String newPhone = newCentre.getPhone();
-//        PreparedStatement pSt = conn.prepareStatement("INSERT INTO donorcentre (name, address, phone) "
-//                + "VALUES (?,?,?)");
-//        pSt.setString(1, newName);
-//        pSt.setString(2, newAddress);
-//        pSt.setString(3, newPhone);
 
         Statement st = conn.createStatement();
         //get data from database

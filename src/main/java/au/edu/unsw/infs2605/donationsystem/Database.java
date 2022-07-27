@@ -46,9 +46,9 @@ public class Database {
                                 + "TIME TEXT NOT NULL,"
 				+ "DATE TEXT NOT NULL,"
                                 + "PHONENO TEXT NOT NULL,"
-                                + "EMAIL TEXT NOT NULL,"
-                                + "NOTES TEXT NOT NULL,"
-                                + "DONSTATUS TEXT NOT NULL,"
+                                + "EMAIL TEXT,"
+                                + "NOTES TEXT,"
+                                + "DONSTATUS TEXT,"
                                 + "DONTYPE TEXT NOT NULL "
 				+ ");";
         st.execute(createAppointmentQuery);
@@ -103,7 +103,7 @@ public class Database {
         String[] firstname = {"John", "Margret", "Jill"};
         String[] lastname = {"Pho", "Kip", "Dance"};
         String[] donorcentre = {"Town Hall Donor Centre", "Chatswood Donor Centre", "The Shire Donor Centre"};
-        String[] time = {"12:08", "1:56", "2:34"};
+        String[] time = {"12:00PM", "2:00PM", "9:00AM"};
         String[] date = {"03/07/22", "21/06/22", "30/05/22"};
         String[] phoneno = {"0465234987", "0412569276", "0417509469"};
         String[] email = {"johnpho@gmail.com", "margretkip@gmail.com", "jilldance@gmail.com"};
@@ -132,7 +132,7 @@ public class Database {
         
         
     }
-    
+    /*
     public ObservableList<DonorCentre> getCentre() throws SQLException {
         // Get ResultSet of all donor centres that exist in the database
         Connection conn = DriverManager.getConnection(database);
@@ -153,7 +153,6 @@ public class Database {
         conn.close();
         return centreList;
     }
-    /*
     public ObservableList<Appointment> getAppointments() throws SQLException {
         // Get ResultSet of all appointments that exist in the database
         Connection conn = DriverManager.getConnection(database);
