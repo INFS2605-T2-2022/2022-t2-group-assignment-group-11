@@ -6,18 +6,19 @@ package au.edu.unsw.infs2605.donationsystem;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
-import java.time.Month;
 import java.time.Period;
-import java.time.Year;
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 import java.util.ResourceBundle;
-//import javafx.event.ActionEvent;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ChoiceBox;
@@ -100,10 +101,14 @@ public class appointmentController implements Initializable {
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        createChoiceBox();
+        try {
+            createChoiceBox();
+        } catch (SQLException ex) {
+            Logger.getLogger(appointmentController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
-    public void createChoiceBox() {
+    public void createChoiceBox() throws SQLException {
         //Create Gender choicebox
         //gender.getItems().clear();
         if (gender.getItems().isEmpty()) {
@@ -112,13 +117,20 @@ public class appointmentController implements Initializable {
             gender.getItems().add("Other");  
         }
         
-        //Create DonorCentre choicebox
-        donorCentre.getItems().clear();
-        if (donorCentre.getItems().isEmpty()) {
-            donorCentre.getItems().add("Town Hall Donor Centre");
-            donorCentre.getItems().add("Chatswood Donor Centre");
-            donorCentre.getItems().add("The Shire Donor Centre");
+        //Retrieve donor centre list from database
+        ArrayList<String> centreNameList = new ArrayList<>();
+        final String database = "jdbc:sqlite:DonorDatabase.db";
+        Connection conn = DriverManager.getConnection(database);
+        Statement st = conn.createStatement();
+        String query = "SELECT name FROM donorcentre";
+        ResultSet rs = st.executeQuery(query);
+        while(rs.next()) {
+            centreNameList.add(rs.getString(1));
         }
+        
+        //Create DonorCentre choicebox
+        donorCentre.getItems().clear(); //avoid duplicates
+        donorCentre.getItems().addAll(centreNameList);
         
         //Create Time choiceBox
         timeSlot.getItems().clear();
