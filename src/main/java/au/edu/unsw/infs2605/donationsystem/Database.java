@@ -46,9 +46,9 @@ public class Database {
                                 + "TIME TEXT NOT NULL,"
 				+ "DATE TEXT NOT NULL,"
                                 + "PHONENO TEXT NOT NULL,"
-                                + "EMAIL TEXT NOT NULL,"
-                                + "NOTES TEXT NOT NULL,"
-                                + "DONSTATUS TEXT NOT NULL,"
+                                + "EMAIL TEXT,"
+                                + "NOTES TEXT,"
+                                + "DONSTATUS TEXT,"
                                 + "DONTYPE TEXT NOT NULL "
 				+ ");";
         st.execute(createAppointmentQuery);
