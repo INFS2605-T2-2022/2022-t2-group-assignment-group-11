@@ -22,6 +22,9 @@ public class AddNewCentreController implements Initializable {
         
     @FXML
     private TextField phoneNumberTextField;
+    
+    @FXML
+    private TextField donationTypeTextField;
         
     @FXML
     private Button saveChangesButton;
@@ -42,16 +45,19 @@ public class AddNewCentreController implements Initializable {
         newCentre.setName(centreNameTextField.getText());
         newCentre.setAddress(addressTextField.getText());
         newCentre.setPhone(phoneNumberTextField.getText());
+        newCentre.setDontype(donationTypeTextField.getText());
         
         //Store new donor centre to App screen
         App.setDonorCentre(newCentre);
         String database = "jdbc:sqlite:DonorDatabase.db";
         Connection conn = DriverManager.getConnection(database);
-        PreparedStatement pSt = conn.prepareStatement("INSERT INTO donorcentre (name, address, phone) "
-                + "VALUES (?,?,?)");
+        PreparedStatement pSt = conn.prepareStatement("INSERT INTO donorcentre (name, address, phone, dontype) "
+                + "VALUES (?,?,?,?)");
         pSt.setString(1, centreNameTextField.getText());
         pSt.setString(2, addressTextField.getText());
         pSt.setString(3, phoneNumberTextField.getText());
+        pSt.setString(4, donationTypeTextField.getText());
+        
         pSt.executeUpdate();
         conn.close();
         App.setRoot("Donor Centre Main");
