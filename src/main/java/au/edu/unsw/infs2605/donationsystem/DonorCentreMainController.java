@@ -46,12 +46,6 @@ public class DonorCentreMainController {
         
     @FXML
     private TextField donationTypeTextField;
-        
-    @FXML 
-    private CheckBox bloodCheckBox;
-    
-    @FXML
-    private CheckBox plasmaCheckBox;
     
     //ObservableList<String> checkBoxList = FXCollections.observableArrayList();
 
@@ -127,11 +121,8 @@ public class DonorCentreMainController {
         for (DonorCentre centre : centreList) {
             centreListView.getItems().add(centre);
         }
-        
-        // set invisible for donation type check boxes
-        bloodCheckBox.setVisible(false);
-        plasmaCheckBox.setVisible(false);
     }
+    
     @FXML
     public void createAppointmentTableView(DonorCentre selected) throws SQLException {
        
@@ -169,8 +160,6 @@ public class DonorCentreMainController {
         donationTypeTextField.setText(selected.getDonType());
         
         createAppointmentTableView(selected); 
-        bloodCheckBox.setVisible(false);
-        plasmaCheckBox.setVisible(false);
         
         //reset screen
         createNewDonationTypeButton.setText("Add new donation type");
@@ -179,36 +168,34 @@ public class DonorCentreMainController {
         addressTextField.setVisible(true);
         phoneNumberTextField.setVisible(true);
         donationTypeTextField.setVisible(true);
-        bloodCheckBox.setVisible(false);
-        plasmaCheckBox.setVisible(false);
     }
     
-    @FXML
-    public void createNewDonationType() throws SQLException, IOException {
-       
-        if (!isEditing) {
-            createNewDonationTypeButton.setText("Save changes");
-            
-            DonorCentre selected = centreListView.getSelectionModel().getSelectedItem(); 
-            donationTypeTextField.setVisible(false);
-            bloodCheckBox.setVisible(true);
-            plasmaCheckBox.setVisible(true);
-            
-            selected.setDontype(bloodCheckBox.getText());
-            
-            // Update new donation type to App screen
-            App.setDonorCentre(selected);
-            String database = "jdbc:sqlite:DonorDatabase.db";
-            Connection conn = DriverManager.getConnection(database);
-            PreparedStatement pSt = conn.prepareStatement("UPDATE donorcentre SET dontype = ? WHERE name = ?");
-        }
-        else {
-            createNewDonationTypeButton.setText("Add new donation type");
-            donationTypeTextField.setVisible(true);
-            bloodCheckBox.setVisible(false);
-            plasmaCheckBox.setVisible(false);
-        }
-    }  
+//    @FXML
+//    public void createNewDonationType() throws SQLException, IOException {
+//       
+//        if (!isEditing) {
+//            createNewDonationTypeButton.setText("Save changes");
+//            
+//            DonorCentre selected = centreListView.getSelectionModel().getSelectedItem(); 
+//            donationTypeTextField.setVisible(false);
+//            bloodCheckBox.setVisible(true);
+//            plasmaCheckBox.setVisible(true);
+//            
+//            selected.setDontype(bloodCheckBox.getText());
+//            
+//            // Update new donation type to App screen
+//            App.setDonorCentre(selected);
+//            String database = "jdbc:sqlite:DonorDatabase.db";
+//            Connection conn = DriverManager.getConnection(database);
+//            PreparedStatement pSt = conn.prepareStatement("UPDATE donorcentre SET dontype = ? WHERE name = ?");
+//        }
+//        else {
+//            createNewDonationTypeButton.setText("Add new donation type");
+//            donationTypeTextField.setVisible(true);
+//            bloodCheckBox.setVisible(false);
+//            plasmaCheckBox.setVisible(false);
+//        }
+//    }  
     
     @FXML
     public void updateDetails() {
@@ -216,7 +203,7 @@ public class DonorCentreMainController {
     }
     
     @FXML
-    public void addNewCentre() throws IOException {
+    public void addNewCentre() throws IOException, SQLException {
         App.setRoot("Add new centre");
     }
     
