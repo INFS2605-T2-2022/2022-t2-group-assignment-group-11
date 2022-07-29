@@ -44,7 +44,7 @@ public class App extends Application {
         database.setupDatabase();
         
         stage.setTitle("Donation Management System");
-        scene = new Scene(loadFXML("Donor Centre Main"));
+        scene = new Scene(loadFXML("homePage"));
         stage.setScene(scene);
         stage.show();
     }
