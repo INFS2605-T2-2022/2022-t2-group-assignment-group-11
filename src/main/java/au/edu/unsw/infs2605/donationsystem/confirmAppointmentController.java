@@ -103,5 +103,8 @@ public class confirmAppointmentController implements Initializable{
         App.setRoot("bookAppointment");
     }
 
+    public void backToHomePage() throws IOException {
+        App.setRoot("homePage");
+    }
             
 }

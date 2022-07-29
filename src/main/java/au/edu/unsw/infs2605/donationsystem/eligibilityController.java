@@ -87,4 +87,8 @@ public class eligibilityController implements Initializable{
         condition11.setSelected(false);
         condition12.setSelected(false);
     }
+    
+    public void backToHomePage() throws IOException {
+        App.setRoot("homePage");
+    }
 }

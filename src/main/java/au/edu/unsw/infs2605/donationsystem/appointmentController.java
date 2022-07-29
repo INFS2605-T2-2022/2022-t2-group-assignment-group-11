@@ -196,9 +196,6 @@ public class appointmentController implements Initializable {
         
         //Donors must be 18-75 years old
         LocalDate today = LocalDate.now();
-        LocalDate minAge = today.minusYears(18);
-        LocalDate maxAge = today.minusYears(75);
-        
         
         if (dateOfBirth.getValue() != null) {
             dobError.setVisible(false);
@@ -310,6 +307,10 @@ public class appointmentController implements Initializable {
     public void cancelButton() throws IOException {
         App.setRoot("appointment");
         
+    }
+    
+    public void backToHomePage() {
+        App.setRoot("homePage");
     }
     
     
