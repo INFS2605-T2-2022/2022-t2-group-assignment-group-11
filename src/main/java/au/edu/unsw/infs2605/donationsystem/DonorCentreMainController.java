@@ -224,24 +224,24 @@ public class DonorCentreMainController {
         if (!isEditing) {
             updateDetailsButton.setText("Save changes");
             
-            centreNameLabel.setVisible(false);
+            centreNameLabel.setVisible(true);
             addressLabel.setVisible(false);
             phoneNumberLabel.setVisible(false);
             donationTypeLabel.setVisible(false);
             
-            centreNameTextField.setVisible(true);
+//            centreNameTextField.setVisible(true);
             addressTextField.setVisible(true);
             phoneNumberTextField.setVisible(true);
             donationTypeTextField.setVisible(true);
             
             // Get text from label and set in textfields
-            centreNameTextField.setText((centreNameLabel.getText()));
+//            centreNameTextField.setText((centreNameLabel.getText()));
             addressTextField.setText(addressLabel.getText());
             phoneNumberTextField.setText(phoneNumberLabel.getText());
             donationTypeTextField.setText(donationTypeLabel.getText());
             
             // Get information from Text Fields
-            selected.setName(centreNameTextField.getText());
+//            selected.setName(centreNameTextField.getText());
             selected.setAddress(addressTextField.getText());
             selected.setPhone(phoneNumberTextField.getText());
             selected.setDontype(donationTypeTextField.getText());
@@ -277,7 +277,7 @@ public class DonorCentreMainController {
             phoneNumberLabel.setVisible(true);
             donationTypeLabel.setVisible(true);
 
-            centreNameTextField.setVisible(false);
+//            centreNameTextField.setVisible(false);
             addressTextField.setVisible(false);
             phoneNumberTextField.setVisible(false);
             donationTypeTextField.setVisible(false);
