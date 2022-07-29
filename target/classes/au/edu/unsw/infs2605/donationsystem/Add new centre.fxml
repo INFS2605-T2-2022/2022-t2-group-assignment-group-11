@@ -6,19 +6,18 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.text.Text?>
+<?import javafx.scene.text.Font?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="au.edu.unsw.infs2605.donationsystem.AddNewCentreController">
    <children>
-      <Text layoutX="18.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Add new dononor centre" />
       <TextField fx:id="centreNameTextField" layoutX="299.0" layoutY="75.0" prefHeight="25.0" prefWidth="285.0" />
       <TextField fx:id="addressTextField" layoutX="299.0" layoutY="137.0" prefHeight="25.0" prefWidth="285.0" />
       <TextField fx:id="phoneNumberTextField" layoutX="299.0" layoutY="200.0" prefHeight="25.0" prefWidth="285.0" />
       <Label layoutX="299.0" layoutY="51.0" text="Centre Name" />
       <Label layoutX="299.0" layoutY="113.0" text="Address" />
       <Label layoutX="301.0" layoutY="180.0" text="Phone Number" />
-      <Button fx:id="saveChangesButton" layoutX="298.0" layoutY="314.0" mnemonicParsing="false" onMouseClicked="#saveChanges" text="Save changes" />
-      <Button fx:id="backToMainScreenButton" layoutX="424.0" layoutY="314.0" mnemonicParsing="false" onMouseClicked="#backToMainScreen" text="Back to Centre Main Screen" />
+      <Button fx:id="saveChangesButton" layoutX="490.0" layoutY="309.0" mnemonicParsing="false" onMouseClicked="#saveChanges" prefHeight="25.0" prefWidth="94.0" style="-fx-background-color: #6f060d;" text="Save changes" textFill="WHITE" />
+      <Button fx:id="backToMainScreenButton" layoutX="301.0" layoutY="309.0" mnemonicParsing="false" onMouseClicked="#backToMainScreen" text="Back to Centre Main Screen" />
       <ImageView fitHeight="227.0" fitWidth="222.0" layoutX="22.0" layoutY="69.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../../../../../../../../../Desktop/medical-center-blood-icon-element-donation-thin-line-white-background-161120285.jpg" />
@@ -26,5 +25,10 @@
       </ImageView>
       <Label layoutX="299.0" layoutY="243.0" text="Donation Type" />
       <TextField fx:id="donationTypeTextField" layoutX="299.0" layoutY="260.0" prefHeight="25.0" prefWidth="285.0" />
+      <Label layoutX="140.0" layoutY="14.0" prefHeight="25.0" prefWidth="322.0" text="Please fill in all blanks to add a new donor centre to the list!">
+         <font>
+            <Font name="System Italic" size="12.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>
