@@ -20,20 +20,20 @@ import javafx.scene.image.ImageView;
  * @author khanhlinh0907
  */
 public class homePageController implements Initializable {
-//    @FXML
-//    ImageView logo = new ImageView("/C:/khanhlinh0907/Desktop/blood donation.jpeg");
-//    
-//    @FXML
-//    ImageView homePageImage = new ImageView("blood donation.jpeg");
+    @FXML
+    ImageView logo;
+    
+    @FXML
+    ImageView homePageImage;
 //    
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-//        //Image logoImage = new Image(getClass().getResourceAsStream("/images/logo.png"));
-//        Image logoImage = new Image(getClass().getResourceAsStream("logo.png"));
-//        logo = new ImageView(logoImage);
-//        Image homePage = new Image(getClass().getResourceAsStream("/images/blood donation.jpeg"));
-//        homePageImage.setImage(homePage);
+        Image logoImage = new Image(App.class.getResourceAsStream("img/logo.png"));
+        logo.setImage(logoImage);
+        
+        Image homePage = new Image(App.class.getResourceAsStream("img/blood donation.jpeg"));
+        homePageImage.setImage(homePage);
     }
         
     public void toHomePage() throws IOException {
