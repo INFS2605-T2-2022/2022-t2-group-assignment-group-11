@@ -12,7 +12,11 @@
    <children>
       <ImageView fx:id="logo" fitHeight="48.0" fitWidth="83.0" layoutX="13.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
          <image>
+<<<<<<< Updated upstream
             <Image url="@img/logo.png" />
+=======
+            <Image url="@../../../../../../../../../../../Desktop/logo.png" />
+>>>>>>> Stashed changes
          </image>
       </ImageView>
       <Text layoutX="67.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Circle Blood">
@@ -47,7 +51,11 @@
       </Text>
       <ImageView fx:id="homePageImage" fitHeight="250.0" fitWidth="363.0" layoutX="215.0" layoutY="93.0" pickOnBounds="true" preserveRatio="true">
          <image>
+<<<<<<< Updated upstream
             <Image url="@img/blood%20donation.jpeg" />
+=======
+            <Image url="@../../../../../../../../../../../Desktop/blood%20donation.jpeg" />
+>>>>>>> Stashed changes
          </image>
       </ImageView>
       <Text layoutX="40.0" layoutY="206.0" lineSpacing="3.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Your blood is precious, and your donations are truly life-saving. " wrappingWidth="153.537109375">
