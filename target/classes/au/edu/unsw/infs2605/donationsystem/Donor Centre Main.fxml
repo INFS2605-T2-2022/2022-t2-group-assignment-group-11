@@ -23,7 +23,7 @@
             </Text>
             <Text fill="#868686" fontSmoothingType="LCD" layoutX="11.0" layoutY="77.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Address" wrappingWidth="42.50390625" />
             <Text fill="#868686" fontSmoothingType="LCD" layoutX="11.0" layoutY="108.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Phone number" wrappingWidth="85.33333333333337" />
-            <Button fx:id="updateDetailsButton" layoutX="263.0" layoutY="-14.0" mnemonicParsing="false" onMouseClicked="#updateDetails" prefHeight="25.0" prefWidth="165.0" style="-fx-background-color: #6F060D;" text="Update details" textFill="WHITE" />
+            <Button fx:id="updateDetailsButton" layoutX="263.0" layoutY="-14.0" mnemonicParsing="false" onMouseClicked="#updateDetails" prefHeight="25.0" prefWidth="165.0" text="Update details" />
             <Text fill="#868686" fontSmoothingType="LCD" layoutX="11.0" layoutY="142.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Donation type" wrappingWidth="85.33333333333348" />
             <TextField fx:id="addressTextField" layoutX="98.0" layoutY="60.0" prefHeight="25.0" prefWidth="331.0" />
             <TextField fx:id="phoneNumberTextField" layoutX="98.0" layoutY="91.0" prefHeight="25.0" prefWidth="331.0" />
@@ -55,6 +55,6 @@
          </children>
       </AnchorPane>
       <Button fx:id="addNewCentreButton" layoutX="4.0" layoutY="373.0" mnemonicParsing="false" onAction="#addNewCentre" prefHeight="25.0" prefWidth="76.0" style="-fx-background-color: #6F060D;" text="Add new" textFill="#fdfdfd" />
-      <Button fx:id="deleteCentreButton" layoutX="87.0" layoutY="373.0" mnemonicParsing="false" onMouseClicked="#deleteCentre" prefHeight="25.0" prefWidth="70.0" style="-fx-background-color: #6F060D;" text="Delete" textFill="WHITE" />
+      <Button fx:id="deleteCentreButton" layoutX="87.0" layoutY="373.0" mnemonicParsing="false" onMouseClicked="#deleteCentre" prefHeight="25.0" prefWidth="70.0" text="Delete" />
    </children>
 </AnchorPane>
