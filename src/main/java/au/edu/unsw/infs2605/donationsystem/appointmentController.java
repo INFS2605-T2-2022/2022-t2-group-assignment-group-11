@@ -309,7 +309,7 @@ public class appointmentController implements Initializable {
         
     }
     
-    public void backToHomePage() {
+    public void backToHomePage() throws IOException {
         App.setRoot("homePage");
     }
     
