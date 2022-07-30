@@ -47,6 +47,18 @@ public class DonorCentreMainController {
     @FXML
     private TextField donationTypeTextField;
     
+    @FXML
+    private Label centreNameLabel;
+    
+    @FXML
+    private Label addressLabel;
+    
+    @FXML
+    private Label phoneNumberLabel;
+    
+    @FXML
+    private Label donationTypeLabel;
+    
     //ObservableList<String> checkBoxList = FXCollections.observableArrayList();
 
     @FXML 
@@ -54,9 +66,6 @@ public class DonorCentreMainController {
         
     @FXML
     private Button deleteCentreButton;
-        
-    @FXML
-    private Button createNewDonationTypeButton;
     
     @FXML
     private Button updateDetailsButton;
@@ -121,6 +130,11 @@ public class DonorCentreMainController {
         for (DonorCentre centre : centreList) {
             centreListView.getItems().add(centre);
         }
+        
+        centreNameLabel.setVisible(false);
+        addressLabel.setVisible(false);
+        phoneNumberLabel.setVisible(false);
+        donationTypeLabel.setVisible(false);
     }
     
     @FXML
@@ -154,20 +168,27 @@ public class DonorCentreMainController {
     public void selectCentre() throws SQLException {
         DonorCentre selected = centreListView.getSelectionModel().getSelectedItem();
         
-        centreNameTextField.setText(selected.getName());
-        addressTextField.setText(selected.getAddress());
-        phoneNumberTextField.setText(selected.getPhone());
-        donationTypeTextField.setText(selected.getDonType());
+        centreNameLabel.setText(selected.getName());
+        addressLabel.setText(selected.getAddress());
+        phoneNumberLabel.setText(selected.getPhone());
+        donationTypeLabel.setText(selected.getDonType());
         
         createAppointmentTableView(selected); 
         
         //reset screen
-        createNewDonationTypeButton.setText("Add new donation type");
         isEditing = false;
-        centreNameTextField.setVisible(true);
-        addressTextField.setVisible(true);
-        phoneNumberTextField.setVisible(true);
-        donationTypeTextField.setVisible(true);
+        centreNameTextField.setVisible(false);
+        addressTextField.setVisible(false);
+        phoneNumberTextField.setVisible(false);
+        donationTypeTextField.setVisible(false);
+        
+        centreNameLabel.setVisible(true);
+        addressLabel.setVisible(true);
+        phoneNumberLabel.setVisible(true);
+        donationTypeLabel.setVisible(true);
+        
+        updateDetailsButton.setText("Update details");
+        addNewCentreButton.setText("Add new");
     }
     
 //    @FXML
@@ -198,8 +219,80 @@ public class DonorCentreMainController {
 //    }  
     
     @FXML
-    public void updateDetails() {
+    public void updateDetails() throws SQLException {
+        DonorCentre selected = centreListView.getSelectionModel().getSelectedItem();
+        if (!isEditing) {
+            updateDetailsButton.setText("Save changes");
+            
+            centreNameLabel.setVisible(true);
+            addressLabel.setVisible(false);
+            phoneNumberLabel.setVisible(false);
+            donationTypeLabel.setVisible(false);
+            
+//            centreNameTextField.setVisible(true);
+            addressTextField.setVisible(true);
+            phoneNumberTextField.setVisible(true);
+            donationTypeTextField.setVisible(true);
+            
+            // Get text from label and set in textfields
+//            centreNameTextField.setText((centreNameLabel.getText()));
+            addressTextField.setText(addressLabel.getText());
+            phoneNumberTextField.setText(phoneNumberLabel.getText());
+            donationTypeTextField.setText(donationTypeLabel.getText());
+            
+            // Get information from Text Fields
+//            selected.setName(centreNameTextField.getText());
+            selected.setAddress(addressTextField.getText());
+            selected.setPhone(phoneNumberTextField.getText());
+            selected.setDontype(donationTypeTextField.getText());
+            
+            //Display updated information in Labels
+            centreNameLabel.setText(selected.getName());
+            addressLabel.setText(selected.getAddress());
+            phoneNumberLabel.setText(selected.getPhone());
+            donationTypeLabel.setText(selected.getDonType());
+            
+            centreListView.refresh();
+            
+            //Update new donation type to App screen
+            
+        }
+        else {
+            updateDetailsButton.setText("Update details");
         
+            App.setDonorCentre(selected);
+            String database = "jdbc:sqlite:DonorDatabase.db";
+            Connection conn = DriverManager.getConnection(database);
+            PreparedStatement pSt = conn.prepareStatement("UPDATE donorcentre SET address = ?, phone = ?, dontype = ? WHERE name = ?");
+            pSt.setString(1, addressTextField.getText());
+            pSt.setString(2, phoneNumberTextField.getText());
+            pSt.setString(3, donationTypeTextField.getText());
+            pSt.setString(4, centreNameLabel.getText());
+            
+            pSt.execute();
+            conn.close();
+            
+            centreNameLabel.setVisible(true);
+            addressLabel.setVisible(true);
+            phoneNumberLabel.setVisible(true);
+            donationTypeLabel.setVisible(true);
+
+//            centreNameTextField.setVisible(false);
+            addressTextField.setVisible(false);
+            phoneNumberTextField.setVisible(false);
+            donationTypeTextField.setVisible(false);
+            
+            // set data into object selected
+            selected.setAddress(addressTextField.getText());
+            selected.setPhone(phoneNumberTextField.getText());
+            selected.setDontype(donationTypeTextField.getText());
+            
+            addressLabel.setText(selected.getAddress());
+            phoneNumberLabel.setText(selected.getPhone());
+            donationTypeLabel.setText(selected.getDonType());
+            
+        }
+        isEditing = !isEditing;
     }
     
     @FXML
@@ -217,11 +310,11 @@ public class DonorCentreMainController {
         String database = "jdbc:sqlite:DonorDatabase.db";
         Connection conn = DriverManager.getConnection(database);
         PreparedStatement pSt = conn.prepareStatement("DELETE FROM donorcentre WHERE name = ?");
-        pSt.setString(1, centreNameTextField.getText());
+        pSt.setString(1, centreNameLabel.getText());
         pSt.executeUpdate();
         
         PreparedStatement pSt1 = conn.prepareStatement("DELETE FROM appointment WHERE donorcentre = ?");
-        pSt.setString(1, centreNameTextField.getText());
+        pSt.setString(1, centreNameLabel.getText());
         pSt.executeUpdate();
         conn.close();
         
