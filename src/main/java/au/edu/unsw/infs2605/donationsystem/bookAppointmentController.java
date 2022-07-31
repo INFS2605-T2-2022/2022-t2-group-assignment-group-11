@@ -12,9 +12,11 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.Period;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
@@ -216,7 +218,8 @@ public class bookAppointmentController implements Initializable {
             dobError.setVisible(false);
             if (ageCheck() == true) {
                 dateError.setVisible(false);
-                newAppointment.setDOB(dateOfBirth.getValue().toString());
+                LocalDate dateSelected = dateOfBirth.getValue();
+                newAppointment.setDOB(dateFormat(dateSelected));
             } else {
                 dateError.setVisible(true);
                 dateError.setText("Donor must be 18-75 years old.");
@@ -270,7 +273,9 @@ public class bookAppointmentController implements Initializable {
             bookingTimeError.setVisible(false);
             if (bookingDate.getValue().isAfter(today)){
                 dateError.setVisible(false);
-                newAppointment.setBookingDate(bookingDate.getValue().toString());
+                LocalDate dateSelected = bookingDate.getValue();
+                newAppointment.setBookingDate(dateFormat(dateSelected));
+                //newAppointment.setBookingDate(bookingDate.getValue().toString());
             } else {
                 dateError.setVisible(true);
                 dateError.setText("Booking date must be in the future.");
@@ -319,6 +324,20 @@ public class bookAppointmentController implements Initializable {
             return false;
         }
     }
+    
+    public String dateFormat(LocalDate currentDateFormat) {
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        Date d;
+        try {
+            d = sdf.parse(currentDateFormat.toString());
+            sdf.applyPattern("dd/MM/yyyy");
+            String dateFormatted = sdf.format(d);
+            return dateFormatted;
+        } catch (ParseException ex) {
+            Logger.getLogger(createReceipt.class.getName()).log(Level.SEVERE, null, ex);
+        } return "";
+    }
+    
     public void cancelButton() throws IOException {
         App.setRoot("appointment");
         
