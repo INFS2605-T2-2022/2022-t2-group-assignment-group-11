@@ -124,6 +124,9 @@ public class AppointmentInfoController {
 
         AppointmentTable.setItems(Database.getInstance().getAppointmentInfo(""));
         
+        //Set default
+        
+        AppointmentTable.getSelectionModel().select(0);
         //Add images
         Image logoImage = new Image(App.class.getResourceAsStream("img/logo.png"));
         logo.setImage(logoImage);
@@ -191,5 +194,12 @@ public class AppointmentInfoController {
     
     public void backToHomePage() throws IOException {
         App.setRoot("homePage");
+    }
+    
+    public void createReceipt() throws IOException {
+        AppointmentInfo selected = AppointmentTable.getSelectionModel().getSelectedItem();
+        App.setSelectedAppointment(selected);
+        App.setRoot("createReceipt");
+        
     }
 }
