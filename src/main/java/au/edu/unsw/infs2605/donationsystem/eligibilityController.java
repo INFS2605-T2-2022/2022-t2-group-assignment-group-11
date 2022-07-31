@@ -11,6 +11,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 
 /**
  *
@@ -48,9 +50,21 @@ public class eligibilityController implements Initializable{
     @FXML
     Label error;
     
+    @FXML
+    ImageView logo;
+    
+    @FXML
+    ImageView home;
+    
     @Override
     public void initialize(URL url, ResourceBundle rb)  {
         clearOption();
+        //Add images
+        Image logoImage = new Image(App.class.getResourceAsStream("img/logo.png"));
+        logo.setImage(logoImage);
+        
+        Image homeIcon = new Image(App.class.getResourceAsStream("img/home.png"));
+        home.setImage(homeIcon);
     }
     
     @FXML

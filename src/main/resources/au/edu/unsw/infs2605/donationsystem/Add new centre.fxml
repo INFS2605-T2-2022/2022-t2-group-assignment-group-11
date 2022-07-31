@@ -6,29 +6,82 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="au.edu.unsw.infs2605.donationsystem.AddNewCentreController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="au.edu.unsw.infs2605.donationsystem.AddNewCentreController">
    <children>
-      <TextField fx:id="centreNameTextField" layoutX="299.0" layoutY="75.0" prefHeight="25.0" prefWidth="285.0" />
-      <TextField fx:id="addressTextField" layoutX="299.0" layoutY="137.0" prefHeight="25.0" prefWidth="285.0" />
-      <TextField fx:id="phoneNumberTextField" layoutX="299.0" layoutY="200.0" prefHeight="25.0" prefWidth="285.0" />
-      <Label layoutX="299.0" layoutY="51.0" text="Centre Name" />
-      <Label layoutX="299.0" layoutY="113.0" text="Address" />
-      <Label layoutX="301.0" layoutY="180.0" text="Phone Number" />
-      <Button fx:id="saveChangesButton" layoutX="490.0" layoutY="309.0" mnemonicParsing="false" onMouseClicked="#saveChanges" prefHeight="25.0" prefWidth="94.0" style="-fx-background-color: #6f060d;" text="Save changes" textFill="WHITE" />
-      <Button fx:id="backToMainScreenButton" layoutX="301.0" layoutY="309.0" mnemonicParsing="false" onMouseClicked="#backToMainScreen" text="Back to Centre Main Screen" />
-      <ImageView fitHeight="227.0" fitWidth="222.0" layoutX="22.0" layoutY="69.0" pickOnBounds="true" preserveRatio="true">
+      <TextField fx:id="centreNameTextField" layoutX="523.0" layoutY="234.0" prefHeight="25.0" prefWidth="285.0">
+         <font>
+            <Font name="AppleGothic Regular" size="13.0" />
+         </font></TextField>
+      <TextField fx:id="addressTextField" layoutX="523.0" layoutY="296.0" prefHeight="25.0" prefWidth="285.0">
+         <font>
+            <Font name="AppleGothic Regular" size="13.0" />
+         </font></TextField>
+      <TextField fx:id="phoneNumberTextField" layoutX="523.0" layoutY="359.0" prefHeight="25.0" prefWidth="285.0">
+         <font>
+            <Font name="AppleGothic Regular" size="13.0" />
+         </font></TextField>
+      <Label layoutX="523.0" layoutY="210.0" text="Centre Name">
+         <font>
+            <Font name="AppleGothic Regular" size="13.0" />
+         </font></Label>
+      <Label layoutX="523.0" layoutY="272.0" text="Address">
+         <font>
+            <Font name="AppleGothic Regular" size="13.0" />
+         </font></Label>
+      <Label layoutX="525.0" layoutY="339.0" text="Phone Number">
+         <font>
+            <Font name="AppleGothic Regular" size="13.0" />
+         </font></Label>
+      <Button fx:id="saveChangesButton" layoutX="700.0" layoutY="468.0" mnemonicParsing="false" onMouseClicked="#saveChanges" prefHeight="28.0" prefWidth="108.0" style="-fx-background-color: #6f060d;" text="Save changes" textFill="WHITE">
+         <font>
+            <Font name="Avenir Next Bold" size="13.0" />
+         </font></Button>
+      <Button fx:id="backToMainScreenButton" layoutX="525.0" layoutY="468.0" mnemonicParsing="false" onMouseClicked="#backToMainScreen" text="Cancel">
+         <font>
+            <Font name="Avenir Next Bold" size="13.0" />
+         </font></Button>
+      <ImageView fx:id="donorCentreImageView" fitHeight="288.0" fitWidth="268.0" layoutX="190.0" layoutY="229.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@img/donor%20centre.jpg" />
+            <Image url="@img/donorcentre.png" />
          </image>
       </ImageView>
-      <Label layoutX="299.0" layoutY="243.0" text="Donation Type" />
-      <TextField fx:id="donationTypeTextField" layoutX="299.0" layoutY="260.0" prefHeight="25.0" prefWidth="285.0" />
-      <Label layoutX="140.0" layoutY="14.0" prefHeight="25.0" prefWidth="322.0" text="Please fill in all blanks to add a new donor centre to the list!">
+      <Label layoutX="523.0" layoutY="402.0" text="Donation Type">
          <font>
-            <Font name="System Italic" size="12.0" />
+            <Font name="AppleGothic Regular" size="13.0" />
+         </font></Label>
+      <TextField fx:id="donationTypeTextField" layoutX="523.0" layoutY="419.0" prefHeight="25.0" prefWidth="285.0">
+         <font>
+            <Font name="AppleGothic Regular" size="13.0" />
+         </font></TextField>
+      <Label layoutX="246.0" layoutY="152.0" prefHeight="27.0" prefWidth="542.0" text="Please fill in all blanks to add a new donor centre to the list.">
+         <font>
+            <Font name="Avenir Next Bold" size="18.0" />
          </font>
       </Label>
+      <ImageView fx:id="logo" fitHeight="48.0" fitWidth="83.0" layoutX="18.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@img/logo.png" />
+         </image>
+      </ImageView>
+      <Text layoutX="72.0" layoutY="24.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Circle Blood">
+         <font>
+            <Font name="AppleGothic Regular" size="13.0" />
+         </font>
+      </Text>
+      <Text layoutX="72.0" layoutY="38.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Management">
+         <font>
+            <Font name="AppleGothic Regular" size="13.0" />
+         </font>
+      </Text>
+      <Text fill="#6f060d" layoutX="347.0" layoutY="38.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Add new Donor Centre" textAlignment="JUSTIFY">
+         <font>
+            <Font name="Avenir Next Bold" size="28.0" />
+         </font>
+      </Text>
+      <Line endX="905.0" endY="-7.62939453125E-6" layoutX="102.0" layoutY="57.0" startX="-95.64157104492188" startY="-7.62939453125E-6" stroke="#80808036" />
    </children>
 </AnchorPane>

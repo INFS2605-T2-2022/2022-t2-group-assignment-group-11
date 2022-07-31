@@ -6,16 +6,13 @@ package au.edu.unsw.infs2605.donationsystem;
 import java.io.IOException;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
-import javafx.collections.ObservableList;
-import javafx.collections.FXCollections;
-
-import java.sql.SQLException;
-
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
 /**
@@ -76,8 +73,15 @@ public class AppointmentInfoController {
 
     @FXML
     private TextField keywordSearch;
+    
     @FXML
     private ComboBox<String> filterField;
+    
+    @FXML
+    ImageView logo;
+    
+    @FXML
+    ImageView home;
 
 
     public void initialize() {
@@ -119,6 +123,13 @@ public class AppointmentInfoController {
         });
 
         AppointmentTable.setItems(Database.getInstance().getAppointmentInfo(""));
+        
+        //Add images
+        Image logoImage = new Image(App.class.getResourceAsStream("img/logo.png"));
+        logo.setImage(logoImage);
+        
+        Image homeIcon = new Image(App.class.getResourceAsStream("img/home.png"));
+        home.setImage(homeIcon);
     }
 
     @FXML
@@ -150,6 +161,7 @@ public class AppointmentInfoController {
             return;
         }
         showEdit(selected, "Edit.fxml");
+        
     }
 
     @FXML

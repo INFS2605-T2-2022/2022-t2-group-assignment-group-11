@@ -15,6 +15,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 
 /**
  *
@@ -55,6 +57,12 @@ public class confirmAppointmentController implements Initializable{
     @FXML
     Button backToAppointment;
     
+    @FXML
+    ImageView logo;
+    
+    @FXML
+    ImageView poster;
+    
     //Print confirmation information
     Appointment newAppointment = App.getAppointment();
     
@@ -71,6 +79,14 @@ public class confirmAppointmentController implements Initializable{
         donorCentreConf.setText(newAppointment.getDonorCentre());
         timeConf.setText(newAppointment.getBookingTime());
         dateConf.setText(newAppointment.getBookingDate());
+        
+        //Add logo
+        Image logoImage = new Image(App.class.getResourceAsStream("img/logo.png"));
+        logo.setImage(logoImage);
+        
+        //Add poster
+        Image posterImage = new Image(App.class.getResourceAsStream("img/poster.jpeg"));
+        logo.setImage(posterImage);
     }
     
     public void confirmButton() throws SQLException, IOException {
@@ -80,8 +96,8 @@ public class confirmAppointmentController implements Initializable{
         String database = "jdbc:sqlite:DonorDatabase.db";
         Connection conn = DriverManager.getConnection(database);
         PreparedStatement pSt = conn.prepareStatement
-                ("INSERT INTO appointment (firstName, lastName, phoneNo, "
-                + "donType, donorCentre, time, date) "
+                ("INSERT INTO appointment (firstName, lastName, phoneNumber, "
+                + "donationType, donorCentre, donationTime, donationDate) "
                 + "VALUES (?,?,?,?,?,?,?)");
         pSt.setString(1, newAppointment.getFirstName());
         pSt.setString(2, newAppointment.getLastName());

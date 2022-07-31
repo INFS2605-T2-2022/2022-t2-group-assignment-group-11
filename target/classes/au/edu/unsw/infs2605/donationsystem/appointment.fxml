@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.JFXButton?>
 <?import javafx.scene.Group?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.CheckBox?>
@@ -14,137 +13,149 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="au.edu.unsw.infs2605.donationsystem.eligibilityController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="au.edu.unsw.infs2605.donationsystem.eligibilityController">
    <children>
-      <CheckBox fx:id="condition1" layoutX="97.0" layoutY="100.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="310.0" text="You are 18-75 years old.">
+      <CheckBox fx:id="condition1" layoutX="258.0" layoutY="190.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="310.0" text="You are 18-75 years old.">
          <font>
-            <Font name="AppleGothic Regular" size="10.0" />
+            <Font name="AppleGothic Regular" size="13.0" />
          </font>
       </CheckBox>
-      <CheckBox fx:id="condition2" layoutX="97.0" layoutY="143.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="310.0" text="You weigh at least 50kg.">
+      <CheckBox fx:id="condition2" layoutX="258.0" layoutY="248.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="310.0" text="You weigh at least 50kg.">
          <font>
-            <Font name="AppleGothic Regular" size="10.0" />
+            <Font name="AppleGothic Regular" size="13.0" />
          </font>
       </CheckBox>
-      <CheckBox fx:id="condition3" layoutX="97.0" layoutY="165.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="430.0" text="You do not have a serious heart condition, or have not had heart attack or stroke." textOverrun="CLIP">
+      <CheckBox fx:id="condition3" layoutX="258.0" layoutY="277.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="516.0" text="You do not have a serious heart condition, or have not had heart attack or stroke." textOverrun="CLIP">
          <font>
-            <Font name="AppleGothic Regular" size="10.0" />
+            <Font name="AppleGothic Regular" size="13.0" />
          </font>
       </CheckBox>
-      <CheckBox fx:id="condition4" layoutX="97.0" layoutY="187.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="358.0" text="In the last 3 months,  you  hve not engaged in at-risk sexual behaviour." textOverrun="CLIP">
+      <CheckBox fx:id="condition4" layoutX="258.0" layoutY="307.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="478.0" text="In the last 3 months,  you have not engaged in at-risk sexual behaviour." textOverrun="CLIP">
          <font>
-            <Font name="AppleGothic Regular" size="10.0" />
+            <Font name="AppleGothic Regular" size="13.0" />
          </font>
       </CheckBox>
-      <CheckBox fx:id="condition5" layoutX="97.0" layoutY="210.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="358.0" text="You have not had an operation or surgeon in the last 6 months." textOverrun="CLIP">
+      <CheckBox fx:id="condition5" layoutX="258.0" layoutY="335.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="439.0" text="You have not had an operation or surgeon in the last 6 months." textOverrun="CLIP">
          <font>
-            <Font name="AppleGothic Regular" size="10.0" />
+            <Font name="AppleGothic Regular" size="13.0" />
          </font>
       </CheckBox>
-      <CheckBox fx:id="condition6" layoutX="97.0" layoutY="231.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="405.0" text="You are not pregnant, or have not been pregnant in the last 9 months." textOverrun="CLIP">
+      <CheckBox fx:id="condition6" layoutX="258.0" layoutY="363.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="478.0" text="You are not pregnant, or have not been pregnant in the last 9 months." textOverrun="CLIP">
          <font>
-            <Font name="AppleGothic Regular" size="10.0" />
+            <Font name="AppleGothic Regular" size="13.0" />
          </font>
       </CheckBox>
-      <CheckBox fx:id="condition7" layoutX="97.0" layoutY="252.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="405.0" text="You are not taking antibiotics." textOverrun="CLIP">
+      <CheckBox fx:id="condition7" layoutX="258.0" layoutY="393.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="405.0" text="You are not taking antibiotics." textOverrun="CLIP">
          <font>
-            <Font name="AppleGothic Regular" size="10.0" />
+            <Font name="AppleGothic Regular" size="13.0" />
          </font>
       </CheckBox>
-      <CheckBox fx:id="condition8" layoutX="97.0" layoutY="273.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="405.0" text="You have not had any dental work in the week before your donation." textOverrun="CLIP">
+      <CheckBox fx:id="condition8" layoutX="258.0" layoutY="423.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="497.0" text="You have not had any dental work in the week before your donation." textOverrun="CLIP">
          <font>
-            <Font name="AppleGothic Regular" size="10.0" />
+            <Font name="AppleGothic Regular" size="13.0" />
          </font>
       </CheckBox>
-      <CheckBox fx:id="condition9" layoutX="97.0" layoutY="295.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="405.0" text="You have not had any tattoo in the 4 months before your donation." textOverrun="CLIP">
+      <CheckBox fx:id="condition9" layoutX="258.0" layoutY="455.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="488.0" text="You have not had any tattoo in the 4 months before your donation." textOverrun="CLIP">
          <font>
-            <Font name="AppleGothic Regular" size="10.0" />
+            <Font name="AppleGothic Regular" size="13.0" />
          </font>
       </CheckBox>
-      <CheckBox fx:id="condition10" layoutX="97.0" layoutY="316.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="405.0" text="You have not had a piercing in the 4 months before your donation." textOverrun="CLIP">
+      <CheckBox fx:id="condition10" layoutX="258.0" layoutY="487.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="484.0" text="You have not had a piercing in the 4 months before your donation." textOverrun="CLIP">
          <font>
-            <Font name="AppleGothic Regular" size="10.0" />
+            <Font name="AppleGothic Regular" size="13.0" />
          </font>
       </CheckBox>
-      <CheckBox fx:id="condition11" layoutX="97.0" layoutY="337.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="455.0" text="You have not been outside of Australia in the 4 months before your donation." textOverrun="CLIP">
+      <CheckBox fx:id="condition11" layoutX="259.0" layoutY="518.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="515.0" text="You have not been outside of Australia in the 4 months before your donation." textOverrun="CLIP">
          <font>
-            <Font name="AppleGothic Regular" size="10.0" />
+            <Font name="AppleGothic Regular" size="13.0" />
          </font>
       </CheckBox>
-      <Button id="continue" layoutX="481.0" layoutY="364.0" mnemonicParsing="false" onMouseClicked="#eligibilityCheck" prefHeight="26.0" prefWidth="75.0" style="-fx-background-color: #6f060d;" text="Continue" textFill="WHITE">
+      <Button id="continue" layoutX="713.0" layoutY="570.0" mnemonicParsing="false" onMouseClicked="#eligibilityCheck" prefHeight="28.0" prefWidth="88.0" style="-fx-background-color: #6f060d;" text="Continue" textFill="WHITE">
          <font>
-            <Font name="Avenir Next Bold" size="11.0" />
+            <Font name="Avenir Next Bold" size="13.0" />
          </font>
       </Button>
-      <Text fill="#6f060d" layoutX="98.0" layoutY="92.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Please select all options applied to you to check if you are eligible to make an appointment." wrappingWidth="514.9474873920707">
+      <Text layoutX="230.0" layoutY="164.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Please select all options applied to you to check if you are eligible to make an appointment." wrappingWidth="585.3815083881644">
          <font>
-            <Font name="AppleGothic Regular" size="10.0" />
+            <Font name="Avenir Next Bold" size="13.0" />
          </font>
       </Text>
-      <Line endX="555.2877197265625" endY="-1.9073486328125E-6" layoutX="46.0" layoutY="29.0" startX="-45.99999237060547" startY="-1.9073486328125E-6" stroke="#80808036" />
-      <Label id="error" fx:id="error" layoutX="198.0" layoutY="369.0" text="Sorry, you are not eligible to make a donation." textFill="#f50a0a" visible="false">
+      <Line endX="905.0" endY="-7.62939453125E-6" layoutX="95.0" layoutY="52.0" startX="-95.64157104492188" startY="-7.62939453125E-6" stroke="#80808036" />
+      <Label id="error" fx:id="error" layoutX="382.0" layoutY="575.0" text="Sorry, you are not eligible to make a donation." textFill="#f50a0a" visible="false">
          <font>
-            <Font name="Montserrat Regular" size="11.0" />
+            <Font name="AppleGothic Regular" size="13.0" />
          </font>
       </Label>
-      <CheckBox fx:id="condition12" layoutX="97.0" layoutY="121.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="310.0" text="You have not been unwell in any way lately.">
+      <CheckBox fx:id="condition12" layoutX="258.0" layoutY="219.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="310.0" text="You have not been unwell in any way lately.">
          <font>
-            <Font name="AppleGothic Regular" size="10.0" />
+            <Font name="AppleGothic Regular" size="13.0" />
          </font>
       </CheckBox>
-      <Group layoutX="106.0" layoutY="35.0">
+      <Group layoutX="295.0" layoutY="64.0">
          <children>
-            <ProgressBar layoutX="30.0" layoutY="5.0" prefHeight="13.0" prefWidth="330.0" progress="0.0" />
+            <ProgressBar layoutX="30.0" layoutY="5.0" prefHeight="13.0" prefWidth="330.0" progress="0.0" style="-fx-accent: #6f060d;" />
             <ImageView fitHeight="16.0" fitWidth="17.0" layoutX="29.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../../../../../../../../../../Desktop/eli.png" />
                </image>
             </ImageView>
-            <Circle fill="WHITE" layoutX="197.0" layoutY="11.0" radius="13.0" stroke="GREY" strokeType="INSIDE" strokeWidth="0.7" />
-            <ImageView fitHeight="15.0" fitWidth="14.0" layoutX="190.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../../../../../../../../../../Desktop/calendar.png" />
-               </image>
-            </ImageView>
+            <Circle fill="WHITE" layoutX="206.0" layoutY="12.0" radius="13.0" stroke="GREY" strokeType="INSIDE" strokeWidth="0.7" />
             <Circle fill="WHITE" layoutX="356.0" layoutY="10.0" radius="13.0" stroke="GREY" strokeType="INSIDE" strokeWidth="0.7" />
-            <ImageView fitHeight="18.0" fitWidth="18.0" layoutX="347.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../../../../../../../../../../Desktop/grey%20check.png" />
-               </image>
-            </ImageView>
             <Circle fill="#6f060d" layoutX="34.0" layoutY="12.0" radius="13.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.7" />
          </children>
       </Group>
-      <Text id="appointmentConfirmed" fill="GREY" layoutX="407.0" layoutY="69.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Appointment Confirmed">
+      <Text id="appointmentConfirmed" fill="GREY" layoutX="600.0" layoutY="105.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Appointment Confirmed">
          <font>
-            <Font name="AppleGothic Regular" size="10.0" />
+            <Font name="AppleGothic Regular" size="11.0" />
          </font>
       </Text>
-      <Text id="eligibility" layoutX="105.0" layoutY="70.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Eligibility Check">
+      <Text id="eligibility" layoutX="298.0" layoutY="106.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Eligibility Check">
          <font>
-            <Font name="AppleGothic Regular" size="10.0" />
+            <Font name="AppleGothic Regular" size="11.0" />
          </font>
       </Text>
-      <Text id="appointmentBooking" fill="GREY" layoutX="256.0" layoutY="69.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Appointment Booking">
+      <Text id="appointmentBooking" fill="GREY" layoutX="449.0" layoutY="105.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Appointment Booking">
          <font>
-            <Font name="AppleGothic Regular" size="10.0" />
+            <Font name="AppleGothic Regular" size="11.0" />
          </font>
       </Text>
-      <Line endX="421.06005859375" endY="-7.62939453125E-6" layoutX="111.0" layoutY="76.0" startX="-36.19024658203125" stroke="#8080802e" />
-      <Button id="clear" layoutX="96.0" layoutY="364.0" mnemonicParsing="false" onMouseClicked="#clearOption" prefHeight="26.0" prefWidth="68.0" style="-fx-border-color: 000000;" text="Clear">
-         <font>
-            <Font name="Avenir Next Bold" size="11.0" />
-         </font>
-      </Button>
-      <Label alignment="CENTER" layoutX="20.0" layoutY="5.0" prefHeight="17.0" prefWidth="600.0" text="CHECK YOUR ELIGIBLITY" textFill="#6f060d">
+      <Line endX="534.1876220703125" endY="7.62939453125E-6" layoutX="263.0" layoutY="123.0" startX="-36.19024658203125" stroke="#8080802e" />
+      <Button id="clear" layoutX="234.0" layoutY="570.0" mnemonicParsing="false" onMouseClicked="#clearOption" prefHeight="26.0" prefWidth="68.0" style="-fx-border-color: 000000;" text="Clear">
          <font>
             <Font name="Avenir Next Bold" size="13.0" />
          </font>
-      </Label>
-      <JFXButton fx:id="backToHome" layoutX="503.0" layoutY="2.0" onAction="#backToHomePage" text="Home" textFill="#6f060d">
+      </Button>
+      <Button layoutX="875.0" layoutY="14.0" mnemonicParsing="false" onMouseClicked="#backToHomePage" text="Home" textFill="#6f060d">
+         <graphic>
+            <ImageView fx:id="home" fitHeight="18.0" fitWidth="33.0" onMouseClicked="#backToHomePage" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@img/home.png" />
+               </image>
+            </ImageView>
+         </graphic>
          <font>
-            <Font name="AppleGothic Regular" size="10.0" />
+            <Font name="Avenir Next Bold" size="13.0" />
          </font>
-      </JFXButton>
+      </Button>
+      <ImageView fx:id="logo" fitHeight="48.0" fitWidth="83.0" layoutX="7.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@img/logo.png" />
+         </image>
+      </ImageView>
+      <Text layoutX="61.0" layoutY="26.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Circle Blood">
+         <font>
+            <Font name="AppleGothic Regular" size="13.0" />
+         </font>
+      </Text>
+      <Text layoutX="61.0" layoutY="39.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Management">
+         <font>
+            <Font name="AppleGothic Regular" size="13.0" />
+         </font>
+      </Text>
+      <Text fill="#6f060d" layoutX="336.0" layoutY="34.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Check your eligibility " textAlignment="JUSTIFY">
+         <font>
+            <Font name="Avenir Next Bold" size="28.0" />
+         </font>
+      </Text>
    </children>
 </AnchorPane>

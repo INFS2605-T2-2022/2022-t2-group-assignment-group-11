@@ -41,7 +41,7 @@ public class Database {
         
         try {
             //check the table is exist
-            st.execute("select 1 from appointmentinfo");
+            st.execute("select 1 from appointment");
         } catch (SQLException throwables) {
          
         //create donor centre table with id, name, address, phone, donation type
@@ -56,7 +56,7 @@ public class Database {
         st.execute(createDonorCentreQuery);
         insertDonorCentre();
         
-        String createAppointmentInfoQuery = "CREATE TABLE IF NOT EXISTS appointmentinfo"
+        String createAppointmentInfoQuery = "CREATE TABLE IF NOT EXISTS appointment"
                     + "("
                     + "ID INTEGER PRIMARY KEY autoincrement, "
                     + "FIRSTNAME TEXT NOT NULL, "
@@ -64,11 +64,11 @@ public class Database {
                     + "DONORCENTRE TEXT NOT NULL, "
                     + "DONATIONTIME TEXT NOT NULL,"
                     + "DONATIONDATE TEXT NOT NULL,"
-                    + "EMAILADDRESS TEXT NOT NULL,"
+                    + "EMAILADDRESS TEXT,"
                     + "PHONENUMBER TEXT NOT NULL,"
-                    + "DONATIONTYPE TEXT NOT NULL, "
-                    + "DONATIONSTATUS TEXT NOT NULL,"
-                    + "NOTES TEXT NOT NULL"
+                    + "DONATIONTYPE TEXT, "
+                    + "DONATIONSTATUS TEXT,"
+                    + "NOTES TEXT"
                     + ");";
             st.execute(createAppointmentInfoQuery);
             //insert data into tables
@@ -111,7 +111,7 @@ public class Database {
       public void insertAppointmentInfo() throws SQLException {
         Statement st = conn.createStatement();
         PreparedStatement pSt = conn.prepareStatement(
-                "INSERT OR IGNORE INTO appointmentinfo (id, firstName, lastName, donorCentre, " +
+                "INSERT OR IGNORE INTO appointment (id, firstName, lastName, donorCentre, " +
                         "donationTime, donationDate, emailAddress, " +
                         "phoneNumber, donationType, donationStatus,notes) VALUES (?,?,?,?,?,?,?,?,?,?,?)"
         );
@@ -119,7 +119,7 @@ public class Database {
         String[] firstName = {"John", "Margret", "Jill"};
         String[] lastName = {"Pho", "Kip", "Dance"};
         String[] donorCentre = {"Town Hall Donor Centre", "Chatswood Donor Centre", "The Shire Donor Centre"};
-        String[] donationTime = {"12:08", "1:56", "2:34"};
+        String[] donationTime = {"12:00PM", "2:30PM", "10:30AM"};
         String[] donationDate = {"03/07/22", "21/06/22", "30/05/22"};
         String[] emailAddress = {"johnpho@gmail.com", "margretkip@gmail.com", "jilldance@gmail.com"};
         String[] phoneNumber = {"0465234987", "0412569276", "0417509469"};
@@ -153,7 +153,7 @@ public class Database {
         ObservableList<AppointmentInfo> appointmentInfoList = FXCollections.observableArrayList();
         try {
             Statement st = conn.createStatement();
-            String query = "SELECT id, firstName, lastName, donorCentre, donationTime, donationDate, emailAddress,phoneNumber, donationtype,donationstatus,notes FROM appointmentinfo " + where;
+            String query = "SELECT id, firstName, lastName, donorCentre, donationTime, donationDate, emailAddress,phoneNumber, donationtype,donationstatus,notes FROM appointment " + where;
             System.out.println(query);
             ResultSet rs = st.executeQuery(query);
             while (rs.next()) {
@@ -177,7 +177,7 @@ public class Database {
     public void deleteAppointmentInfo(AppointmentInfo appointmentInfo) {
         try {
             Statement st = conn.createStatement();
-            st.execute("delete from appointmentinfo where id=" + appointmentInfo.getID());
+            st.execute("DELETE FROM appointment WHERE id=" + appointmentInfo.getID());
         } catch (Exception throwables) {
             throwables.printStackTrace();
         }
@@ -191,7 +191,7 @@ public class Database {
         try {
             Statement st = conn.createStatement();
             PreparedStatement pSt = conn.prepareStatement(
-                    "INSERT OR IGNORE INTO appointmentinfo ( firstName, lastName, donorCentre, " +
+                    "INSERT OR IGNORE INTO appointment ( firstName, lastName, donorCentre, " +
                             "donationTime, donationDate, emailAddress, " +
                             "phoneNumber, donationType, donationStatus,notes) VALUES (?,?,?,?,?,?,?,?,?,?)"
             );
@@ -220,7 +220,7 @@ public class Database {
         try {
             Statement st = conn.createStatement();
             PreparedStatement pSt = conn.prepareStatement(
-                    "update appointmentinfo set firstName=?, lastName=?, donorCentre=?, " +
+                    "UPDATE appointment SET firstName=?, lastName=?, donorCentre=?, " +
                             "donationTime=?, donationDate=?, emailAddress=?, " +
                             "phoneNumber=?, donationType=?, donationStatus=?,notes=? where ID = ?"
             );
@@ -243,49 +243,4 @@ public class Database {
     }
 
 }
-    
-
-    /*
-    public ObservableList<DonorCentre> getCentre() throws SQLException {
-        // Get ResultSet of all donor centres that exist in the database
-        Connection conn = DriverManager.getConnection(database);
-        Statement st = conn.createStatement();
-        String query = "SELECT id, name, address, phone, dontype FROM donorcentre";
-        ResultSet rs = st.executeQuery(query);
-        
-        ObservableList<DonorCentre> centreList = FXCollections.observableArrayList();
-        // Add each row in the ResultSet to the petsList
-        while (rs.next()) {
-            centreList.add(new DonorCentre(rs.getInt("id"), rs.getString("name"), 
-                rs.getString("address"), rs.getString("phone"), 
-                rs.getString("dontype")));
-        }
-        
-        // Close 
-        st.close();
-        conn.close();
-        return centreList;
-    }
-    public ObservableList<Appointment> getAppointments() throws SQLException {
-        // Get ResultSet of all appointments that exist in the database
-        Connection conn = DriverManager.getConnection(database);
-        Statement st = conn.createStatement();
-        String query = "SELECT id, firstname, lastname, donorcentre, time, date, phoneno, email, notes, donstatus, dontype FROM appointment";
-        ResultSet rs = st.executeQuery(query);
-        
-        ObservableList<Appointment> AppointmentsList = FXCollections.observableArrayList();
-        // Add each row in the ResultSet to the petsList
-        while (rs.next()) {
-            AppointmentsList.add(new Appointment(rs.getInt("id"), rs.getString("firstname"), 
-                rs.getString("lastname"), rs.getString("donorcentre"), rs.getString("time"),
-                rs.getString("date"),rs.getString("phoneno"),rs.getString("email"),
-                rs.getString("notes"),rs.getString("donstatus"),rs.getString("dontype")));
-        }
-        
-        // Close 
-        st.close();
-        conn.close();
-        return AppointmentsList;
-    }
-*/
     

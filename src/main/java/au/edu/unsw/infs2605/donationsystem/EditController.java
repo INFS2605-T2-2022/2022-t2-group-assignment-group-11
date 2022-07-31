@@ -11,6 +11,7 @@ import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
@@ -51,10 +52,15 @@ public class EditController {
 
     @FXML
     private ComboBox<String> donationStatusField;
+    
+    @FXML
+    Label pageLabel;
+    
     AppointmentInfo selected;
 
     @FXML
     public void initialize() {
+        pageLabel.setText("Add New Appointment");
         donationTypeField.getItems().addAll("Blood", "Plasma", "Blood and Plasma");
         donationStatusField.getItems().addAll("approved", "completed");
         donationTypeField.getSelectionModel().select(0);
@@ -62,6 +68,7 @@ public class EditController {
         Platform.runLater(() -> {
             Scene scene = idField.getScene();
             if (scene.getUserData() != null) {
+                pageLabel.setText("Edit Appointment Information");
                 selected = (AppointmentInfo) scene.getUserData();
                 idField.setText(selected.getID() + "");
                 firstNameField.setText(selected.getFirstName());

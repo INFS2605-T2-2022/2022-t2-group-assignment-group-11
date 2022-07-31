@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.JFXButton?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.SplitPane?>
@@ -10,88 +9,56 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.RowConstraints?>
-<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" style="-fx-background-color: #6F060D;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="au.edu.unsw.infs2605.donationsystem.AppointmentInfoController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="au.edu.unsw.infs2605.donationsystem.AppointmentInfoController">
    <children>
-      <SplitPane dividerPositions="0.5851063829787234" layoutX="6.0" layoutY="51.0" prefHeight="644.0" prefWidth="989.0">
+      <SplitPane dividerPositions="0.5668693009118541" layoutX="-2.0" layoutY="51.0" prefHeight="649.0" prefWidth="1003.0">
         <items>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="700.0" prefWidth="519.0">
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="642.0" prefWidth="556.0">
                <children>
-                  <VBox layoutX="3.0" layoutY="-4.0" prefHeight="644.0" prefWidth="568.0">
-                     <children>
-                        <GridPane prefHeight="642.0" prefWidth="511.0">
-                          <columnConstraints>
-                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                          </columnConstraints>
-                          <rowConstraints>
-                            <RowConstraints maxHeight="178.0" minHeight="10.0" prefHeight="56.5" vgrow="SOMETIMES" />
-                              <RowConstraints maxHeight="178.0" minHeight="10.0" prefHeight="56.5" vgrow="SOMETIMES" />
-                            <RowConstraints maxHeight="575.5" minHeight="10.0" prefHeight="575.5" vgrow="SOMETIMES" />
-                          </rowConstraints>
-                           <children>
-                              <TableView fx:id="AppointmentTable" prefHeight="567.0" prefWidth="450.0" style="-fx-background-color: #6F060D;" GridPane.rowIndex="2">
-                                <columns>
-                                  <TableColumn fx:id="ID" prefWidth="82.28944969177246" text="Donor ID" />
-                                  <TableColumn fx:id="donationType" prefWidth="102.55266571044922" text="Donation Type" />
-                                    <TableColumn fx:id="donorCentre" prefWidth="170.4738006591797" text="Donor Centre" />
-                                    <TableColumn fx:id="Date" prefWidth="106.02618408203125" text="Date" />
-                                    <TableColumn fx:id="Time" prefWidth="104.1578369140625" text="Time" />
-                                </columns>
-                              </TableView>
-                              <HBox alignment="CENTER" prefHeight="50.0" prefWidth="450.0" spacing="10.0">
-                                 <children>
-                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Search:">
-                                       <font>
-                                          <Font name="Avenir Next Bold" size="14.0" />
-                                       </font>
-                                    </Text>
-                                    <TextField fx:id="keywordSearch" />
-                                    <ImageView fitHeight="22.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
-                                       <image>
-                                          <Image url="@../../../../../../../../../../../../../../Desktop/592-5929003_search-button-magnifying-glass-logo-png-transparent-png.png" />
-                                       </image>
-                                    </ImageView>
-                                    <Button mnemonicParsing="false" onAction="#Add" prefHeight="26.0" prefWidth="176.0" style="-fx-background-color: #A52A2A#A52A2A;" text="+ Add New Appointment" textFill="#fcfcfc">
-                                       <font>
-                                          <Font name="AppleGothic Regular" size="13.0" />
-                                       </font></Button>
-                                 </children>
-                              </HBox>
-                              <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.rowIndex="1">
-                                 <children>
-                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Filter by">
-                                       <font>
-                                          <Font name="Avenir Next Bold" size="14.0" />
-                                       </font></Text>
-                                    <ComboBox fx:id="filterField" prefWidth="150.0" />
-                                 </children>
-                              </HBox>
-                           </children>
-                        </GridPane>
-                     </children>
-                  </VBox>
+                  <Button layoutX="356.0" layoutY="10.0" mnemonicParsing="false" onAction="#Add" prefHeight="26.0" prefWidth="176.0" style="-fx-background-color: #6f060d;" text="+ Add New Appointment" textFill="#fcfcfc">
+                     <font>
+                        <Font name="Avenir Next Bold" size="13.0" />
+                     </font>
+                  </Button>
+                  <Text layoutX="30.0" layoutY="63.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Search">
+                     <font>
+                        <Font name="Avenir Next Bold" size="14.0" />
+                     </font>
+                  </Text>
+                  <TextField fx:id="keywordSearch" layoutX="120.0" layoutY="45.0" prefHeight="26.0" prefWidth="293.0" promptText="Search by ID, centre, donation type or appointment" />
+                  <Text layoutX="29.0" layoutY="105.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Filter by">
+                     <font>
+                        <Font name="Avenir Next Bold" size="14.0" />
+                     </font>
+                  </Text>
+                  <ComboBox fx:id="filterField" layoutX="120.0" layoutY="86.0" prefHeight="26.0" prefWidth="293.0" />
+                  <TableView fx:id="AppointmentTable" layoutX="26.0" layoutY="131.0" prefHeight="496.0" prefWidth="507.0" style="-fx-background-color: #6F060D;">
+                    <columns>
+                      <TableColumn fx:id="ID" prefWidth="82.28944969177246" text="Donor ID" />
+                      <TableColumn fx:id="donationType" prefWidth="91.62803649902344" text="Donation Type" />
+                        <TableColumn fx:id="donorCentre" prefWidth="176.9457550048828" text="Donor Centre" />
+                        <TableColumn fx:id="Date" prefWidth="85.864501953125" text="Date" />
+                        <TableColumn fx:id="Time" prefWidth="68.57379150390625" text="Time" />
+                    </columns>
+                  </TableView>
                </children>
             </AnchorPane>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="656.0" prefWidth="397.0">
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="652.0" prefWidth="435.0">
                <children>
                   <ImageView fitHeight="126.0" fitWidth="113.0" layoutX="10.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../../../../../../../../../../../../../Desktop/blank-profile-picture-973460_640.png" />
                      </image>
                   </ImageView>
-                  <TextField fx:id="firstNameField" editable="false" layoutX="142.0" layoutY="70.0" prefHeight="26.0" prefWidth="91.0" />
+                  <TextField fx:id="firstNameField" editable="false" layoutX="144.0" layoutY="70.0" prefHeight="26.0" prefWidth="123.0" />
                   <TextField fx:id="phoneNumberField" editable="false" layoutX="240.0" layoutY="251.0" />
                   <TextField fx:id="donorCentreField" editable="false" layoutX="240.0" layoutY="108.0" />
-                  <Button layoutX="78.0" layoutY="594.0" mnemonicParsing="false" onAction="#Edit" prefHeight="33.0" prefWidth="141.0" style="-fx-background-color: #A52A2A#A52A2A;" text="Edit Appointment Info" textFill="WHITE">
+                  <Button layoutX="50.0" layoutY="586.0" mnemonicParsing="false" onAction="#Edit" prefHeight="33.0" prefWidth="141.0" style="-fx-background-color: #6f060d;" text="Edit Appointment" textFill="WHITE">
                      <font>
-                        <Font name="AppleGothic Regular" size="12.0" />
+                        <Font name="Avenir Next Bold" size="13.0" />
                      </font></Button>
                   <Text layoutX="142.0" layoutY="54.0" strokeType="OUTSIDE" strokeWidth="0.0" text="First Name">
                      <font>
@@ -107,9 +74,9 @@
                         <Font name="Avenir Next Bold" size="18.0" />
                      </font>
                   </Text>
-                  <Button layoutX="242.0" layoutY="594.0" mnemonicParsing="false" onAction="#Delete" prefHeight="33.0" prefWidth="138.0" text="Delete Appointment Info">
+                  <Button layoutX="253.0" layoutY="585.0" mnemonicParsing="false" onAction="#Delete" prefHeight="33.0" prefWidth="153.0" text="Delete Appointment">
                      <font>
-                        <Font size="12.0" />
+                        <Font name="Avenir Next Bold" size="13.0" />
                      </font></Button>
                   <Text layoutX="142.0" layoutY="223.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Donation Date">
                      <font>
@@ -133,9 +100,9 @@
                      <font>
                         <Font name="Avenir Next Bold" size="13.0" />
                      </font></Text>
-                  <Button layoutX="275.0" layoutY="511.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="105.0" style="-fx-background-color: #8B0000#8B0000;" text="Create Receipt" textFill="WHITE">
+                  <Button layoutX="287.0" layoutY="509.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="112.0" style="-fx-background-color: #8B0000#8B0000;" text="Create Receipt" textFill="WHITE">
                      <font>
-                        <Font name="AppleGothic Regular" size="13.0" />
+                        <Font name="Avenir Next Bold" size="13.0" />
                      </font></Button>
                   <Text layoutX="149.0" layoutY="311.0" strokeType="OUTSIDE" strokeWidth="0.0" />
                   <TextField fx:id="emailAddressField" editable="false" layoutX="241.0" layoutY="293.0" />
@@ -153,7 +120,7 @@
                         <Font name="Avenir Next Bold" size="13.0" />
                      </font></Text>
                   <TextField fx:id="donationTypeField" editable="false" layoutX="19.0" layoutY="219.0" prefHeight="26.0" prefWidth="100.0" />
-                  <TextField fx:id="donationStatusField" editable="false" layoutX="15.0" layoutY="292.0" prefHeight="26.0" prefWidth="113.0" />
+                  <TextField fx:id="donationStatusField" editable="false" layoutX="19.0" layoutY="292.0" prefHeight="26.0" prefWidth="97.0" />
                   <TextField fx:id="notesFiled" editable="false" layoutX="15.0" layoutY="360.0" prefHeight="130.0" prefWidth="384.0" />
                   <Text layoutX="20.0" layoutY="350.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Notes">
                      <font>
@@ -163,15 +130,37 @@
             </AnchorPane>
         </items>
       </SplitPane>
-      <Text fill="WHITE" layoutX="376.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Appointment List " textAlignment="JUSTIFY">
+      <Text fill="#6f060d" layoutX="336.0" layoutY="34.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Appointment Management " textAlignment="JUSTIFY">
          <font>
-            <Font name="Avenir Next Bold" size="36.0" />
+            <Font name="Avenir Next Bold" size="28.0" />
          </font>
       </Text>
-      <JFXButton fx:id="backToHome" layoutX="926.0" layoutY="15.0" onAction="#backToHomePage" text="Home" textFill="WHITE">
+      <ImageView fx:id="logo" fitHeight="48.0" fitWidth="83.0" layoutX="7.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@img/logo.png" />
+         </image>
+      </ImageView>
+      <Text layoutX="61.0" layoutY="25.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Circle Blood">
          <font>
-            <Font name="AppleGothic Regular" size="10.0" />
+            <Font name="AppleGothic Regular" size="13.0" />
          </font>
-      </JFXButton>
+      </Text>
+      <Text layoutX="61.0" layoutY="38.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Management">
+         <font>
+            <Font name="AppleGothic Regular" size="13.0" />
+         </font>
+      </Text>
+      <Button layoutX="896.0" layoutY="12.0" mnemonicParsing="false" onMouseClicked="#backToHomePage" text="Home" textFill="#6f060d">
+         <graphic>
+            <ImageView fx:id="home" fitHeight="18.0" fitWidth="33.0" onMouseClicked="#backToHomePage" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@img/home.png" />
+               </image>
+            </ImageView>
+         </graphic>
+         <font>
+            <Font name="Avenir Next Bold" size="13.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

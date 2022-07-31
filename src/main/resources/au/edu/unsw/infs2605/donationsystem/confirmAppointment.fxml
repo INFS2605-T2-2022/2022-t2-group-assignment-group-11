@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.JFXButton?>
 <?import javafx.scene.Group?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
@@ -14,34 +13,34 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="au.edu.unsw.infs2605.donationsystem.confirmAppointmentController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="au.edu.unsw.infs2605.donationsystem.confirmAppointmentController">
    <children>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#6f060d" height="199.0" layoutX="96.0" layoutY="122.0" stroke="BLACK" strokeType="INSIDE" width="403.0" />
-      <Text fill="WHITE" layoutX="128.0" layoutY="264.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Donor Center">
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="199.0" layoutX="516.0" layoutY="286.0" stroke="#6f060d" strokeType="INSIDE" width="403.0" />
+      <Text layoutX="548.0" layoutY="428.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Donor Center">
          <font>
             <Font name="AppleGothic Regular" size="13.0" />
          </font>
       </Text>
-      <Text fill="WHITE" layoutX="128.0" layoutY="294.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Booking Time">
+      <Text layoutX="548.0" layoutY="458.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Booking Time">
          <font>
             <Font name="AppleGothic Regular" size="13.0" />
          </font>
       </Text>
-      <Text fill="WHITE" layoutX="128.0" layoutY="152.0" strokeType="OUTSIDE" strokeWidth="0.0" text="First Name">
+      <Text layoutX="548.0" layoutY="316.0" strokeType="OUTSIDE" strokeWidth="0.0" text="First Name">
          <font>
             <Font name="AppleGothic Regular" size="13.0" />
          </font>
       </Text>
-      <Text fill="WHITE" layoutX="128.0" layoutY="180.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Last Name">
+      <Text layoutX="548.0" layoutY="344.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Last Name">
          <font>
             <Font name="AppleGothic Regular" size="13.0" />
          </font>
       </Text>
-      <Label fx:id="firstNameConf" layoutX="235.0" layoutY="139.0" prefHeight="17.0" prefWidth="245.0" text="firstName" textFill="WHITE">
+      <Label fx:id="firstNameConf" layoutX="655.0" layoutY="303.0" prefHeight="17.0" prefWidth="245.0" text="firstName">
          <font>
             <Font name="AppleGothic Regular" size="13.0" />
          </font></Label>
-      <Label fx:id="lastNameConf" layoutX="235.0" layoutY="167.0" prefHeight="17.0" prefWidth="239.0" text="lastName" textFill="WHITE">
+      <Label fx:id="lastNameConf" layoutX="655.0" layoutY="331.0" prefHeight="17.0" prefWidth="239.0" text="lastName">
          <font>
             <Font name="AppleGothic Regular" size="13.0" />
          </font></Label>
@@ -50,106 +49,103 @@
             <Font size="12.0" />
          </font>
       </Text>
-      <Text fill="WHITE" layoutX="128.0" layoutY="235.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Donation Type">
+      <Text layoutX="548.0" layoutY="399.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Donation Type">
          <font>
             <Font name="AppleGothic Regular" size="13.0" />
          </font>
       </Text>
-      <Label fx:id="donationTypeConf" layoutX="234.0" layoutY="221.0" prefHeight="17.0" prefWidth="242.0" text="donationType" textFill="WHITE">
+      <Label fx:id="donationTypeConf" layoutX="654.0" layoutY="385.0" prefHeight="17.0" prefWidth="242.0" text="donationType">
          <font>
             <Font name="AppleGothic Regular" size="13.0" />
          </font></Label>
-      <Label fx:id="donorCentreConf" layoutX="234.0" layoutY="251.0" prefHeight="17.0" prefWidth="242.0" text="donorCenter" textFill="WHITE">
+      <Label fx:id="donorCentreConf" layoutX="654.0" layoutY="415.0" prefHeight="17.0" prefWidth="242.0" text="donorCenter">
          <font>
             <Font name="AppleGothic Regular" size="13.0" />
          </font></Label>
-      <Label fx:id="dateConf" layoutX="366.0" layoutY="278.0" prefHeight="17.0" prefWidth="114.0" text="date">
+      <Label fx:id="dateConf" layoutX="784.0" layoutY="444.0" prefHeight="17.0" prefWidth="114.0" text="date">
          <font>
             <Font name="AppleGothic Regular" size="13.0" />
          </font></Label>
-      <Label fx:id="timeConf" layoutX="234.0" layoutY="280.0" prefHeight="18.0" prefWidth="87.0" text="time" textFill="WHITE">
+      <Label fx:id="timeConf" layoutX="654.0" layoutY="444.0" prefHeight="18.0" prefWidth="87.0" text="time">
          <font>
             <Font name="AppleGothic Regular" size="13.0" />
          </font></Label>
-      <Group layoutX="104.0" layoutY="32.0">
-         <children>
-            <ProgressBar layoutX="30.0" layoutY="5.0" prefHeight="13.0" prefWidth="330.0" progress="1.0" style="-fx-accent: red;" />
-            <ImageView fitHeight="16.0" fitWidth="17.0" layoutX="29.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../../../../../../../../../../Desktop/eli.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="15.0" fitWidth="14.0" layoutX="190.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../../../../../../../../../../Desktop/calendar.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="15.0" fitWidth="16.0" layoutX="350.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../../../../../../../../../../Desktop/tick%20black.png" />
-               </image>
-            </ImageView>
-            <Circle fill="#6f060d" layoutX="36.0" layoutY="10.0" radius="13.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.7" />
-            <Circle fill="#6f060d" layoutX="199.0" layoutY="10.0" radius="13.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.7" />
-            <Circle fill="#6f060d" layoutX="354.0" layoutY="10.0" radius="13.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.7" />
-         </children>
-      </Group>
-      <Text id="appointmentConfirmed" layoutX="405.0" layoutY="66.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Appointment Confirmed">
-         <font>
-            <Font name="AppleGothic Regular" size="10.0" />
-         </font>
-      </Text>
-      <Text id="eligibility" layoutX="105.0" layoutY="67.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Eligibility Check">
-         <font>
-            <Font name="AppleGothic Regular" size="10.0" />
-         </font>
-      </Text>
-      <Text id="appointmentBooking" layoutX="252.0" layoutY="66.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Appointment Booking">
-         <font>
-            <Font name="AppleGothic Regular" size="10.0" />
-         </font>
-      </Text>
-      <Line endX="421.06005859375" endY="-7.62939453125E-6" layoutX="109.0" layoutY="72.0" startX="-36.19024658203125" stroke="#8080802e" />
-      <Line endX="555.2877197265625" endY="-1.9073486328125E-6" layoutX="48.0" layoutY="26.0" startX="-45.99999237060547" startY="-1.9073486328125E-6" stroke="#80808036" />
-      <Button id="continue" fx:id="confirm" layoutX="363.0" layoutY="338.0" mnemonicParsing="false" onAction="#confirmButton" prefHeight="26.0" prefWidth="135.0" style="-fx-background-color: #6F060D; -fx-border-color: 000000;" text="Confirm Appointment" textFill="WHITE" visible="false">
+      <Group layoutX="104.0" layoutY="32.0" />
+      <Button id="continue" fx:id="confirm" layoutX="780.0" layoutY="510.0" mnemonicParsing="false" onAction="#confirmButton" prefHeight="26.0" prefWidth="135.0" style="-fx-background-color: #6F060D; -fx-border-color: 000000;" text="Confirm Appointment" textFill="WHITE" visible="false">
          <font>
             <Font name="Avenir Next Bold" size="11.0" />
          </font>
       </Button>
-      <Button id="clear" fx:id="cancel" layoutX="95.0" layoutY="338.0" mnemonicParsing="false" onAction="#cancelButton" prefHeight="26.0" prefWidth="68.0" style="-fx-border-color: 000000;" text="BACK" visible="false">
+      <Button id="clear" fx:id="cancel" layoutX="514.0" layoutY="510.0" mnemonicParsing="false" onAction="#cancelButton" prefHeight="26.0" prefWidth="68.0" style="-fx-border-color: 000000;" text="BACK" visible="false">
          <font>
             <Font name="Avenir Next Bold" size="11.0" />
          </font>
       </Button>
-      <Text fill="WHITE" layoutX="128.0" layoutY="207.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Mobile">
+      <Text layoutX="548.0" layoutY="371.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Mobile">
          <font>
             <Font name="AppleGothic Regular" size="13.0" />
          </font>
       </Text>
-      <Label fx:id="mobileConf" layoutX="235.0" layoutY="193.0" prefHeight="17.0" prefWidth="239.0" text="mobile" textFill="WHITE">
+      <Label fx:id="mobileConf" layoutX="655.0" layoutY="357.0" prefHeight="17.0" prefWidth="239.0" text="mobile">
          <font>
             <Font name="AppleGothic Regular" size="13.0" />
          </font>
       </Label>
-      <Label fx:id="confirmLabel" layoutX="111.0" layoutY="92.0" prefHeight="17.0" prefWidth="375.0" text="confirm" textAlignment="CENTER">
+      <Label fx:id="confirmLabel" layoutX="526.0" layoutY="249.0" prefHeight="27.0" prefWidth="387.0" text="confirm" textAlignment="CENTER">
          <font>
-            <Font name="AppleGothic Regular" size="13.0" />
+            <Font name="Avenir Next Bold" size="16.0" />
          </font>
       </Label>
-      <Button id="continue" fx:id="backToAppointment" layoutX="363.0" layoutY="338.0" mnemonicParsing="false" onAction="#confirmButton" prefHeight="26.0" prefWidth="135.0" style="-fx-background-color: #6F060D; -fx-border-color: 000000;" text="Back to Home page" textFill="WHITE" visible="false">
+      <Button id="done" fx:id="backToAppointment" layoutX="781.0" layoutY="510.0" mnemonicParsing="false" onAction="#confirmButton" prefHeight="26.0" prefWidth="135.0" style="-fx-background-color: #6F060D; -fx-border-color: 000000;" text="Back to Home page" textFill="WHITE" visible="false">
          <font>
             <Font name="Avenir Next Bold" size="11.0" />
          </font>
       </Button>
-      <Label alignment="CENTER" layoutX="10.0" layoutY="3.0" prefHeight="17.0" prefWidth="600.0" text="CONFIRM YOUR APPOINTMENT" textFill="#6f060d">
+      <Line endX="905.0" endY="-7.62939453125E-6" layoutX="105.0" layoutY="49.0" startX="-95.64157104492188" startY="-7.62939453125E-6" stroke="#80808036" />
+      <ProgressBar layoutX="341.0" layoutY="66.0" prefHeight="13.0" prefWidth="330.0" progress="1.0" style="-fx-accent: #6f060d;" />
+      <Circle fill="#6f060d" layoutX="517.0" layoutY="73.0" radius="13.0" stroke="GREY" strokeType="INSIDE" strokeWidth="0.7" />
+      <Circle fill="#6f060d" layoutX="667.0" layoutY="71.0" radius="13.0" stroke="GREY" strokeType="INSIDE" strokeWidth="0.7" />
+      <Circle fill="#6f060d" layoutX="345.0" layoutY="73.0" radius="13.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.7" />
+      <Text id="appointmentConfirmed" layoutX="610.0" layoutY="102.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Appointment Confirmed">
          <font>
-            <Font name="Avenir Next Bold" size="13.0" />
+            <Font name="AppleGothic Regular" size="11.0" />
          </font>
-      </Label>
-      <JFXButton fx:id="backToHome" layoutX="520.0" layoutY="1.0" onAction="#backToHomePage" text="Home" textFill="#6f060d">
+      </Text>
+      <Text id="eligibility" layoutX="308.0" layoutY="103.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Eligibility Check">
          <font>
-            <Font name="AppleGothic Regular" size="10.0" />
+            <Font name="AppleGothic Regular" size="11.0" />
          </font>
-      </JFXButton>
+      </Text>
+      <Text id="appointmentBooking" layoutX="459.0" layoutY="102.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Appointment Booking">
+         <font>
+            <Font name="AppleGothic Regular" size="11.0" />
+         </font>
+      </Text>
+      <Line endX="534.1876220703125" endY="7.62939453125E-6" layoutX="273.0" layoutY="120.0" startX="-36.19024658203125" stroke="#8080802e" />
+      <ImageView fx:id="logo" fitHeight="48.0" fitWidth="83.0" layoutX="17.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@img/logo.png" />
+         </image>
+      </ImageView>
+      <Text layoutX="71.0" layoutY="23.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Circle Blood">
+         <font>
+            <Font name="AppleGothic Regular" size="13.0" />
+         </font>
+      </Text>
+      <Text layoutX="71.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Management">
+         <font>
+            <Font name="AppleGothic Regular" size="13.0" />
+         </font>
+      </Text>
+      <Text fill="#6f060d" layoutX="346.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Confirm your appointment" textAlignment="JUSTIFY">
+         <font>
+            <Font name="Avenir Next Bold" size="28.0" />
+         </font>
+      </Text>
+      <ImageView fitHeight="263.0" fitWidth="406.0" layoutX="74.0" layoutY="244.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@img/poster.jpeg" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>

@@ -37,10 +37,16 @@ public class AddNewCentreController implements Initializable {
     @FXML
     private ImageView donorCentreImageView;
     
+    @FXML
+    ImageView logo;
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        Image donorCentreImage = new Image(App.class.getResourceAsStream("img\\donor centre.jpg"));
+        Image donorCentreImage = new Image(App.class.getResourceAsStream("img/donorcentre.png"));
         donorCentreImageView.setImage(donorCentreImage);
+        
+        Image logoImage = new Image(App.class.getResourceAsStream("img/logo.png"));
+        logo.setImage(logoImage);
     } 
     
     @FXML

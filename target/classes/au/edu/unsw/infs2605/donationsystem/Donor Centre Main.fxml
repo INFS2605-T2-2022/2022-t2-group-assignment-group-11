@@ -1,105 +1,146 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.JFXButton?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="au.edu.unsw.infs2605.donationsystem.DonorCentreMainController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="au.edu.unsw.infs2605.donationsystem.DonorCentreMainController">
    <children>
-      <AnchorPane layoutX="155.0" layoutY="29.0" prefHeight="207.0" prefWidth="444.0">
+      <AnchorPane layoutX="362.0" layoutY="114.0" prefHeight="207.0" prefWidth="505.0">
          <children>
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="170.0" layoutX="5.0" layoutY="-4.0" stroke="#6f060d" strokeType="INSIDE" width="437.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="213.0" layoutX="5.0" layoutY="-4.0" stroke="#6f060d" strokeType="INSIDE" width="501.0" />
             <Text layoutX="11.0" layoutY="26.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="85.33333333333343">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
             </Text>
-            <Text fill="#868686" fontSmoothingType="LCD" layoutX="11.0" layoutY="88.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Address" wrappingWidth="70.0">
+            <Text fill="#868686" fontSmoothingType="LCD" layoutX="37.0" layoutY="102.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Address" wrappingWidth="70.0">
                <font>
-                  <Font name="AppleGothic Regular" size="12.0" />
+                  <Font name="AppleGothic Regular" size="13.0" />
                </font></Text>
-            <Text fill="#868686" fontSmoothingType="LCD" layoutX="11.0" layoutY="118.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Phone" wrappingWidth="85.33333333333337">
+            <Text fill="#868686" fontSmoothingType="LCD" layoutX="37.0" layoutY="132.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Phone" wrappingWidth="85.33333333333337">
                <font>
-                  <Font name="AppleGothic Regular" size="12.0" />
+                  <Font name="AppleGothic Regular" size="13.0" />
                </font></Text>
-            <Button fx:id="updateDetailsButton" layoutX="333.0" layoutY="4.0" mnemonicParsing="false" onMouseClicked="#updateDetails" prefHeight="26.0" prefWidth="96.0" text="Update details" />
-            <Text fill="#868686" fontSmoothingType="LCD" layoutX="11.0" layoutY="152.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Donation type" wrappingWidth="85.33333333333348">
-               <font>
-                  <Font name="AppleGothic Regular" size="12.0" />
-               </font></Text>
-            <TextField fx:id="addressTextField" layoutX="98.0" layoutY="70.0" prefHeight="25.0" prefWidth="331.0">
-               <font>
-                  <Font name="AppleGothic Regular" size="12.0" />
-               </font></TextField>
-            <TextField fx:id="phoneNumberTextField" layoutX="98.0" layoutY="101.0" prefHeight="25.0" prefWidth="331.0">
-               <font>
-                  <Font name="AppleGothic Regular" size="12.0" />
-               </font></TextField>
-            <TextField fx:id="donationTypeTextField" layoutX="98.0" layoutY="135.0" prefHeight="25.0" prefWidth="331.0">
-               <font>
-                  <Font name="AppleGothic Regular" size="12.0" />
-               </font></TextField>
-            <TextField fx:id="centreNameTextField" layoutX="98.0" layoutY="39.0" prefHeight="25.0" prefWidth="331.0">
-               <font>
-                  <Font name="AppleGothic Regular" size="12.0" />
-               </font></TextField>
-            <Text fill="#868686" fontSmoothingType="LCD" layoutX="11.0" layoutY="56.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Centre Name">
-               <font>
-                  <Font name="AppleGothic Regular" size="12.0" />
-               </font></Text>
-            <Label fx:id="centreNameLabel" layoutX="105.0" layoutY="43.0" text="Centre Name">
-               <font>
-                  <Font name="AppleGothic Regular" size="12.0" />
-               </font></Label>
-            <Label fx:id="addressLabel" layoutX="106.0" layoutY="74.0" text="Address">
-               <font>
-                  <Font name="AppleGothic Regular" size="12.0" />
-               </font></Label>
-            <Label fx:id="phoneNumberLabel" layoutX="106.0" layoutY="105.0" text="Phone number">
-               <font>
-                  <Font name="AppleGothic Regular" size="12.0" />
-               </font></Label>
-            <Label fx:id="donationTypeLabel" layoutX="105.0" layoutY="139.0" text="Donation type">
-               <font>
-                  <Font name="AppleGothic Regular" size="12.0" />
-               </font></Label>
-         </children>
-      </AnchorPane>
-      <ListView fx:id="centreListView" layoutX="4.0" layoutY="25.0" onMouseClicked="#selectCentre" prefHeight="346.0" prefWidth="152.0" />
-      <AnchorPane layoutX="155.0" layoutY="233.0" prefHeight="148.0" prefWidth="444.0">
-         <children>
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="164.0" layoutX="5.0" stroke="#6f060d" strokeType="INSIDE" width="437.0" />
-            <TableView fx:id="appointmentTbl" layoutX="9.0" layoutY="2.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="158.0" prefWidth="429.0">
-              <columns>
-                <TableColumn fx:id="donorNameCol" prefWidth="158.00003051757812" text="Donor Name" />
-                <TableColumn fx:id="dateCol" minWidth="0.0" prefWidth="118.0" text="Date" />
-                  <TableColumn fx:id="timeCol" prefWidth="150.66668701171875" text="Time" />
-              </columns>
-            </TableView>
-            <Text layoutX="14.0" layoutY="-15.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Appointment List" wrappingWidth="121.6666259765625">
+            <Button fx:id="updateDetailsButton" layoutX="342.0" layoutY="9.0" mnemonicParsing="false" onMouseClicked="#updateDetails" prefHeight="28.0" prefWidth="124.0" text="Update details">
                <font>
                   <Font name="Avenir Next Bold" size="13.0" />
-               </font></Text>
-            <Button fx:id="scheduleAppointmentButton" layoutX="257.0" layoutY="-33.0" mnemonicParsing="false" onMouseClicked="#scheduleAppointment" prefHeight="27.0" prefWidth="178.0" style="-fx-background-color: #6F060D;" text="Schedule new appointment" textFill="WHITE">
-               <font>
-                  <Font name="Avenir Next Bold" size="12.0" />
                </font></Button>
+            <Text fill="#868686" fontSmoothingType="LCD" layoutX="37.0" layoutY="166.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Donation type" wrappingWidth="85.33333333333348">
+               <font>
+                  <Font name="AppleGothic Regular" size="13.0" />
+               </font></Text>
+            <TextField fx:id="addressTextField" layoutX="134.0" layoutY="84.0" prefHeight="25.0" prefWidth="331.0">
+               <font>
+                  <Font name="AppleGothic Regular" size="12.0" />
+               </font></TextField>
+            <TextField fx:id="phoneNumberTextField" layoutX="134.0" layoutY="115.0" prefHeight="25.0" prefWidth="331.0">
+               <font>
+                  <Font name="AppleGothic Regular" size="12.0" />
+               </font></TextField>
+            <TextField fx:id="donationTypeTextField" layoutX="134.0" layoutY="149.0" prefHeight="25.0" prefWidth="331.0">
+               <font>
+                  <Font name="AppleGothic Regular" size="12.0" />
+               </font></TextField>
+            <TextField fx:id="centreNameTextField" layoutX="134.0" layoutY="53.0" prefHeight="25.0" prefWidth="331.0">
+               <font>
+                  <Font name="AppleGothic Regular" size="12.0" />
+               </font></TextField>
+            <Text fill="#868686" fontSmoothingType="LCD" layoutX="37.0" layoutY="70.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Centre Name">
+               <font>
+                  <Font name="AppleGothic Regular" size="13.0" />
+               </font></Text>
+            <Label fx:id="centreNameLabel" layoutX="141.0" layoutY="57.0" text="Centre Name">
+               <font>
+                  <Font name="AppleGothic Regular" size="13.0" />
+               </font></Label>
+            <Label fx:id="addressLabel" layoutX="142.0" layoutY="88.0" text="Address">
+               <font>
+                  <Font name="AppleGothic Regular" size="13.0" />
+               </font></Label>
+            <Label fx:id="phoneNumberLabel" layoutX="142.0" layoutY="119.0" text="Phone number">
+               <font>
+                  <Font name="AppleGothic Regular" size="13.0" />
+               </font></Label>
+            <Label fx:id="donationTypeLabel" layoutX="141.0" layoutY="153.0" text="Donation type">
+               <font>
+                  <Font name="AppleGothic Regular" size="13.0" />
+               </font></Label>
          </children>
       </AnchorPane>
-      <Button fx:id="addNewCentreButton" layoutX="4.0" layoutY="373.0" mnemonicParsing="false" onAction="#addNewCentre" prefHeight="25.0" prefWidth="76.0" style="-fx-background-color: #6F060D;" text="Add new" textFill="#fdfdfd" />
-      <Button fx:id="deleteCentreButton" layoutX="87.0" layoutY="373.0" mnemonicParsing="false" onMouseClicked="#deleteCentre" prefHeight="25.0" prefWidth="70.0" text="Delete" />
-      <JFXButton fx:id="backToHome" layoutX="532.0" onAction="#backToHomePage" text="Home" textFill="#6f060d">
+      <ListView fx:id="centreListView" layoutX="103.0" layoutY="109.0" onMouseClicked="#selectCentre" prefHeight="497.0" prefWidth="238.0" />
+      <AnchorPane layoutX="362.0" layoutY="412.0" prefHeight="148.0" prefWidth="444.0">
+         <children>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="191.0" layoutX="5.0" stroke="#6f060d" strokeType="INSIDE" width="502.0" />
+            <TableView fx:id="appointmentTbl" layoutX="6.0" layoutY="2.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="187.0" prefWidth="500.0">
+              <columns>
+                <TableColumn fx:id="donorNameCol" prefWidth="225.06158447265625" text="Donor Name" />
+                <TableColumn fx:id="dateCol" minWidth="0.0" prefWidth="158.43841552734375" text="Date" />
+                  <TableColumn fx:id="timeCol" prefWidth="112.5980224609375" text="Time" />
+              </columns>
+            </TableView>
+         </children>
+      </AnchorPane>
+      <Button fx:id="addNewCentreButton" layoutX="114.0" layoutY="612.0" mnemonicParsing="false" onAction="#addNewCentre" prefHeight="28.0" prefWidth="98.0" style="-fx-background-color: #6F060D;" text="Add new" textFill="#fdfdfd">
          <font>
-            <Font name="AppleGothic Regular" size="10.0" />
+            <Font name="Avenir Next Bold" size="13.0" />
+         </font></Button>
+      <Button fx:id="deleteCentreButton" layoutX="227.0" layoutY="612.0" mnemonicParsing="false" onMouseClicked="#deleteCentre" prefHeight="28.0" prefWidth="102.0" text="Delete ">
+         <font>
+            <Font name="Avenir Next Bold" size="13.0" />
+         </font></Button>
+      <Button layoutX="885.0" layoutY="18.0" mnemonicParsing="false" onMouseClicked="#backToHomePage" text="Home" textFill="#6f060d">
+         <graphic>
+            <ImageView fx:id="home" fitHeight="18.0" fitWidth="33.0" onMouseClicked="#backToHomePage" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@img/home.png" />
+               </image>
+            </ImageView>
+         </graphic>
+         <font>
+            <Font name="Avenir Next Bold" size="13.0" />
          </font>
-      </JFXButton>
+      </Button>
+      <ImageView fx:id="logo" fitHeight="48.0" fitWidth="83.0" layoutX="17.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@img/logo.png" />
+         </image>
+      </ImageView>
+      <Text layoutX="71.0" layoutY="29.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Circle Blood">
+         <font>
+            <Font name="AppleGothic Regular" size="13.0" />
+         </font>
+      </Text>
+      <Text layoutX="71.0" layoutY="43.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Management">
+         <font>
+            <Font name="AppleGothic Regular" size="13.0" />
+         </font>
+      </Text>
+      <Text layoutX="369.0" layoutY="375.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Appointment List" wrappingWidth="170.900146484375">
+         <font>
+            <Font name="Avenir Next Bold" size="18.0" />
+         </font>
+      </Text>
+      <Button fx:id="scheduleAppointmentButton" layoutX="690.0" layoutY="348.0" mnemonicParsing="false" onMouseClicked="#scheduleAppointment" prefHeight="27.0" prefWidth="178.0" style="-fx-background-color: #6F060D;" text="Schedule new appointment" textFill="WHITE">
+         <font>
+            <Font name="Avenir Next Bold" size="12.0" />
+         </font>
+      </Button>
+      <Text fill="#6f060d" layoutX="346.0" layoutY="43.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Donor Centre Management" textAlignment="JUSTIFY">
+         <font>
+            <Font name="Avenir Next Bold" size="28.0" />
+         </font>
+      </Text>
+      <Line endX="905.0" endY="-7.62939453125E-6" layoutX="101.0" layoutY="62.0" startX="-95.64157104492188" startY="-7.62939453125E-6" stroke="#80808036" />
    </children>
 </AnchorPane>

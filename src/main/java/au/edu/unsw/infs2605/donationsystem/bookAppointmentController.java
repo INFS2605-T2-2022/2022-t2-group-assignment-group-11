@@ -26,6 +26,8 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 
 /**
  *
@@ -99,6 +101,12 @@ public class bookAppointmentController implements Initializable {
     @FXML
     Label dobError;
     
+    @FXML
+    ImageView logo;
+    
+    @FXML
+    ImageView home;
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         try {
@@ -106,6 +114,13 @@ public class bookAppointmentController implements Initializable {
         } catch (SQLException ex) {
             Logger.getLogger(bookAppointmentController.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
+        //Add images
+        Image logoImage = new Image(App.class.getResourceAsStream("img/logo.png"));
+        logo.setImage(logoImage);
+        
+        Image homeIcon = new Image(App.class.getResourceAsStream("img/home.png"));
+        home.setImage(homeIcon);
     }
     
     public void createChoiceBox() throws SQLException {
