@@ -119,6 +119,8 @@ public class DonorCentreMainController {
         
         //Default - display information of the first donor in the list
         centreListView.getSelectionModel().select(0);
+        
+        selectCentre();
     }
     
     @FXML

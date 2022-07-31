@@ -9,7 +9,7 @@ package au.edu.unsw.infs2605.donationsystem;
  * @author w_yy
  */
 public class AppointmentInfo {
-     private int id;
+    private int id;
     private String firstName;
     private String lastName;
     private String donorCentre;

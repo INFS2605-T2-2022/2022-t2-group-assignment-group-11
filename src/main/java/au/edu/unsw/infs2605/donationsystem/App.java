@@ -27,6 +27,7 @@ public class App extends Application {
     private Database database = new Database();
     
     private static Scene scene;
+    
     private static Appointment newAppointment;
     
     //Getter method
@@ -38,6 +39,19 @@ public class App extends Application {
     static void setAppointment(Appointment appointment) {
         App.newAppointment = appointment;
     }
+    
+    private static AppointmentInfo selectedAppointment;
+    
+    //Getter method
+    static AppointmentInfo getSelectedAppointment() {
+        return selectedAppointment;
+    }
+    
+    //Setter method
+    static void setSelectedAppointment(AppointmentInfo appointment) {
+        App.selectedAppointment = appointment;
+    }
+    
     @Override
     public void start(Stage stage) throws IOException, SQLException {
         
