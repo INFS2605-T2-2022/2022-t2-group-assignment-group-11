@@ -96,7 +96,7 @@
             <Font name="Avenir Next Bold" size="16.0" />
          </font>
       </Label>
-      <Button id="done" fx:id="backToAppointment" layoutX="781.0" layoutY="510.0" mnemonicParsing="false" onAction="#confirmButton" prefHeight="26.0" prefWidth="135.0" style="-fx-background-color: #6F060D; -fx-border-color: 000000;" text="Back to Home page" textFill="WHITE" visible="false">
+      <Button id="done" fx:id="backToAppointment" layoutX="781.0" layoutY="510.0" mnemonicParsing="false" onAction="#backToHomePage" prefHeight="26.0" prefWidth="135.0" style="-fx-background-color: #6F060D; -fx-border-color: 000000;" text="Back to Home page" textFill="WHITE" visible="false">
          <font>
             <Font name="Avenir Next Bold" size="11.0" />
          </font>

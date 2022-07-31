@@ -91,7 +91,7 @@ public class confirmAppointmentController implements Initializable{
     
     public void confirmButton() throws SQLException, IOException {
         confirmLabel.setText("Thank you! "
-                + "Your appointment is confirmed as following");
+                + "Your appointment is confirmed.");
         
         String database = "jdbc:sqlite:DonorDatabase.db";
         Connection conn = DriverManager.getConnection(database);
@@ -112,7 +112,6 @@ public class confirmAppointmentController implements Initializable{
         backToAppointment.setVisible(true);
         pSt.executeUpdate();
         conn.close();
-        App.setRoot("homePage");
     }
     
     public void cancelButton() throws IOException {
