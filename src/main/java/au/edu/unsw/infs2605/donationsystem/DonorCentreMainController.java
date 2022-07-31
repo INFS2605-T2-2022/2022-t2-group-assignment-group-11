@@ -327,4 +327,8 @@ public class DonorCentreMainController {
         App.setRoot("appointment");
     }
     
+    public void backToHomePage() throws IOException {
+        App.setRoot("homePage");
+    }
+    
 }

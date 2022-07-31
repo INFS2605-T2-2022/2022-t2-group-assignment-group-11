@@ -31,7 +31,7 @@ import javafx.scene.control.TextField;
  *
  * @author khanhlinh0907
  */
-public class appointmentController implements Initializable {
+public class bookAppointmentController implements Initializable {
     
     public static List<Appointment> appointmentList = new ArrayList<>();
     
@@ -104,7 +104,7 @@ public class appointmentController implements Initializable {
         try {
             createChoiceBox();
         } catch (SQLException ex) {
-            Logger.getLogger(appointmentController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(bookAppointmentController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     

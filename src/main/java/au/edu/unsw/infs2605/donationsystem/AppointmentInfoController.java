@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package au.edu.unsw.infs2605.donationsystem;
+import java.io.IOException;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.collections.ObservableList;
@@ -176,4 +177,7 @@ public class AppointmentInfoController {
         }
     }
     
+    public void backToHomePage() throws IOException {
+        App.setRoot("homePage");
+    }
 }
