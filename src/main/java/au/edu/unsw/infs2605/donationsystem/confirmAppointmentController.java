@@ -73,7 +73,7 @@ public class confirmAppointmentController implements Initializable{
         dateConf.setText(newAppointment.getBookingDate());
     }
     
-    public void confirmButton() throws SQLException {
+    public void confirmButton() throws SQLException, IOException {
         confirmLabel.setText("Thank you! "
                 + "Your appointment is confirmed as following");
         
@@ -96,7 +96,7 @@ public class confirmAppointmentController implements Initializable{
         backToAppointment.setVisible(true);
         pSt.executeUpdate();
         conn.close();
-        //App.setRoot("");
+        App.setRoot("homePage");
     }
     
     public void cancelButton() throws IOException {

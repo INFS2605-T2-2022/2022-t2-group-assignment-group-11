@@ -22,7 +22,7 @@ public class Database {
     private static Connection conn;
     private static Database db = new Database();
 
-    private Database() {
+    public Database() {
         try {
             setupDatabase();
         } catch (SQLException throwables) {
@@ -34,7 +34,7 @@ public class Database {
         return db;
     }
     
-    private void setupDatabase() throws SQLException {
+    public void setupDatabase() throws SQLException {
         //connection to database
         conn = DriverManager.getConnection(database);
         Statement st = conn.createStatement();
@@ -108,7 +108,7 @@ public class Database {
         conn.close();
         
     }
-      private void insertAppointmentInfo() throws SQLException {
+      public void insertAppointmentInfo() throws SQLException {
         Statement st = conn.createStatement();
         PreparedStatement pSt = conn.prepareStatement(
                 "INSERT OR IGNORE INTO appointmentinfo (id, firstName, lastName, donorCentre, " +
