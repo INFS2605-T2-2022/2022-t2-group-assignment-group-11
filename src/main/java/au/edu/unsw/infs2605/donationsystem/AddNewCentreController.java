@@ -11,6 +11,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 
 public class AddNewCentreController implements Initializable {
 
@@ -32,9 +34,13 @@ public class AddNewCentreController implements Initializable {
     @FXML
     private Button backToMainScreenButton;
     
+    @FXML
+    private ImageView donorCentreImageView;
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-
+        Image donorCentreImage = new Image(App.class.getResourceAsStream("img\\donor centre.jpg"));
+        donorCentreImageView.setImage(donorCentreImage);
     } 
     
     @FXML

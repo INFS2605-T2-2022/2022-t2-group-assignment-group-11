@@ -20,7 +20,7 @@
       <Button fx:id="backToMainScreenButton" layoutX="301.0" layoutY="309.0" mnemonicParsing="false" onMouseClicked="#backToMainScreen" text="Back to Centre Main Screen" />
       <ImageView fitHeight="227.0" fitWidth="222.0" layoutX="22.0" layoutY="69.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../../../../../../../../../Desktop/medical-center-blood-icon-element-donation-thin-line-white-background-161120285.jpg" />
+            <Image url="@img/donor%20centre.jpg" />
          </image>
       </ImageView>
       <Label layoutX="299.0" layoutY="243.0" text="Donation Type" />
