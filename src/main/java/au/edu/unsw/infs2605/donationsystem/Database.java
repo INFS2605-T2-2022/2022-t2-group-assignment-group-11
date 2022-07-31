@@ -19,12 +19,31 @@ import javafx.collections.ObservableList;
  */
 public class Database {
     final private String database= "jdbc:sqlite:DonorDatabase.db";
+    private static Connection conn;
+    private static Database db = new Database();
+
+    public Database() {
+        try {
+            setupDatabase();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+    }
+
+    public static Database getInstance() {
+        return db;
+    }
     
     public void setupDatabase() throws SQLException {
         //connection to database
-        Connection conn = DriverManager.getConnection(database);
+        conn = DriverManager.getConnection(database);
         Statement st = conn.createStatement();
         
+        try {
+            //check the table is exist
+            st.execute("select 1 from appointmentinfo");
+        } catch (SQLException throwables) {
+         
         //create donor centre table with id, name, address, phone, donation type
         String createDonorCentreQuery = "CREATE TABLE IF NOT EXISTS donorcentre"
                                     + "("
@@ -35,34 +54,33 @@ public class Database {
                                     + "DONTYPE TEXT"
                                     + ");";
         st.execute(createDonorCentreQuery);
-        
-        //create appointment table with id, first name, last name, donor centre, time, date, phone number, email, notes, donation status
-        String createAppointmentQuery = "CREATE TABLE IF NOT EXISTS appointment"
-				+ "("
-                                + "ID INTEGER PRIMARY KEY autoincrement, "
-                                + "FIRSTNAME TEXT NOT NULL, "
-				+ "LASTNAME TEXT NOT NULL, "
-				+ "DONORCENTRE TEXT NOT NULL, "
-                                + "TIME TEXT NOT NULL,"
-				+ "DATE TEXT NOT NULL,"
-                                + "PHONENO TEXT NOT NULL,"
-                                + "EMAIL TEXT,"
-                                + "NOTES TEXT,"
-                                + "DONSTATUS TEXT,"
-                                + "DONTYPE TEXT NOT NULL "
-				+ ");";
-        st.execute(createAppointmentQuery);
-        
-        //insert data into tables
         insertDonorCentre();
-        insertAppointment();
         
+        String createAppointmentInfoQuery = "CREATE TABLE IF NOT EXISTS appointmentinfo"
+                    + "("
+                    + "ID INTEGER PRIMARY KEY autoincrement, "
+                    + "FIRSTNAME TEXT NOT NULL, "
+                    + "LASTNAME TEXT NOT NULL, "
+                    + "DONORCENTRE TEXT NOT NULL, "
+                    + "DONATIONTIME TEXT NOT NULL,"
+                    + "DONATIONDATE TEXT NOT NULL,"
+                    + "EMAILADDRESS TEXT NOT NULL,"
+                    + "PHONENUMBER TEXT NOT NULL,"
+                    + "DONATIONTYPE TEXT NOT NULL, "
+                    + "DONATIONSTATUS TEXT NOT NULL,"
+                    + "NOTES TEXT NOT NULL"
+                    + ");";
+            st.execute(createAppointmentInfoQuery);
+            //insert data into tables
+            insertAppointmentInfo();
+            System.out.println("init data success");
+        }
         //close statement
         st.close();
-	conn.close();
+        
     }
-
-    public void insertDonorCentre() throws SQLException {
+        
+     private void insertDonorCentre() throws SQLException {
         Connection conn = DriverManager.getConnection(database);
         Statement st = conn.createStatement();
         
@@ -90,48 +108,143 @@ public class Database {
         conn.close();
         
     }
-
-    public void insertAppointment() throws SQLException {
-        Connection conn = DriverManager.getConnection(database);
+      public void insertAppointmentInfo() throws SQLException {
         Statement st = conn.createStatement();
-        
         PreparedStatement pSt = conn.prepareStatement(
-            "INSERT OR IGNORE INTO appointment (id, firstname, lastname, donorcentre, time, date, phoneno, email, notes, donstatus, dontype) VALUES (?,?,?,?,?,?,?,?,?,?,?)"
+                "INSERT OR IGNORE INTO appointmentinfo (id, firstName, lastName, donorCentre, " +
+                        "donationTime, donationDate, emailAddress, " +
+                        "phoneNumber, donationType, donationStatus,notes) VALUES (?,?,?,?,?,?,?,?,?,?,?)"
         );
-
         // Data to insert
-        String[] firstname = {"John", "Margret", "Jill"};
-        String[] lastname = {"Pho", "Kip", "Dance"};
-        String[] donorcentre = {"Town Hall Donor Centre", "Chatswood Donor Centre", "The Shire Donor Centre"};
-        String[] time = {"12:00PM", "2:00PM", "9:00AM"};
-        String[] date = {"03/07/22", "21/06/22", "30/05/22"};
-        String[] phoneno = {"0465234987", "0412569276", "0417509469"};
-        String[] email = {"johnpho@gmail.com", "margretkip@gmail.com", "jilldance@gmail.com"};
+        String[] firstName = {"John", "Margret", "Jill"};
+        String[] lastName = {"Pho", "Kip", "Dance"};
+        String[] donorCentre = {"Town Hall Donor Centre", "Chatswood Donor Centre", "The Shire Donor Centre"};
+        String[] donationTime = {"12:08", "1:56", "2:34"};
+        String[] donationDate = {"03/07/22", "21/06/22", "30/05/22"};
+        String[] emailAddress = {"johnpho@gmail.com", "margretkip@gmail.com", "jilldance@gmail.com"};
+        String[] phoneNumber = {"0465234987", "0412569276", "0417509469"};
+        String[] donationType = {"Plasma", "Blood", "Blood"};
+        String[] donationStatus = {"Approved", "Approved", "Approved"};
         String[] notes = {"Allergic to grass", "No allergies", "Allergic to peanuts"};
-        String[] donstatus = {"Approved", "Approved", "Approved"};
-        String[] dontype = {"Plasma", "Blood", "Blood"};
-
         // Loop to insert using prepared statements
         for (int i = 0; i < 3; i++) {
             pSt.setInt(1, i);
-            pSt.setString(2, firstname[i]);
-            pSt.setString(3, lastname[i]);
-            pSt.setString(4, donorcentre[i]);
-            pSt.setString(5, time[i]);
-            pSt.setString(6, date[i]);
-            pSt.setString(7, phoneno[i]);
-            pSt.setString(8, email[i]);
-            pSt.setString(9, notes[i]);
-            pSt.setString(10, donstatus[i]);
-            pSt.setString(11, dontype[i]);
+            pSt.setString(2, firstName[i]);
+            pSt.setString(3, lastName[i]);
+            pSt.setString(4, donorCentre[i]);
+            pSt.setString(5, donationTime[i]);
+            pSt.setString(6, donationDate[i]);
+            pSt.setString(7, emailAddress[i]);
+            pSt.setString(8, phoneNumber[i]);
+            pSt.setString(9, donationType[i]);
+            pSt.setString(10, donationStatus[i]);
+            pSt.setString(11, notes[i]);
             pSt.executeUpdate();
         }
-        
         st.close();
-        conn.close();
-        
-        
     }
+      /**
+     *
+     * @param where filter
+     * @return
+     */
+    public ObservableList<AppointmentInfo> getAppointmentInfo(String where) {
+        // Get ResultSet of all appointments that exist in the database
+        ObservableList<AppointmentInfo> appointmentInfoList = FXCollections.observableArrayList();
+        try {
+            Statement st = conn.createStatement();
+            String query = "SELECT id, firstName, lastName, donorCentre, donationTime, donationDate, emailAddress,phoneNumber, donationtype,donationstatus,notes FROM appointmentinfo " + where;
+            System.out.println(query);
+            ResultSet rs = st.executeQuery(query);
+            while (rs.next()) {
+                appointmentInfoList.add(new AppointmentInfo(rs.getInt("id"), rs.getString("firstName"),
+                        rs.getString("lastName"), rs.getString("donorcentre"), rs.getString("donationtime"),
+                        rs.getString("donationDate"), rs.getString("emailAddress"), rs.getString("phoneNumber"),
+                        rs.getString("donationStatus"), rs.getString("donationType"), rs.getString("notes")));
+            }
+            // Close
+            st.close();
+        } catch (Exception throwables) {
+            throwables.printStackTrace();
+        }
+        return appointmentInfoList;
+    }
+
+    /**
+     * delete appointmentInfo by id
+     * @param appointmentInfo
+     */
+    public void deleteAppointmentInfo(AppointmentInfo appointmentInfo) {
+        try {
+            Statement st = conn.createStatement();
+            st.execute("delete from appointmentinfo where id=" + appointmentInfo.getID());
+        } catch (Exception throwables) {
+            throwables.printStackTrace();
+        }
+    }
+
+    /**
+     * insert appointmentInfo into database
+     * @param appointmentInfo
+     */
+    public void addAppointmentInfo(AppointmentInfo appointmentInfo) {
+        try {
+            Statement st = conn.createStatement();
+            PreparedStatement pSt = conn.prepareStatement(
+                    "INSERT OR IGNORE INTO appointmentinfo ( firstName, lastName, donorCentre, " +
+                            "donationTime, donationDate, emailAddress, " +
+                            "phoneNumber, donationType, donationStatus,notes) VALUES (?,?,?,?,?,?,?,?,?,?)"
+            );
+            pSt.setString(1, appointmentInfo.getFirstName());
+            pSt.setString(2, appointmentInfo.getLastName());
+            pSt.setString(3, appointmentInfo.getDonorCentre());
+            pSt.setString(4, appointmentInfo.getDonationTime());
+            pSt.setString(5, appointmentInfo.getDonationDate());
+            pSt.setString(6, appointmentInfo.getEmailAddress());
+            pSt.setString(7, appointmentInfo.getPhoneNumber());
+            pSt.setString(8, appointmentInfo.getDonationType());
+            pSt.setString(9, appointmentInfo.getDonationStatus());
+            pSt.setString(10, appointmentInfo.getNotes());
+            pSt.executeUpdate();
+            st.close();
+        } catch (Exception throwables) {
+            throwables.printStackTrace();
+        }
+    }
+
+    /**
+     * update appointmentInfo
+     * @param appointmentInfo
+     */
+    public void UpdateAppointmentInfo(AppointmentInfo appointmentInfo) {
+        try {
+            Statement st = conn.createStatement();
+            PreparedStatement pSt = conn.prepareStatement(
+                    "update appointmentinfo set firstName=?, lastName=?, donorCentre=?, " +
+                            "donationTime=?, donationDate=?, emailAddress=?, " +
+                            "phoneNumber=?, donationType=?, donationStatus=?,notes=? where ID = ?"
+            );
+            pSt.setString(1, appointmentInfo.getFirstName());
+            pSt.setString(2, appointmentInfo.getLastName());
+            pSt.setString(3, appointmentInfo.getDonorCentre());
+            pSt.setString(4, appointmentInfo.getDonationTime());
+            pSt.setString(5, appointmentInfo.getDonationDate());
+            pSt.setString(6, appointmentInfo.getEmailAddress());
+            pSt.setString(7, appointmentInfo.getPhoneNumber());
+            pSt.setString(8, appointmentInfo.getDonationType());
+            pSt.setString(9, appointmentInfo.getDonationStatus());
+            pSt.setString(10, appointmentInfo.getNotes());
+            pSt.setInt(11, appointmentInfo.getID());
+            pSt.executeUpdate();
+            st.close();
+        } catch (Exception throwables) {
+            throwables.printStackTrace();
+        }
+    }
+
+}
+    
+
     /*
     public ObservableList<DonorCentre> getCentre() throws SQLException {
         // Get ResultSet of all donor centres that exist in the database
@@ -176,6 +289,3 @@ public class Database {
     }
 */
     
-
-}
-

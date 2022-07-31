@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.gluonhq.charm.glisten.control.Icon?>
 <?import com.jfoenix.controls.JFXButton?>
 <?import javafx.scene.Group?>
 <?import javafx.scene.control.Button?>
@@ -73,7 +72,7 @@
             <Font name="AppleGothic Regular" size="11.0" />
          </font>
       </TextField>
-      <Text layoutX="365.0" layoutY="172.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Gender*">
+      <Text layoutX="365.0" layoutY="169.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Gender*">
          <font>
             <Font name="AppleGothic Regular" size="11.0" />
          </font>
@@ -228,9 +227,6 @@
          <font>
             <Font name="AppleGothic Regular" size="10.0" />
          </font>
-         <graphic>
-            <Icon content="HOME" />
-         </graphic>
       </JFXButton>
    </children>
 </AnchorPane>

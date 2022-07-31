@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.gluonhq.charm.glisten.control.Icon?>
 <?import com.jfoenix.controls.JFXButton?>
 <?import javafx.scene.Group?>
 <?import javafx.scene.control.Button?>
@@ -146,9 +145,6 @@
          <font>
             <Font name="AppleGothic Regular" size="10.0" />
          </font>
-         <graphic>
-            <Icon content="HOME" />
-         </graphic>
       </JFXButton>
    </children>
 </AnchorPane>
