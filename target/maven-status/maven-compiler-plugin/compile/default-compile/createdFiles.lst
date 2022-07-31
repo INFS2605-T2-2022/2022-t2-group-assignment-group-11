@@ -1,6 +1,7 @@
 au\edu\unsw\infs2605\donationsystem\Database.class
 au\edu\unsw\infs2605\donationsystem\Donor.class
 module-info.class
+au\edu\unsw\infs2605\donationsystem\EditController.class
 au\edu\unsw\infs2605\donationsystem\AddNewCentreController.class
 au\edu\unsw\infs2605\donationsystem\confirmAppointmentController.class
 au\edu\unsw\infs2605\donationsystem\DonorCentre.class
