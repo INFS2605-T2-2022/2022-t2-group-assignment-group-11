@@ -184,7 +184,7 @@
             <Font name="AppleGothic Regular" size="10.0" />
          </font>
       </Label>
-      <Button layoutX="885.0" layoutY="19.0" mnemonicParsing="false" text="Home" textFill="#6f060d">
+      <Button layoutX="885.0" layoutY="19.0" mnemonicParsing="false" onMouseClicked="#backToHomePage" text="Home" textFill="#6f060d">
          <graphic>
             <ImageView fx:id="home" fitHeight="18.0" fitWidth="33.0" onMouseClicked="#backToHomePage" pickOnBounds="true" preserveRatio="true">
                <image>
