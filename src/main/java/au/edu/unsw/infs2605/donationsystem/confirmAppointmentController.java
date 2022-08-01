@@ -86,7 +86,7 @@ public class confirmAppointmentController implements Initializable{
         
         //Add poster
         Image posterImage = new Image(App.class.getResourceAsStream("img/poster.jpeg"));
-        logo.setImage(posterImage);
+        poster.setImage(posterImage);
     }
     
     public void confirmButton() throws SQLException, IOException {

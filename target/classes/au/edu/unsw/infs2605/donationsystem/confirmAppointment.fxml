@@ -142,7 +142,7 @@
             <Font name="Avenir Next Bold" size="28.0" />
          </font>
       </Text>
-      <ImageView fitHeight="263.0" fitWidth="406.0" layoutX="74.0" layoutY="244.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="poster" fitHeight="263.0" fitWidth="406.0" layoutX="74.0" layoutY="244.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@img/poster.jpeg" />
          </image>
