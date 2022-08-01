@@ -102,7 +102,7 @@ public class AppointmentInfoController {
         });
 
        
-        filterField.getItems().addAll("firstName", "lastName", "donationType", "donorCentre", "emailAddress");
+        filterField.getItems().addAll("Donation Type", "Donor Centre");
         filterField.getSelectionModel().select(0);
         Platform.runLater(() -> {
             AppointmentTable.getScene().getWindow().focusedProperty()
@@ -125,8 +125,8 @@ public class AppointmentInfoController {
         AppointmentTable.setItems(Database.getInstance().getAppointmentInfo(""));
         
         //Set default
-        
         AppointmentTable.getSelectionModel().select(0);
+        
         //Add images
         Image logoImage = new Image(App.class.getResourceAsStream("img/logo.png"));
         logo.setImage(logoImage);

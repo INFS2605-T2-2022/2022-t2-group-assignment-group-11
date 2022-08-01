@@ -62,7 +62,7 @@ public class EditController {
     public void initialize() {
         pageLabel.setText("Add New Appointment");
         donationTypeField.getItems().addAll("Blood", "Plasma", "Blood and Plasma");
-        donationStatusField.getItems().addAll("approved", "completed");
+        donationStatusField.getItems().addAll("Approved", "Completed");
         donationTypeField.getSelectionModel().select(0);
         donationStatusField.getSelectionModel().select(0);
         Platform.runLater(() -> {

@@ -120,7 +120,7 @@ public class Database {
         String[] lastName = {"Pho", "Kip", "Dance"};
         String[] donorCentre = {"Town Hall Donor Centre", "Chatswood Donor Centre", "The Shire Donor Centre"};
         String[] donationTime = {"12:00PM", "2:30PM", "10:30AM"};
-        String[] donationDate = {"03/07/22", "21/06/22", "30/05/22"};
+        String[] donationDate = {"03/07/2022", "21/06/2022", "30/05/2022"};
         String[] emailAddress = {"johnpho@gmail.com", "margretkip@gmail.com", "jilldance@gmail.com"};
         String[] phoneNumber = {"0465234987", "0412569276", "0417509469"};
         String[] donationType = {"Plasma", "Blood", "Blood"};
@@ -153,14 +153,14 @@ public class Database {
         ObservableList<AppointmentInfo> appointmentInfoList = FXCollections.observableArrayList();
         try {
             Statement st = conn.createStatement();
-            String query = "SELECT id, firstName, lastName, donorCentre, donationTime, donationDate, emailAddress,phoneNumber, donationtype,donationstatus,notes FROM appointment " + where;
+            String query = "SELECT id, firstName, lastName, donorCentre, donationTime, donationDate, emailAddress, phoneNumber, donationType,donationstatus,notes FROM appointment " + where;
             System.out.println(query);
             ResultSet rs = st.executeQuery(query);
             while (rs.next()) {
                 appointmentInfoList.add(new AppointmentInfo(rs.getInt("id"), rs.getString("firstName"),
-                        rs.getString("lastName"), rs.getString("donorcentre"), rs.getString("donationtime"),
+                        rs.getString("lastName"), rs.getString("donorcentre"), rs.getString("donationTime"),
                         rs.getString("donationDate"), rs.getString("emailAddress"), rs.getString("phoneNumber"),
-                        rs.getString("donationStatus"), rs.getString("donationType"), rs.getString("notes")));
+                        rs.getString("donationType"), rs.getString("donationStatus"), rs.getString("notes")));
             }
             // Close
             st.close();
