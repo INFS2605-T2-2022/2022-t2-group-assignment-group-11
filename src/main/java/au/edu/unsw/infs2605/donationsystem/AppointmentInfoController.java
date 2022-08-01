@@ -86,18 +86,25 @@ public class AppointmentInfoController {
 
     public void initialize() {
         ID.setCellValueFactory(new PropertyValueFactory<>("ID"));
-        donationType.setCellValueFactory(new PropertyValueFactory<>("donationType"));
-        donorCentre.setCellValueFactory(new PropertyValueFactory<>("donorCentre"));
+        donationType
+                .setCellValueFactory(new PropertyValueFactory<>("donationType"));
+        donorCentre
+                .setCellValueFactory(new PropertyValueFactory<>("donorCentre"));
         Date.setCellValueFactory(new PropertyValueFactory<>("donationDate"));
         Time.setCellValueFactory(new PropertyValueFactory<>("donationTime"));
 
-        keywordSearch.textProperty().addListener((observable, oldValue, newValue) -> {
+        keywordSearch.textProperty()
+                .addListener((observable, oldValue, newValue) -> {
             if (newValue.length() > 0) {
-                String selectedItem = filterField.getSelectionModel().getSelectedItem();
+                String selectedItem 
+                        = filterField.getSelectionModel().getSelectedItem();
                
-                AppointmentTable.setItems(Database.getInstance().getAppointmentInfo(" where "+selectedItem + " like '%"+newValue+"%'"));
+                AppointmentTable.setItems(Database.getInstance()
+                        .getAppointmentInfo(" where "+selectedItem 
+                                + " like '%"+newValue+"%'"));
             } else {
-                AppointmentTable.setItems(Database.getInstance().getAppointmentInfo(""));
+                AppointmentTable.setItems(Database.getInstance()
+                        .getAppointmentInfo(""));
             }
         });
 
@@ -109,29 +116,36 @@ public class AppointmentInfoController {
                     .addListener((observableValue, aBoolean, newValue) -> {
                         if (newValue) {
                             AppointmentTable.requestFocus();
-                            int selectedIndex = AppointmentTable.getSelectionModel().getSelectedIndex();
+                            int selectedIndex = AppointmentTable
+                                    .getSelectionModel().getSelectedIndex();
                             AppointmentTable.getSelectionModel().clearSelection();
-                            AppointmentTable.getSelectionModel().select(selectedIndex);
-                            AppointmentTable.setItems(Database.getInstance().getAppointmentInfo(""));
+                            AppointmentTable.getSelectionModel()
+                                    .select(selectedIndex);
+                            AppointmentTable.setItems(Database.getInstance()
+                                    .getAppointmentInfo(""));
                         }
                     });
         });
-        AppointmentTable.getSelectionModel().selectedItemProperty().addListener((observableValue, appointmentInfo, newValue) -> {
+        AppointmentTable.getSelectionModel().selectedItemProperty()
+                .addListener((observableValue, appointmentInfo, newValue) -> {
             if (newValue != null) {
                 ClickSidebar(newValue);
             }
         });
 
-        AppointmentTable.setItems(Database.getInstance().getAppointmentInfo(""));
+        AppointmentTable
+                .setItems(Database.getInstance().getAppointmentInfo(""));
         
         //Set default
         AppointmentTable.getSelectionModel().select(0);
         
         //Add images
-        Image logoImage = new Image(App.class.getResourceAsStream("img/logo.png"));
+        Image logoImage 
+                = new Image(App.class.getResourceAsStream("img/logo.png"));
         logo.setImage(logoImage);
         
-        Image homeIcon = new Image(App.class.getResourceAsStream("img/home.png"));
+        Image homeIcon 
+                = new Image(App.class.getResourceAsStream("img/home.png"));
         home.setImage(homeIcon);
     }
 
@@ -159,7 +173,8 @@ public class AppointmentInfoController {
 
     @FXML
     private void Edit() {
-        AppointmentInfo selected = AppointmentTable.getSelectionModel().getSelectedItem();
+        AppointmentInfo selected 
+                = AppointmentTable.getSelectionModel().getSelectedItem();
         if (selected == null) {
             return;
         }
@@ -169,12 +184,14 @@ public class AppointmentInfoController {
 
     @FXML
     private void Delete() {
-        AppointmentInfo selected = AppointmentTable.getSelectionModel().getSelectedItem();
+        AppointmentInfo selected = AppointmentTable
+                .getSelectionModel().getSelectedItem();
         if (selected == null) {
             return;
         }
         Database.getInstance().deleteAppointmentInfo(selected);
-        AppointmentTable.setItems(Database.getInstance().getAppointmentInfo(""));
+        AppointmentTable
+                .setItems(Database.getInstance().getAppointmentInfo(""));
         new Alert(Alert.AlertType.INFORMATION, "success").showAndWait();
 
     }
@@ -197,7 +214,8 @@ public class AppointmentInfoController {
     }
     
     public void createReceipt() throws IOException {
-        AppointmentInfo selected = AppointmentTable.getSelectionModel().getSelectedItem();
+        AppointmentInfo selected 
+                = AppointmentTable.getSelectionModel().getSelectedItem();
         App.setSelectedAppointment(selected);
         App.setRoot("createReceipt");
         

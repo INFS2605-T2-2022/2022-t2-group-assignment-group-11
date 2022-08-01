@@ -81,11 +81,13 @@ public class confirmAppointmentController implements Initializable{
         dateConf.setText(newAppointment.getBookingDate());
         
         //Add logo
-        Image logoImage = new Image(App.class.getResourceAsStream("img/logo.png"));
+        Image logoImage 
+                = new Image(App.class.getResourceAsStream("img/logo.png"));
         logo.setImage(logoImage);
         
         //Add poster
-        Image posterImage = new Image(App.class.getResourceAsStream("img/poster.jpeg"));
+        Image posterImage 
+                = new Image(App.class.getResourceAsStream("img/poster.jpeg"));
         poster.setImage(posterImage);
     }
     

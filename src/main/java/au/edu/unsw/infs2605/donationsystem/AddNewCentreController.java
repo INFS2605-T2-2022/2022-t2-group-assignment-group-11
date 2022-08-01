@@ -42,10 +42,12 @@ public class AddNewCentreController implements Initializable {
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        Image donorCentreImage = new Image(App.class.getResourceAsStream("img/donorcentre.png"));
+        Image donorCentreImage = new 
+            Image(App.class.getResourceAsStream("img/donorcentre.png"));
         donorCentreImageView.setImage(donorCentreImage);
         
-        Image logoImage = new Image(App.class.getResourceAsStream("img/logo.png"));
+        Image logoImage = new 
+            Image(App.class.getResourceAsStream("img/logo.png"));
         logo.setImage(logoImage);
     } 
     
@@ -63,7 +65,8 @@ public class AddNewCentreController implements Initializable {
         App.setDonorCentre(newCentre);
         String database = "jdbc:sqlite:DonorDatabase.db";
         Connection conn = DriverManager.getConnection(database);
-        PreparedStatement pSt = conn.prepareStatement("INSERT INTO donorcentre (name, address, phone, dontype) "
+        PreparedStatement pSt = conn.prepareStatement
+            ("INSERT INTO donorcentre (name, address, phone, dontype) "
                 + "VALUES (?,?,?,?)");
         pSt.setString(1, centreNameTextField.getText());
         pSt.setString(2, addressTextField.getText());

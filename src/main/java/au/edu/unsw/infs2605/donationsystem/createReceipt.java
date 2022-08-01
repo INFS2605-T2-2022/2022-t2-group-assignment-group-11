@@ -65,10 +65,12 @@ public class createReceipt implements Initializable {
     public void initialize(URL url, ResourceBundle rb)  {
        
         //Add images
-        Image logoImage = new Image(App.class.getResourceAsStream("img/logo.png"));
+        Image logoImage 
+                = new Image(App.class.getResourceAsStream("img/logo.png"));
         logo.setImage(logoImage);
         
-        Image homeIcon = new Image(App.class.getResourceAsStream("img/home.png"));
+        Image homeIcon 
+                = new Image(App.class.getResourceAsStream("img/home.png"));
         home.setImage(homeIcon);
         
         //Set date created
@@ -80,7 +82,8 @@ public class createReceipt implements Initializable {
             sdf.applyPattern("dd/MM/yyyy");
             dateCreated.setText(sdf.format(d));
         } catch (ParseException ex) {
-            Logger.getLogger(createReceipt.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(createReceipt.class.getName())
+                    .log(Level.SEVERE, null, ex);
         }
         
         

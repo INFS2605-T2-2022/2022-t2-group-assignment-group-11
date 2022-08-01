@@ -60,10 +60,12 @@ public class eligibilityController implements Initializable{
     public void initialize(URL url, ResourceBundle rb)  {
         clearOption();
         //Add images
-        Image logoImage = new Image(App.class.getResourceAsStream("img/logo.png"));
+        Image logoImage 
+                = new Image(App.class.getResourceAsStream("img/logo.png"));
         logo.setImage(logoImage);
         
-        Image homeIcon = new Image(App.class.getResourceAsStream("img/home.png"));
+        Image homeIcon 
+                = new Image(App.class.getResourceAsStream("img/home.png"));
         home.setImage(homeIcon);
     }
     

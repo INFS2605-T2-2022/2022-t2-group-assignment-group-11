@@ -85,12 +85,17 @@ public class Database {
         Statement st = conn.createStatement();
         
         PreparedStatement pSt = conn.prepareStatement(
-            "INSERT OR IGNORE INTO donorcentre (id, name, address, phone, dontype) VALUES (?,?,?,?,?)"
+            "INSERT OR IGNORE INTO "
+                    + "donorcentre (id, name, address, phone, dontype) "
+                    + "VALUES (?,?,?,?,?)"
         );
 
         // Data to insert
-        String[] name = {"Town Hall Donor Centre", "Chatswood Donor Centre", "The Shire Donor Centre"};
-        String[] address = {"483 George St, Sydney NSW 2000", "62, LEVEL 1/436 Victoria Ave, Chatswood NSW 2067", "29 Kiora Rd, Miranda NSW 2228"};
+        String[] name = {"Town Hall Donor Centre", "Chatswood Donor Centre"
+                , "The Shire Donor Centre"};
+        String[] address = {"483 George St, Sydney NSW 2000"
+                , "62, LEVEL 1/436 Victoria Ave, Chatswood NSW 2067"
+                , "29 Kiora Rd, Miranda NSW 2228"};
         String[] phone = {"13 14 95", "13 14 95", "13 14 95"};
         String[] dontype = {"Blood, Plasma", "Blood", "Blood, Plasma"};
 
@@ -111,21 +116,27 @@ public class Database {
       public void insertAppointmentInfo() throws SQLException {
         Statement st = conn.createStatement();
         PreparedStatement pSt = conn.prepareStatement(
-                "INSERT OR IGNORE INTO appointment (id, firstName, lastName, donorCentre, " +
-                        "donationTime, donationDate, emailAddress, " +
-                        "phoneNumber, donationType, donationStatus,notes) VALUES (?,?,?,?,?,?,?,?,?,?,?)"
+                "INSERT OR IGNORE INTO "
+                        + "appointment (id, firstName, lastName, donorCentre, "
+                        + "donationTime, donationDate, emailAddress, "
+                        + "phoneNumber, donationType, donationStatus,notes) "
+                        + "VALUES (?,?,?,?,?,?,?,?,?,?,?)"
         );
         // Data to insert
         String[] firstName = {"John", "Margret", "Jill"};
         String[] lastName = {"Pho", "Kip", "Dance"};
-        String[] donorCentre = {"Town Hall Donor Centre", "Chatswood Donor Centre", "The Shire Donor Centre"};
+        String[] donorCentre = {"Town Hall Donor Centre"
+                , "Chatswood Donor Centre"
+                , "The Shire Donor Centre"};
         String[] donationTime = {"12:00PM", "2:30PM", "10:30AM"};
         String[] donationDate = {"03/07/2022", "21/06/2022", "30/05/2022"};
-        String[] emailAddress = {"johnpho@gmail.com", "margretkip@gmail.com", "jilldance@gmail.com"};
+        String[] emailAddress = {"johnpho@gmail.com", "margretkip@gmail.com"
+                , "jilldance@gmail.com"};
         String[] phoneNumber = {"0465234987", "0412569276", "0417509469"};
         String[] donationType = {"Plasma", "Blood", "Blood"};
         String[] donationStatus = {"Approved", "Approved", "Approved"};
-        String[] notes = {"Allergic to grass", "No allergies", "Allergic to peanuts"};
+        String[] notes = {"Allergic to grass", "No allergies"
+                , "Allergic to peanuts"};
         // Loop to insert using prepared statements
         for (int i = 0; i < 3; i++) {
             pSt.setInt(1, i);
@@ -150,17 +161,28 @@ public class Database {
      */
     public ObservableList<AppointmentInfo> getAppointmentInfo(String where) {
         // Get ResultSet of all appointments that exist in the database
-        ObservableList<AppointmentInfo> appointmentInfoList = FXCollections.observableArrayList();
+        ObservableList<AppointmentInfo> appointmentInfoList 
+                = FXCollections.observableArrayList();
         try {
             Statement st = conn.createStatement();
-            String query = "SELECT id, firstName, lastName, donorCentre, donationTime, donationDate, emailAddress, phoneNumber, donationType,donationstatus,notes FROM appointment " + where;
+            String query = "SELECT id, firstName, lastName, donorCentre"
+                    + ", donationTime, donationDate, emailAddress, phoneNumber"
+                    + ", donationType,donationstatus,notes FROM appointment " 
+                    + where;
             System.out.println(query);
             ResultSet rs = st.executeQuery(query);
             while (rs.next()) {
-                appointmentInfoList.add(new AppointmentInfo(rs.getInt("id"), rs.getString("firstName"),
-                        rs.getString("lastName"), rs.getString("donorcentre"), rs.getString("donationTime"),
-                        rs.getString("donationDate"), rs.getString("emailAddress"), rs.getString("phoneNumber"),
-                        rs.getString("donationType"), rs.getString("donationStatus"), rs.getString("notes")));
+                appointmentInfoList.add(new AppointmentInfo(rs.getInt("id")
+                        , rs.getString("firstName")
+                        , rs.getString("lastName")
+                        , rs.getString("donorcentre")
+                        , rs.getString("donationTime")
+                        , rs.getString("donationDate")
+                        , rs.getString("emailAddress")
+                        , rs.getString("phoneNumber")
+                        , rs.getString("donationType")
+                        , rs.getString("donationStatus")
+                        , rs.getString("notes")));
             }
             // Close
             st.close();
@@ -177,7 +199,8 @@ public class Database {
     public void deleteAppointmentInfo(AppointmentInfo appointmentInfo) {
         try {
             Statement st = conn.createStatement();
-            st.execute("DELETE FROM appointment WHERE id=" + appointmentInfo.getID());
+            st.execute("DELETE FROM appointment WHERE id=" 
+                    + appointmentInfo.getID());
         } catch (Exception throwables) {
             throwables.printStackTrace();
         }
@@ -191,9 +214,11 @@ public class Database {
         try {
             Statement st = conn.createStatement();
             PreparedStatement pSt = conn.prepareStatement(
-                    "INSERT OR IGNORE INTO appointment ( firstName, lastName, donorCentre, " +
-                            "donationTime, donationDate, emailAddress, " +
-                            "phoneNumber, donationType, donationStatus,notes) VALUES (?,?,?,?,?,?,?,?,?,?)"
+                    "INSERT OR IGNORE INTO "
+                            + "appointment ( firstName, lastName, donorCentre, "
+                            + "donationTime, donationDate, emailAddress, "
+                            + "phoneNumber, donationType, donationStatus,notes) "
+                            + "VALUES (?,?,?,?,?,?,?,?,?,?)"
             );
             pSt.setString(1, appointmentInfo.getFirstName());
             pSt.setString(2, appointmentInfo.getLastName());
@@ -220,9 +245,11 @@ public class Database {
         try {
             Statement st = conn.createStatement();
             PreparedStatement pSt = conn.prepareStatement(
-                    "UPDATE appointment SET firstName=?, lastName=?, donorCentre=?, " +
-                            "donationTime=?, donationDate=?, emailAddress=?, " +
-                            "phoneNumber=?, donationType=?, donationStatus=?,notes=? where ID = ?"
+                    "UPDATE appointment SET "
+                            + "firstName=?, lastName=?, donorCentre=?, "
+                            + "donationTime=?, donationDate=?, emailAddress=?, " 
+                            + "phoneNumber=?, donationType=?, "
+                            + "donationStatus=?,notes=? where ID = ?"
             );
             pSt.setString(1, appointmentInfo.getFirstName());
             pSt.setString(2, appointmentInfo.getLastName());

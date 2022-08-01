@@ -51,8 +51,6 @@ public class DonorCentreMainController {
     
     @FXML
     private Label donationTypeLabel;
-    
-    //ObservableList<String> checkBoxList = FXCollections.observableArrayList();
 
     @FXML 
     private Button addNewCentreButton;
@@ -90,7 +88,6 @@ public class DonorCentreMainController {
     public void initialize() throws SQLException {
         
         List<DonorCentre> centreList = new ArrayList<>();
-        //DonorCentre selected = centreListView.getSelectionModel().getSelectedItem();
         final String database = "jdbc:sqlite:DonorDatabase.db";
         Connection conn = DriverManager.getConnection(database);
 
@@ -98,7 +95,8 @@ public class DonorCentreMainController {
         String query = "SELECT * FROM donorcentre";
         ResultSet rs = st.executeQuery(query);
         while (rs.next()) {
-            centreList.add(new DonorCentre(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5)));
+            centreList.add(new DonorCentre(rs.getInt(1), rs.getString(2)
+                    , rs.getString(3), rs.getString(4), rs.getString(5)));
         }
         
         for (DonorCentre centre : centreList) {
@@ -111,10 +109,12 @@ public class DonorCentreMainController {
         donationTypeLabel.setVisible(false);
         
         //Add images
-        Image logoImage = new Image(App.class.getResourceAsStream("img/logo.png"));
+        Image logoImage 
+                = new Image(App.class.getResourceAsStream("img/logo.png"));
         logo.setImage(logoImage);
         
-        Image homeIcon = new Image(App.class.getResourceAsStream("img/home.png"));
+        Image homeIcon 
+                = new Image(App.class.getResourceAsStream("img/home.png"));
         home.setImage(homeIcon);
         
         //Default - display information of the first donor in the list
@@ -124,9 +124,9 @@ public class DonorCentreMainController {
     }
     
     @FXML
-    public void createAppointmentTableView(DonorCentre selected) throws SQLException {
-       
-        
+    public void createAppointmentTableView(DonorCentre selected) 
+            throws SQLException {
+ 
         final String database = "jdbc:sqlite:DonorDatabase.db";
         Connection conn = DriverManager.getConnection(database);
         Statement st = conn.createStatement();
@@ -137,10 +137,12 @@ public class DonorCentreMainController {
         );
         String selectedCentre = selected.getName();
         pst.setString(1, selectedCentre);
-        ObservableList<Appointment> appointmentList = FXCollections.observableArrayList();
+        ObservableList<Appointment> appointmentList 
+                = FXCollections.observableArrayList();
         ResultSet rs = pst.executeQuery();
         while (rs.next()) {
-            appointmentList.add(new Appointment(rs.getString(2), rs.getString(3), rs.getString(6), rs.getString(5)));
+            appointmentList.add(new Appointment(rs.getString(2), rs.getString(3)
+                    , rs.getString(6), rs.getString(5)));
         }
         
         appointmentTbl.setItems(appointmentList);
@@ -152,7 +154,8 @@ public class DonorCentreMainController {
     
     @FXML
     public void selectCentre() throws SQLException {
-        DonorCentre selected = centreListView.getSelectionModel().getSelectedItem();
+        DonorCentre selected 
+                = centreListView.getSelectionModel().getSelectedItem();
         
         centreNameLabel.setText(selected.getName());
         addressLabel.setText(selected.getAddress());
@@ -179,7 +182,8 @@ public class DonorCentreMainController {
     
     @FXML
     public void updateDetails() throws SQLException {
-        DonorCentre selected = centreListView.getSelectionModel().getSelectedItem();
+        DonorCentre selected = 
+                centreListView.getSelectionModel().getSelectedItem();
         if (!isEditing) {
             updateDetailsButton.setText("Save changes");
             
@@ -222,7 +226,10 @@ public class DonorCentreMainController {
             App.setDonorCentre(selected);
             String database = "jdbc:sqlite:DonorDatabase.db";
             Connection conn = DriverManager.getConnection(database);
-            PreparedStatement pSt = conn.prepareStatement("UPDATE donorcentre SET address = ?, phone = ?, dontype = ? WHERE name = ?");
+            PreparedStatement pSt = 
+                    conn.prepareStatement("UPDATE donorcentre SET "
+                            + "address = ?, phone = ?, dontype = ? "
+                            + "WHERE name = ?");
             pSt.setString(1, addressTextField.getText());
             pSt.setString(2, phoneNumberTextField.getText());
             pSt.setString(3, donationTypeTextField.getText());
@@ -261,18 +268,22 @@ public class DonorCentreMainController {
     
     @FXML
     public void deleteCentre() throws IOException, SQLException {
-        DonorCentre selected = centreListView.getSelectionModel().getSelectedItem();
+        DonorCentre selected 
+                = centreListView.getSelectionModel().getSelectedItem();
         centreListView.getItems().remove(selected);
        
        // update database
         App.setDonorCentre(selected);
         String database = "jdbc:sqlite:DonorDatabase.db";
         Connection conn = DriverManager.getConnection(database);
-        PreparedStatement pSt = conn.prepareStatement("DELETE FROM donorcentre WHERE name = ?");
+        PreparedStatement pSt = 
+                conn.prepareStatement("DELETE FROM donorcentre WHERE name = ?");
         pSt.setString(1, centreNameLabel.getText());
         pSt.executeUpdate();
         
-        PreparedStatement pSt1 = conn.prepareStatement("DELETE FROM appointment WHERE donorcentre = ?");
+        PreparedStatement pSt1 = 
+                conn.prepareStatement("DELETE FROM appointment "
+                        + "WHERE donorcentre = ?");
         pSt.setString(1, centreNameLabel.getText());
         pSt.executeUpdate();
         conn.close();

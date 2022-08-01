@@ -22,9 +22,10 @@ public class AppointmentInfo {
     private String notes;
 
 
-    public AppointmentInfo(int id, String firstName, String lastName, String donorCentre,
-                           String donationTime, String donationDate, String emailAddress, String phoneNumber,
-                           String donationType, String donationStatus, String notes) {
+    public AppointmentInfo(int id, String firstName, String lastName
+            , String donorCentre,String donationTime, String donationDate
+            , String emailAddress, String phoneNumber
+            , String donationType, String donationStatus, String notes) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
