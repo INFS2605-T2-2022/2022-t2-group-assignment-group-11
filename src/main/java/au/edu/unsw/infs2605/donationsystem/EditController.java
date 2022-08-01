@@ -61,7 +61,8 @@ public class EditController {
     @FXML
     public void initialize() {
         pageLabel.setText("Add New Appointment");
-        donationTypeField.getItems().addAll("Blood", "Plasma", "Blood and Plasma");
+        donationTypeField.getItems().addAll
+            ("Blood", "Plasma", "Blood and Plasma");
         donationStatusField.getItems().addAll("Approved", "Completed");
         donationTypeField.getSelectionModel().select(0);
         donationStatusField.getSelectionModel().select(0);
@@ -79,8 +80,10 @@ public class EditController {
                 phoneNumberField.setText(selected.getPhoneNumber());
                 emailAddressField.setText(selected.getEmailAddress());
                 notesField.setText(selected.getNotes());
-                donationTypeField.getSelectionModel().select(selected.getDonationType());
-                donationStatusField.getSelectionModel().select(selected.getDonationStatus());
+                donationTypeField.getSelectionModel()
+                        .select(selected.getDonationType());
+                donationStatusField.getSelectionModel()
+                        .select(selected.getDonationStatus());
             }
         });
     }
@@ -95,8 +98,10 @@ public class EditController {
         String phoneNumberFieldText = phoneNumberField.getText();
         String emailAddressFieldText = emailAddressField.getText();
         String notesFieldText = notesField.getText();
-        String donationType = donationTypeField.getSelectionModel().getSelectedItem();
-        String donationStatus = donationStatusField.getSelectionModel().getSelectedItem();
+        String donationType 
+                = donationTypeField.getSelectionModel().getSelectedItem();
+        String donationStatus 
+                = donationStatusField.getSelectionModel().getSelectedItem();
         SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
         try {
             sdf.parse(donationDateFieldText);
@@ -105,9 +110,12 @@ public class EditController {
             return;
         }
         if (selected == null) {
-            Database.getInstance().addAppointmentInfo(new AppointmentInfo(0, firstNameFieldText, lastNameFieldText, donorCentreFieldText,
-                    donationTimeFieldText, donationDateFieldText, emailAddressFieldText,
-                    phoneNumberFieldText, donationType, donationStatus, notesFieldText));
+            Database.getInstance().addAppointmentInfo(new AppointmentInfo(0
+                    , firstNameFieldText, lastNameFieldText
+                    , donorCentreFieldText, donationTimeFieldText
+                    , donationDateFieldText, emailAddressFieldText
+                    , phoneNumberFieldText, donationType
+                    , donationStatus, notesFieldText));
         } else {
             selected.setID(Integer.parseInt(idField.getText()));
             selected.setFirstName(firstNameFieldText);

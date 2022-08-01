@@ -114,14 +114,17 @@ public class bookAppointmentController implements Initializable {
         try {
             createChoiceBox();
         } catch (SQLException ex) {
-            Logger.getLogger(bookAppointmentController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(bookAppointmentController.class.getName())
+                    .log(Level.SEVERE, null, ex);
         }
         
         //Add images
-        Image logoImage = new Image(App.class.getResourceAsStream("img/logo.png"));
+        Image logoImage 
+                = new Image(App.class.getResourceAsStream("img/logo.png"));
         logo.setImage(logoImage);
         
-        Image homeIcon = new Image(App.class.getResourceAsStream("img/home.png"));
+        Image homeIcon 
+                = new Image(App.class.getResourceAsStream("img/home.png"));
         home.setImage(homeIcon);
     }
     
@@ -305,7 +308,6 @@ public class bookAppointmentController implements Initializable {
             appointmentList.add(newAppointment);
             App.setAppointment(newAppointment);
             App.setRoot("confirmAppointment");
-   
         }
     }
     public boolean ageCheck() throws ParseException {
@@ -334,7 +336,8 @@ public class bookAppointmentController implements Initializable {
             String dateFormatted = sdf.format(d);
             return dateFormatted;
         } catch (ParseException ex) {
-            Logger.getLogger(createReceipt.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(createReceipt.class.getName())
+                    .log(Level.SEVERE, null, ex);
         } return "";
     }
     
@@ -346,8 +349,5 @@ public class bookAppointmentController implements Initializable {
     public void backToHomePage() throws IOException {
         App.setRoot("homePage");
     }
-    
-    
-
-    
+   
 }

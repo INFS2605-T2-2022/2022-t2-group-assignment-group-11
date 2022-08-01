@@ -24,15 +24,17 @@ public class homePageController implements Initializable {
     ImageView logo;
     
     @FXML
-    ImageView homePageImage;
-//    
+    ImageView homePageImage;    
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        Image logoImage = new Image(App.class.getResourceAsStream("img/logo.png"));
+        Image logoImage 
+                = new Image(App.class.getResourceAsStream("img/logo.png"));
         logo.setImage(logoImage);
         
-        Image homePage = new Image(App.class.getResourceAsStream("img/blood donation.jpeg"));
+        Image homePage 
+                = new Image(App.class
+                        .getResourceAsStream("img/blood donation.jpeg"));
         homePageImage.setImage(homePage);
     }
         
@@ -51,6 +53,4 @@ public class homePageController implements Initializable {
     public void toBookAppointment() throws IOException {
         App.setRoot("appointment");
     }
-
-
 }
